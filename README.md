@@ -6,4 +6,4 @@ Alexander Karnowski
 Lukas Friedel  
 Valentin Weber
 
-Here is our [Kanbanboard](https://trello.com/b/5xHzfqHS) .
+Here is our [Kanbanboard](https://trello.com/b/5xHzfqHS).
