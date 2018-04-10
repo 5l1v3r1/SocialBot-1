@@ -1,4 +1,4 @@
-# Zeitplanug
+# Zeitplanung
 
 Datum        | Meilenstein  
 ------------ | -------------
