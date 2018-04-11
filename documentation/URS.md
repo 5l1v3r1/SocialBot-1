@@ -14,9 +14,19 @@
 
 ### 2.1 Zweck des gewünschten Systems
 
-Beobachtung von
+Sozialen Aspekt beobachten.
+Die menschliche Interaktion mit den Bots und die Interaktion zwischen Bots und Seiten soll beobachtet werden können.
+Die Bots sollen möglichst flexibel sein.
+Im Mittelpunkt steht die menschliche Interaktion mit den Bots.
+
 
 ### 2.2 Überblick über die geforderte Funktionalität
+
+Post erstellen mit vorgefertigtem Text.
+Kommentar auf bestimmte Posts mit vorgefertigtem Text posten.
+Liken auf bestimmte Posts.
+Die bisher getätigten Aktivitäten sollen in einem Log festgehalten werden.
+Die Flexibilität des bots steht im Mittelpunkt.
 
 Tool zur Verwaltung und Parametrierung von Facebook-Bots.
 Dieses soll eine Art API für Python-Scripte (Algorithmus) beinhalten.
@@ -32,11 +42,17 @@ Folgende Funktionen sollen abgebildet werden:
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
+Die Software soll Plattformunabhängig funktionieren. 
+Die präferierten Betriebssysteme Windows und MAC.
+
 ### 2.4 Allgemeine Einschränkungen
 
 ### 2.5 Vorgaben zu Hardware und Software
 
 ### 2.6 Anforderungsquellen / Zielgruppen
+
+Die präferierten Zielgruppen sind die Student/innen der Sozialwissenschaften.
+Weitere Zielgruppen können dynamisch hinzukommen.
 
 ## 3. Detailierte Beschreibung der Anforderung (Leistungsmerkmale)
 
