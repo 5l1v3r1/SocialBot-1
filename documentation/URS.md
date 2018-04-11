@@ -14,6 +14,7 @@
 
 ### 2.1 Zweck des gewünschten Systems
 
+Beobachtung von
 
 ### 2.2 Überblick über die geforderte Funktionalität
 
@@ -27,6 +28,7 @@ Folgende Funktionen sollen abgebildet werden:
 - Teilen
 - Kommentieren
 - Persönliche Nachrichten
+- Log
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
@@ -63,6 +65,8 @@ Folgende Funktionen sollen abgebildet werden:
 ### 4.4 Lieferbedingungen
 
 ### 4.5 Gewährleistung
+
+Keine
 
 ## 5. Durchführbarkeitsuntersuchungen
 
