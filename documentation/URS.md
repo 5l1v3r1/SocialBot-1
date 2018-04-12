@@ -59,7 +59,8 @@ Bei der Erstbearbeitung liegt der Fokus nicht auf der bearbeitung der zusätzlic
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
-Die Software soll Plattformunabhängig funktionieren.
+Die Software soll Plattformunabhängig funktionieren und XXX
+
 Die bevorzugten Betriebssysteme werden in erster Linie durch Windows und in zweiter Linie durch MacOS dargstellt.
 Des weiteren soll die Software "OpenSource" gehalten werden, aufgrund der Konstitutionellen Voraussetzungen.
 Das Endprodukt soll keine Lizenz-EIngrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
@@ -67,11 +68,11 @@ Das Endprodukt wird nur zur nicht kommerziellen Nutzung verwendet.
 
 ### 2.4 Allgemeine Einschränkungen
 
---
+Die Software muss das Verhalten des Bots kapseln, damit zukünftig Nutzer leichter das Verhalten manipulieren können.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
---
+Grundsätzlich wird die Software mit Python 3.6.3 entwickelt. Durch die Plattformunabhängigkeit von Python, spielt die Wahl des Betriebssystems keine Rolle.
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
@@ -83,7 +84,10 @@ Weitere Zielgruppen können in Zukunft hinzukommen und müssen nicht explizit au
 
 ### 3.1 Lieferumfang
 
+Die Software liefert einen automatisierte Konto erstellung auf Facebook und sie wird in der Lage sein auf Beiträge zu reagieren, die entsprechend auf der Oberfläche konfiguriert werden können.
+
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
+Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
 
 ### 3.3 Geforderte Funktionen des Produkts
 
