@@ -59,7 +59,6 @@ Bei der Erstbearbeitung liegt der Fokus nicht auf der bearbeitung der zusätzlic
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
-Die Software soll Plattformunabhängig funktionieren.
 Die bevorzugten Betriebssysteme werden in erster Linie durch Windows und in zweiter Linie durch MacOS dargstellt.
 Des weiteren soll die Software "OpenSource" gehalten werden, aufgrund der Konstitutionellen Voraussetzungen.
 Das Endprodukt soll keine Lizenz-EIngrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
@@ -67,11 +66,11 @@ Das Endprodukt wird nur zur nicht kommerziellen Nutzung verwendet.
 
 ### 2.4 Allgemeine Einschränkungen
 
---
+Die Software muss das Verhalten des Bots kapseln, damit zukünftig Nutzer leichter das Verhalten verändern können.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
---
+Grundsätzlich wird die Software mit Python 3.6.3 entwickelt. Durch die Plattformunabhängigkeit von Python, spielt die Wahl des Betriebssystems keine Rolle.
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
@@ -83,34 +82,60 @@ Weitere Zielgruppen können in Zukunft hinzukommen und müssen nicht explizit au
 
 ### 3.1 Lieferumfang
 
+Die Software liefert einen automatisierte Konto erstellung auf Facebook und sie wird in der Lage sein auf Beiträge zu reagieren, die entsprechend auf der Oberfläche konfiguriert werden können.
+
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
+> Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
 
 ### 3.3 Geforderte Funktionen des Produkts
+> Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
+
+| Bezeichnung      		   | XXX |
+| Zusammenfassung		   | XXX |
+| Akteure  			   | XXX |
+| Vorbedingung 			   | XXX |
+| Ablaufbeschreibung 		   | XXX |
+| Verwendungen (Include-Beziehung) | XXX |
+| Erweiterungen (Extend-Beziehung) | XXX |
+| Alternativen  		   | XXX |
+| Nachbedingung 		   | XXX |
+| Fehlschlag    		   | XXX |
 
 ### 3.4 Struktur und Verhalten des Systems
+> Beschreibung der verschiedenen statischen Strukturaspekte des Systems (Klassen-, Paket-, Komponenten-, Verteilungsdiagramm) sowie Beschreibung der Dynamik, der internen Abläufe und des Zusammenspiels der Systemteile (Aktivität-, Sequenz-, Zustand-, Timingdiagramm).
 
 ### 3.5 Schnittstellen des gewünschten System
+> Beschreibung der Benutzerschnittstellen; Beschreibung der Schnittstellen zu anderen Soft- und Hardwaresystemen. Zu berücksichtigende Normen
 
 ### 3.6 Zu berücksichtigende Normen
 
 ### 3.7 Qualitätsanforderungen / sonstige Entwicklerorientierte Anforderungen
+Spezifikation von Anforderungen hinsichtlich Performance, Ressourcen, Safety (Schutz und Sicherheit), Datensicherheit, Portabilität, Reliability, Wartung, Wiederverwendung, Usability, Serviceability
 
 ## 4. Vorgaben des Auftraggebers an die Projektabwicklung
 
 ### 4.1 Anforderungen an die Realisierung
+> z. B. Angaben über zu verwendende Software, Hardware, Entwicklungsmethode, Termine, Ausbaustufen, zugekaufte Produkte
 
 ### 4.2 Abnahmebedingungen
+> Bedingungen des Auftraggebers für die Abnahme, wogegen?, wie?, welche Unterlagen
 
 ### 4.3 Fertige und zugekaufte Komponenten
+> z. B. Standardsoftware, wiederverwendete eigene Software, Software des Auftraggebers, Betriebssysteme, ...
 
 ### 4.4 Lieferbedingungen
+> z.B. Lieferplan mit Terminen, Form der Lieferungen, geforderte Dokumentation
 
 ### 4.5 Gewährleistung
 
-Keine
+Da dies ein Forschungsprojekt ist, entfällt jegliche Gewährleistung und Wartung
 
 ## 5. Durchführbarkeitsuntersuchungen
+> Markt- und Kundenanalyse, Durchführbarkeitsanalyse,...
 
 ## 6. Bewertung der Anforderungen
+> Falls bei der Beschreibung der funktionalen Eigenschaften des Produkts noch nicht erfolgt: Klassifizierung, Priorisierung, Auswahl (Paketierung) mit Auswahlbegründungen
 
 ## 7. Verpflichtungen des Auftaggebers
+> z.B.: gestellte Hardware / Software, Schulung von Entwicklern oder von Auftraggeberpersonal, Ansprechpartner, zur Verfügung stellen von Räumen, Rechenzentrum, Reaktionszeiten des Auftraggebers auf Anfragen
+
