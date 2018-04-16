@@ -1,4 +1,14 @@
 @startuml
+class Singleton << (S,#FF7700) Singleton >> {
+  - ShortLifeUserToken : String
+  - LongLifeUserToken : String
+  --
+  + setShortLifeUserToken(String)
+  ..
+  + getShortLifeUserToken : String
+  + getLongLifeUserToken : String
+}
+
 interface IInternalAPI {
   --
   + auth()
@@ -16,11 +26,8 @@ interface IInternalAPI {
 }
 
 class InternalAPI {
-  + ShortLifeUserToken : String
-  + LongLifeUserToken : String
   --
   + auth()
-  - getLongLifeUserToken(String) : String
   + getPosts(Object) : Object
   + getComments(Object) : Object
   + getUserByName(String) : Object

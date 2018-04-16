@@ -51,6 +51,10 @@ class ArrayList {
   size()
 }
 
+class Singleton << (S,#FF7700) Singleton >> {
+
+}
+
 enum Enum {
   ONE
   TWO
