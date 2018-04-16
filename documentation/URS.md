@@ -11,7 +11,7 @@ Die Anforderungen an diese Bots werden im Folgenden genauer dokumentiert.
 
 In diesem Dokument werden die User Requirements für den Kundenauftrag festgelegt. 
 Die Kundenansprüche werden festgehalten, um einen Überblick zu erschaffen und den Umfang des Projekts zu definieren.
-
+Die Anforderungen definieren die zu erledigende Arbeit und definieren den Umfang, der geleistet werden muss.
 
 ### 1.2 Gültigkeit des Dokuments
 
@@ -27,10 +27,17 @@ Erstellung des Dokuments: 11.04.2018
 
 ## 2. Allgemeine Beschreibung des gewünschten Systems
 
-Der Bot sollen automatisiert auf bestimmte Ereignisse mit vorgefertigte Aktionen reagieren.
-Der Bot soll für die Soziale Netzwerk "FaceBook" erstellt werden.
-Der Bot soll die einfachen Aktionen dieses Sozialen Netzwerks ausführen, wie "Liken", "Kommentieren" und "Posten".
-Die Aktivitäten des Bots sollen in einem Log festgehalten werden und später nachsehbar sein.
+Das Projekt besteht aus der Erstellung von Bots für das soziale Netzwerk "FaceBook".
+Die soziale Plattform "FaceBook" ist eine Internetseite, auf der Personen miteinander kommunizieren und Ereignisse teilen können.
+Die Personen haben ein eigenes Profil und können über mehrere Möglichkeiten mit anderen Nutzern in Kontakt treten.
+Zu den wichtigsten Aktionen der Interaktion zwischen Nutzern zählen "Posten", "Liken", "Kommentieren", "Nachrichten schreiben", "Teilen" und "Freundschaftsanfragen schicken". 
+Die Bots sollen die wichtigsten Aktionen automatisiert ausführen und auf vordefinierte Ereignisse automatisiert reagieren.
+Die Aktionen und Reaktionen auf Ereignisse und die Ereignisse sollen im Vorfeld definiert werden.
+Der Nutzer kann die Aktionen, Reaktionen und Ereignisse selbst definieren und umändern.
+Die priorisierten Aktionen bestehen aus "Posten", "Kommentieren" und "Liken". 
+Jede Aktion und Reaktion, samt allen zugehörigen Parametern sollen in einem Log festgehalten werden.
+Das Log muss die Aktionen des Bots enthalten und die Reaktion anderer Nutzer auf die Aktion.
+Die Aktionen des Bots sollen jederzeit im Log einsehbar sein.
 
 ### 2.1 Zweck des gewünschten Systems
 
@@ -38,51 +45,66 @@ Der Zweck des Projekts besteht aus der Beobachtung des sozialen Aspekts eines Bo
 Die Interaktion des Bots mit Seiten, anderen Nutzern und eventuell anderen Bots soll beobachtet werden.
 Die Interaktion mit anderen Nutzern in Form von Menschen steht im Mittelpunkt der Beobachtung.
 Flexibilität des Bots ist wichtig, um möglichst unterschiedliche Interaktionen zu fördern und umfangreiche Reaktionen zu erreichen.
+Der Bot soll unterschiedliche Aktionen und Reaktionen durchführen. 
+Dabei sollen verschiedene soziale Einstellungen und die Reaktionen von anderen Nutzern auf die Aktionen beobachtet werden.
+Die Interaktion zwischen dem Bot und den Nutzern soll, abhängig von der sozialen Einstellung, verschiedene Reaktionen hervorrufen.
+Die verschiedenen Reaktionen der Nutzer auf den Bot, sollen festgehalten werden, um den sozialen Aspekt des Bots beobachten zu können.
+Aus den erfassten Daten soll das soziale Leben des Bots beurteilt werden und anschließend in die Studie der Kunden übernommen werden. 
 
 ### 2.2 Überblick über die geforderte Funktionalität
 
 Als Forderung an die Funktionalität ist die Erstellung unterschiedlicher Bots gesetzt.
-Die Bots sollen einen "Post" anhand einem vorgefertigten Text erstellen und veröffentlichen.
-Ein "Like" auf bestimmte, vorher definierte "Posts" soll vom Bot gegeben werden können.
-Der Bot soll unter bestimmten "Posts" einen festgelegten Text in Form eines "Kommentars" kommentieren können.
+Die Bots sollen die einfachsten Aktionen, bestehend aus "Posten", "Liken" und "Kommentieren", automatisiert durchführen.
+Die Bots sollen einen "Post" anhand einem vorgefertigten Text erstellen und veröffentlichen können, ein "Like" auf bestimmte, vorher definierte "Posts" geben können und unter ausgewählten "Posts" einen festgelegten Text in Form eines "Kommentars" kommentieren können.
 Jede Aktivität des Bots soll in einem Aktivitäten-Log festgehalten werden.
-Beim Festhalten der Aktivität ist auch auf Reaktionen anderer Nutzer dauf die Aktion des Bots zu achten.
-Die Reaktion anderer Nutzer muss abgespeichert werden und mit der entsprechenden Aktion des Bots in Verbindung gebracht werden können.
-Die gespeicherten Aktivitäten des Bots müssen auslesbar und anzeigbar sein, um die Aktionen und Reaktionen auszuwerten.
-Der Algorithmus für die Aktivitäten des Bots soll austauschbar gehalten werden, muss folglich in einer austauschbaren Weise vorlegen.
-Der ünbrige Teil, ohne Algorithmus muss mit jeder Form von Algorithmus im selben Format arbeiten können.
+Beim Festhalten der Aktivität liegt der Fokus darauf die Aktivität des Bots mit den Reaktionen der anderen Nutzer auf die Aktivität festzuhalten.
+Die Reaktionen anderer Nutzer muss abgespeichert werden und mit der entsprechenden Aktion des Bots in Verbindung gebracht werden können.
+Die gespeicherten Aktionen des Bots und die Reaktionen anderer Nutzer müssen anschaulich angezeigt werden, um die Interaktion auswerten zu können.
+Der Algorithmus für die Aktivitäten des Bots soll austauschbar sein.
+Der Algorithmus des Bots muss in einer gesonderten Form gehalten werden, um in Zukunft eine reibunglose Einbindung eines neuen Algorithmus zu gewährleisten.
+Der Programmteil ohne Algorithmus muss mit jeder Form von Algorithmus, der Daten im selben Format nutzt, arbeiten können.
 Die Einstellung des Bots, über den Algorithmus, muss Flexibilität bieten.
 Die Möglichkeit muss bestehen, jeden Bot unterschieldlich einzustellen, um andere Aktionen und Reaktion anderer Nutzer hervor zu bringen.
+Die sozialen Einstellungen des Bots müssen konfigurierbar sein und bei jedem Bot anders einstellbar sein.
 Als weitere Aktivitäten für den Bot stehen die Handhabung von "Freundschaftsanfragen" und von "Persönlichen Nachrichten", sowie das "Teilen".
-Die weiteren Aktivitäten stellen zusätzliche Anforderungen dar, die es in Zukunft umzusetzen gilt.
-Bei der Erstbearbeitung liegt der Fokus nicht auf der bearbeitung der zusätzlichen Aktivitäten.
+Die weiteren Aktivitäten stellen zusätzliche Anforderungen dar, deren Umsetzung in Zukunft bearbeitet werden kann.
+Bei der ersten Bearbeitung des Projekts liegt der Fokus auf der Erstellung eines Bots und der Einbindung einfacher Aktionen.
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
+Das Projekt soll ein einfach zu handhabendes Programm hervorbringen, dass ausgeführt werden muss und alle wichtigen Funktionalitäten und Daten in einem Fenster vereint.
+Das Programm soll Betriebssystem unabhängig agieren, um eine Plattform unabhängige Arbeitsweise zu gewährleisten.
 Die bevorzugten Betriebssysteme werden in erster Linie durch Windows und in zweiter Linie durch MacOS dargstellt.
 Des weiteren soll die Software "OpenSource" gehalten werden, aufgrund der Konstitutionellen Voraussetzungen.
-Das Endprodukt soll keine Lizenz-EIngrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
-Das Endprodukt wird nur zur nicht kommerziellen Nutzung verwendet.
+Das Endprodukt soll keine Lizenz-Eingrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
+Das Endprodukt wird auschließlich nur zur nicht kommerziellen Nutzung verwendet.
+Die Anbindung an das soziale Netzwerk "FaceBook" soll vom Programm intern gelöst werden.
 
 ### 2.4 Allgemeine Einschränkungen
 
 Die Software muss das Verhalten des Bots kapseln, damit zukünftig Nutzer leichter das Verhalten verändern können.
+Eine Einschränkung der Funktionalität durch die Richtlinien von "FaceBook" ist, je nach Stand der Richtlinien, möglich.
+Die automatische Erstellung eines Accounts für die Bots ist, aufgrund der momentanen Richtlinien von "FaceBook" Stand(16.04.2018), unmöglich.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
-Grundsätzlich wird die Software mit Python 3.6.3 entwickelt. Durch die Plattformunabhängigkeit von Python, spielt die Wahl des Betriebssystems keine Rolle.
+Grundsätzlich wird die Software mit Python 3.6.3 entwickelt. 
+Durch die Plattformunabhängigkeit von Python, spielt die Wahl des Betriebssystems keine Rolle.
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
-Die Nutzer werden durch Studentinnen und Studenten dargstellt, die eine Auswertung mit dem Endprodukt tätigen wollen.
-Die Studienrichtung richtet sich in erster Weise auf die Sozialwissenschaften.
+Das Hauptziel ist die Auswertung der sozialen Interaktionen zwischen dem Bot und der Umwelt.
+Die Hauptnutzer werden durch Studentinnen und Studenten der Universität Basel dargstellt.
+Die Hauptnutzer beziehen die Daten für ihre Analyse aus der Auswertung der Daten zu den Interaktionen des Bots.
+Die Studienrichtung der Studentinnen und Studenten sind die Sozialwissenschaften.
 Weitere Zielgruppen können in Zukunft hinzukommen und müssen nicht explizit aufgeführt werden.
+Das Programm soll unabhängig vom Nutzer funktionieren und eine einfach handhbung garantieren.
 
 ## 3. Detailierte Beschreibung der Anforderung (Leistungsmerkmale)
 
 ### 3.1 Lieferumfang
-
-Die Software liefert einen automatisierte Konto erstellung auf Facebook und sie wird in der Lage sein auf Beiträge zu reagieren, die entsprechend auf der Oberfläche konfiguriert werden können.
+Zu der Lieferung gehört ein Programm mit allen zugehörigen Komponenten, eine Dokumentation der implementierten Funktionen und eine Einweisung in die Funktionen der Software.
+Die Software liefert die Möglichkeit einen Bot für "FaceBook" zu erstellen und die Möglichkeit das Verhalten des Bots auf der Oberfläche zu konfigurieren.
 
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
 > Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
@@ -110,6 +132,7 @@ Die Software liefert einen automatisierte Konto erstellung auf Facebook und sie 
 ### 3.6 Zu berücksichtigende Normen
 
 ### 3.7 Qualitätsanforderungen / sonstige Entwicklerorientierte Anforderungen
+
 Spezifikation von Anforderungen hinsichtlich Performance, Ressourcen, Safety (Schutz und Sicherheit), Datensicherheit, Portabilität, Reliability, Wartung, Wiederverwendung, Usability, Serviceability
 
 ## 4. Vorgaben des Auftraggebers an die Projektabwicklung
