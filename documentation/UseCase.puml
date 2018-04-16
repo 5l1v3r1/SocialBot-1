@@ -16,13 +16,22 @@ rectangle parametrize {
   usecase PSUPB as "Set up Bot"
 }
 
-:Facebook: ---> APM
-:Facebook: ---> APOST
-:Facebook: ---> AFR
-:Facebook: ---> AC
-:Facebook: --> PFR
-:Facebook: --> PPM
+:Bot: --> APM
+:Bot: --> APOST
+:Bot: --> AFR
+:Bot: --> AC
+:Bot: --> PFR
+:Bot: --> PPM
 
-:User: --> PSUPB
+:User: -> PSUPB
+
+APM   <-- :Facebook:
+APOST <-- :Facebook:
+AFR   <-- :Facebook:
+AC    <-- :Facebook:
+PFR   <-- :Facebook:
+PPM   <-- :Facebook:
+
+PSUPB <-- :Bot:
 
 @enduml
