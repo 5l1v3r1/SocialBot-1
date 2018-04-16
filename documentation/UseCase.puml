@@ -14,6 +14,7 @@ rectangle passive {
 
 rectangle parametrize {
   usecase PSUPB as "Set up Bot"
+  usecase PLOG as "Export Log-File"
 }
 
 :Bot: --> APM
@@ -23,7 +24,8 @@ rectangle parametrize {
 :Bot: --> PFR
 :Bot: --> PPM
 
-:User: -> PSUPB
+:User: --> PSUPB
+:User: --> PLOG
 
 APM   <-- :Facebook:
 APOST <-- :Facebook:
@@ -33,5 +35,6 @@ PFR   <-- :Facebook:
 PPM   <-- :Facebook:
 
 PSUPB <-- :Bot:
+PLOG  <-- :Bot:
 
 @enduml
