@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+title: SocialBot
+description: a link to Science
+logo: logo.svg
+show_downloads: true
