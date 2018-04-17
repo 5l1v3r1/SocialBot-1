@@ -1,8 +1,4 @@
-![Logo](/logo.svg)
-
-# This is a fabulous repo for scientific research...
-
-## Members
+## Members of this Project:
 
 Max Bürgi  
 Raphaela Schaich  
