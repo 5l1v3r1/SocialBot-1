@@ -40,7 +40,6 @@ desktop.ini
 
 # Project specific files #
 ##########################
-
 venv
 .idea
 .classpath
