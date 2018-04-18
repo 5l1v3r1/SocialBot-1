@@ -19,3 +19,10 @@
 - URS ausformulieren und überarbeiten
 - Erstes Testen der Facebook API Funktionen
 - EInrichten von PyQt5 (GUI)
+
+
+## 18. 04. 2018
+- Verwerfen der sozialen Plattform "FaceBook"
+- Umstieg auf die soziale Plattform "Twitter"
+- Umändern aller bestehenden Dokumente auf die neue Plattform
+- Architektur erstellt
