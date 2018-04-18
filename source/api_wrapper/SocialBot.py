@@ -6,6 +6,7 @@ class SocialBot:
     """
     The SocialBot class is built on top of the twitter module.
     It restricts the functionality of the twitter module and includes logging.
+    The user which is logged in is also called the authenticated user.
     """
 
     def __init__(self, access_info):
@@ -71,12 +72,13 @@ class SocialBot:
             raise Exception('Missing a tweet text')
 
         resp = self.__api.PostUpdate(text)
-        print(resp)
 
         self.__log({
             'action': 'Tweeted ' + text,
             'response': str(resp)
         })
+
+        return resp
 
     def retweet(self, tweet_id):
         """
@@ -89,12 +91,13 @@ class SocialBot:
             raise Exception('Missing tweet_id')
 
         resp = self.__api.PostRetweet(tweet_id)
-        print(resp)
 
         self.__log({
             'action': 'Retweeted tweet with id "' + tweet_id + '"',
             'response': str(resp)
         })
+
+        return resp
 
     def send_dm(self, username='', user_id=None, message=''):
         """
@@ -117,12 +120,12 @@ class SocialBot:
             resp = self.__api.PostDirectMessage(message, screen_name=username, return_json=True)
             log_param = user_id
 
-        print(resp)
-
         self.__log({
             'action': 'Send dm to "' + log_param + '" with text "' + message + '"',
             'response': str(resp)
         })
+
+        return resp
 
     """
     SEARCH FUNCTIONS:
@@ -139,12 +142,13 @@ class SocialBot:
             raise Exception('Missing a search term')
 
         resp = self.__api.GetSearch(term=term)
-        print(resp)
 
         self.__log({
             'action': 'Searched for tweets containing "' + term + '"',
             'response': str(resp)
         })
+
+        return resp
 
     def search_user(self, term):
         """
@@ -157,20 +161,23 @@ class SocialBot:
             raise Exception('Missing a username to search')
 
         resp = self.__api.GetUsersSearch(term)
-        print(resp)
 
         self.__log({
             'action': 'Searched for user with term "' + term + '"',
             'response': str(resp)
         })
 
+        return resp
+
     """
     GET FUNCTIONS:
     """
 
-    def get_subscriptions(self, username=None, user_id=None):
+    def get_subscriptions(self, username=None, user_id=None, count=20, page=-1):
         """
         Get subscriptions for a user.
+        :param count:
+        :param page:
         :param user_id:
         :param username:
         :return:
@@ -183,9 +190,7 @@ class SocialBot:
             username = None
             print('Both user_id and username given. Used user_id.')
 
-        resp = self.__api.GetSubscriptions(user_id=user_id, screen_name=username)
-
-        print(resp)
+        resp = self.__api.GetSubscriptions(user_id=user_id, screen_name=username, count=count, cursor=page)
 
         self.__log({
             'action': 'Got subscriptions for user',
@@ -193,6 +198,8 @@ class SocialBot:
             'username': username,
             'response': str(resp)
         })
+
+        return resp
 
     def get_tweets(self, username=None, user_id=None):
         """
@@ -211,14 +218,90 @@ class SocialBot:
 
         resp = self.__api.GetUserTimeline(user_id=user_id, screen_name=username)
 
-        print(resp)
-
         self.__log({
             'action': 'Got tweets by user',
             'user_id': user_id,
             'username': username,
             'response': str(resp)
         })
+
+        return resp
+
+    def get_followers(self, username=None, user_id=None, page=-1):
+        """
+        Get max. 200 followers for a certain user on one page.
+        :param page:
+        :param username:
+        :param user_id:
+        :return:
+        """
+
+        if username == '' and user_id is None:
+            raise Exception('Missing a username or user_id to get followers')
+
+        if username != '' and user_id is not None:
+            username = None
+            print('Both user_id and username given. Used user_id.')
+
+        resp = self.__api.GetFollowersPaged(user_id=user_id, screen_name=username, cursor=page)
+
+        self.__log({
+            'action': 'Got followers for user',
+            'username': str(username),
+            'user_id': str(user_id),
+            'page': str(page),
+            'response': str(resp)
+        })
+
+        return resp
+
+    """
+    GET FUNCTIONS (FOR AUTHENTICATED USER):
+    """
+
+    def get_my_replies(self):
+        """
+        Gets the most recent replies for the authenticated user.
+        :return:
+        """
+        resp = self.__api.GetReplies()
+
+        self.__log({
+            'action': 'Got replies of authenticated user',
+            'response': str(resp)
+        })
+
+        return resp
+
+    def get_my_retweets(self):
+        """
+        Gets the most recent retweets of tweets made by the authenticated user.
+        :return:
+        """
+
+        resp = self.__api.GetRetweetsOfMe()
+
+        self.__log({
+            'action': 'Got retweets of tweets made by the authenticated user',
+            'response': str(resp)
+        })
+
+        return resp
+
+    def get_my_mentions(self):
+        """
+        Gets the most recent mentions of the authenticated user.
+        :return:
+        """
+
+        resp = self.__api.GetMentions()
+
+        self.__log({
+            'action': 'Got mentions of the authenticated user.',
+            'response': str(resp)
+        })
+
+        return resp
 
     """
     STREAM FUNCTIONS:
@@ -229,6 +312,8 @@ class SocialBot:
         Opens a stream to spectate tweets. Can be filtered by users and/or terms.
         Users have to be in the format @[username].
         Both users and terms have to be an array.
+        :param users:
+        :param terms:
         :return:
         """
 
