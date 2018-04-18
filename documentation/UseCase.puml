@@ -1,0 +1,40 @@
+@startuml
+
+rectangle active {
+  usecase APM as "Send Private Message"
+  usecase APOST as "Post Something"
+  usecase AFR as "Send Friendship Request"
+  usecase AC as "Comment Something"
+}
+
+rectangle passive {
+  usecase PFR as "Answer Friendship Request"
+  usecase PPM as "Answer Private Message"
+}
+
+rectangle parametrize {
+  usecase PSUPB as "Set up Bot"
+  usecase PLOG as "Export Log-File"
+}
+
+:Bot: --> APM
+:Bot: --> APOST
+:Bot: --> AFR
+:Bot: --> AC
+:Bot: --> PFR
+:Bot: --> PPM
+
+:User: --> PSUPB
+:User: --> PLOG
+
+APM   <-- :Facebook:
+APOST <-- :Facebook:
+AFR   <-- :Facebook:
+AC    <-- :Facebook:
+PFR   <-- :Facebook:
+PPM   <-- :Facebook:
+
+PSUPB <-- :Bot:
+PLOG  <-- :Bot:
+
+@enduml

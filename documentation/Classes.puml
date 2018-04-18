@@ -1,0 +1,82 @@
+@startuml
+package BusinessLayer <<Folder>> {
+  class Singleton << (S,#FF7700) Singleton >> {
+    - ShortLifeUserToken : String
+    - LongLifeUserToken : String
+    --
+    + setShortLifeUserToken(String)
+    ..
+    + getShortLifeUserToken : String
+    + getLongLifeUserToken : String
+  }
+
+  interface IInternalAPI {
+    --
+    + auth()
+    - getLongLifeUserToken(String) : String
+    + getPosts(Object) : Object
+    + getComments(Object) : Object
+    + getUserByName(String) : Object
+    ..
+    + answerFriendRequest()
+    + setUserdata([String, String])
+    + writePost(String)
+    + writeComment(String, Object)
+    + toggleLike(Object)
+    + sendPrivateMessage(String, Object)
+  }
+
+  class InternalAPI {
+    --
+    + auth()
+    + getPosts(Object) : Object
+    + getComments(Object) : Object
+    + getUserByName(String) : Object
+    ..
+    + answerFriendRequest()
+    + setUserdata([String, String])
+    + writePost(String)
+    + writeComment(String, Object)
+    + toggleLike(Object)
+    + sendPrivateMessage(String, Object)
+  }
+
+  interface ILogger {
+    --
+    + logAddPost(Object)
+    + logAddLike(Object)
+    + logAddFriendRequest()
+  }
+
+  class Logger {
+    --
+    + logAddPost(Object)
+    + logAddLike(Object)
+    + logAddFriendRequest()
+  }
+}
+package DataAccessLayer <<Folder>> {
+  interface IFileAccess {
+    --
+    + fileAddLine(String)
+  }
+
+  class FileAccess {
+    --
+    + fileAddLine(String)
+  }
+}
+
+IInternalAPI <|.. InternalAPI
+ILogger <|.. Logger
+IFileAccess <|.. FileAccess
+
+Logger -- IFileAccess
+
+note "To be expanded" as TODO
+
+TODO .. ILogger
+TODO .. Logger
+TODO .. IFileAccess
+
+@enduml
