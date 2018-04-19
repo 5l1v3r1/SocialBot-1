@@ -24,8 +24,6 @@ class SocialBot:
         elif 'access_token_secret' not in access_info or not access_info['access_token_secret']:
             raise ValueError('Missing access_token_secret in access_info')
 
-        print(type(access_info['consumer_key']))
-
         if (type(access_info['consumer_key']) != str or
                 type(access_info['consumer_secret']) != str or
                 type(access_info['access_token']) != str or
