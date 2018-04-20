@@ -111,6 +111,26 @@ class SocialBot:
 
         return resp
 
+    def favor(self, status=None, status_id=None):
+        """
+        Favor a status as authenticated user.
+        :return:
+        """
+
+        if not status and not status_id:
+            raise ValueError('Missing a status or status_id to favor.')
+
+        resp = self.__api.CreateFavorite(status=status, status_id=status_id)
+
+        self.__log({
+            'action': 'Favored a tweet',
+            'status': str(status),
+            'status_id': str(status_id),
+            'response': str(resp)
+        })
+
+        return resp
+
     def send_dm(self, username=None, user_id=None, message=None):
         """
         Send a Direct Message to a user. If both username and user_id are not None the twitter module
@@ -123,8 +143,8 @@ class SocialBot:
 
         if not username and not user_id:
             raise ValueError('Missing a username or user_id to send a dm')
-        elif type(username) != str or type(user_id) != str:
-            raise ValueError('Both username and user_id have to be of type str. Given:', type(user_id), type(username))
+        elif (username and type(username) != str) or (user_id and (type(user_id) != str and type(user_id) != int)):
+            raise ValueError('Username has to be str. User_id can be str or int. Given:', type(user_id), type(username))
         elif not message:
             raise ValueError('Missing a message to send a dm')
         elif type(message) != str:
@@ -205,8 +225,8 @@ class SocialBot:
 
         if not username and not user_id:
             raise ValueError('Missing a username or user_id to get subscriptions')
-        elif (username and type(username) != str) or (user_id and type(user_id) != str):
-            raise ValueError('Both username and user_id have to be of type str. Given:', type(user_id), type(username))
+        elif (username and type(username) != str) or (user_id and (type(user_id) != str and type(user_id) != int)):
+            raise ValueError('Username has to be str. User_id can be str or int. Given:', type(user_id), type(username))
 
         resp = self.__api.GetSubscriptions(user_id=user_id, screen_name=username, count=count, cursor=page)
 
@@ -230,8 +250,8 @@ class SocialBot:
 
         if not username and not user_id:
             raise ValueError('Missing a username or user_id to get tweets')
-        elif (username and type(username) != str) or (user_id and type(user_id) != str):
-            raise ValueError('Both username and user_id have to be of type str. Given:', type(user_id), type(username))
+        elif (username and type(username) != str) or (user_id and (type(user_id) != str and type(user_id) != int)):
+            raise ValueError('Username has to be str. User_id can be str or int. Given:', type(user_id), type(username))
 
         resp = self.__api.GetUserTimeline(user_id=user_id, screen_name=username)
 
@@ -257,8 +277,8 @@ class SocialBot:
 
         if not username and not user_id:
             raise ValueError('Missing a username or user_id to get followers')
-        elif (username and type(username) != str) or (user_id and type(user_id) != str):
-            raise ValueError('Both username and user_id have to be of type str. Given:', type(user_id), type(username))
+        elif (username and type(username) != str) or (user_id and (type(user_id) != str) and type(user_id) != int):
+            raise ValueError('Username has to be str. User_id can be str or int. Given:', type(user_id), type(username))
 
         resp = self.__api.GetFollowersPaged(user_id=user_id, screen_name=username, cursor=page)
 
@@ -327,7 +347,7 @@ class SocialBot:
     def stream(self, users=None, terms=None):
         """
         Opens a stream to spectate tweets. Has to be filtered by users and/or terms.
-        Users have to be in the format @[username].
+        Users should be as user_id.
         Both users and terms have to be an array.
         :param users:
         :param terms:
@@ -345,3 +365,33 @@ class SocialBot:
         })
 
         return self.__api.GetStreamFilter(follow=users, track=terms)
+
+    def limit_stream(self, users=None, terms=None, limit=None):
+        """
+        Opens a stream to spectate tweets. Has to be filtered by users and/or terms.
+        Users should be as user_id.
+        Both users and terms have to be an array.
+        :param users:
+        :param terms:
+        :param limit:
+        :return:
+        """
+        if not users and not terms:
+            raise ValueError('Missing users or terms.')
+        elif (users and type(users) != list) or (terms and type(terms) != list):
+            raise ValueError('Both users and terms have to be of type list/array. Given:', type(users), type(terms))
+        elif not limit:
+            raise ValueError('Missing a limit.')
+        elif limit and type(limit) != int:
+            raise ValueError('Limit has to be of type int.')
+
+        stream = self.__api.GetStreamFilter(follow=users, track=terms)
+        result = []
+
+        for item in stream:
+            if len(result) < limit:
+                result.append(item)
+            else:
+                break
+
+        return result
