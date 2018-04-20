@@ -92,20 +92,33 @@ Nutzer können durch die Kapselung die Datei mit dem Verhalten, in Zukunft, einf
 Der ursprüngliche Ansatz, den Bot für das soziale Netzwerk "FaceBook" zu entwerfen, wurde aufgrund der Richtlinien von "FaceBook" verworfen.
 Die Richtlinien von "FaceBook" verhindern die Umsetzung der geforderten Funktionalitäten. (Siehe "5. Durchführbarkeitsuntersuchungen")
 Die automatische Erstellung von Bots für "Twitter" ist nicht möglich und muss händisch durchgeführt werden.
+Die Software muss auf OpenSource Software-Lösungen basieren, um Kosten zu vermeiden.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
 Das Programm soll Betriebssystem unabhängig sein, auf OpenSource-Software basieren und keine Kosten verursachen.
 Das Programm wird mit Python 3.6.3 entwickelt.
+Als weitere Software die zum Einsatz kommt wird die offiziele "Twitter" API als anbindung an das soziale Netzwerk "Twitter" verwendet.
+Als Programmierumgebung wird "PyCharm" von "JetBrains" in der Version "PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76".
+Für den Datenaustausch wird "GitHub" verwendet.
+Die Dateien zu diesem Projekt werden alle unter dem Repository "SocialBot" unter dem Link "https://github.com/weberval/SocialBot" gesammelt.
+An die Hardware sind keine besonderen Anfordewrungen gestellt.
+Die Grundlegenden Eigenschaften zum Ausführen des Bots sind vorausgesetzt.
+Zu den grundlegenden Voraussetzungen zählen ein lauffähiger Computer mit Internet-Anbindung.
+An den Nutzer sind die Anforderungen gestellt, mit dem Umgang von Software auf dem Computer Erfahrung zu haben.
+Das Wissen um die Bedienung von "Twitter" wird als Anforderung gesetzt, um die Funktionalität des Programms verstehen zu können.
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
 Das Hauptziel ist die Auswertung der sozialen Interaktionen zwischen dem Bot und der Umwelt.
 Die Hauptnutzer werden durch Studentinnen und Studenten der Universität Basel dargstellt.
-Die Hauptnutzer beziehen die Daten für ihre Analyse aus der Auswertung der Daten zu den Interaktionen des Bots.
+Die Hauptnutzer beziehen die Daten für ihre Analyse aus den Daten des Programms.
 Die Studienrichtung der Studentinnen und Studenten sind die Sozialwissenschaften.
-Weitere Zielgruppen können in Zukunft hinzukommen und müssen nicht explizit aufgeführt werden.
-Das Programm soll unabhängig vom Nutzer funktionieren und eine einfach Handhbung garantieren.
+Explizit sind die Kunden der Kulturanthropologie zugeschrieben.
+Weitere Zielgruppen können in Zukunft hinzukommen, sind aber keine geplanten Nutzer des Programms und werden nicht weiter aufgeführt.
+Das Programm soll unabhängig vom Nutzer und weiteren Gegebenheiten funktionieren und eine einfach Handhbung garantieren.
+Weder Software-technische noch Hardware-technische Einschränkungen sollen auftreten.
+Das Programm soll unabhängig von allen Eigenschaften eines beliebigen Computers funktionieren.
 
 ## 3. Detailierte Beschreibung der Anforderung (Leistungsmerkmale)
 
@@ -113,14 +126,30 @@ Das Programm soll unabhängig vom Nutzer funktionieren und eine einfach Handhbun
 
 Zu der Lieferung gehört ein Programm mit allen zugehörigen Komponenten, eine Dokumentation der implementierten Funktionen und eine Einweisung in die Funktionen der Software.
 Die Komponenten des Programms bestehen aus der Benutzeroberfläche, dem Programmteil für die Abwicklung der Funktionen und dem austauschbaren Algorithmus.
+Bei Auslieferung des Programms sollen alle benötigten Programmteile, soweit sie in ihrer Entwicklung bis zu diesem Zeitpunkt sind, in einem Paket ausgeliefert werden.
+Die Programmteile werden schon eingerichtet und aufeinander abgestimmt an den Kunden geliefert.
 Die Dokumentation des Vorgehens und des Ablaufs des Projekts werden in Form eines oder mehrerer Dokumente geliefert.
-Und des weiteren wird eine einfache Einleitung für die Verwendung des Programms geliefert.
+In den Dokumenten wird festgehalten wie das Projekt verlaufen ist, welche Funktionalitäten implementiert sind, welche Funktionen nicht umsetzbar sind und wie das Programm erstellt wurde.
+Als letztes wird bei Auslieferung eine Schrittweise ANleitung mitgeliefert, wie das Programm zu nutzen ist, für den vorgesehenen Zweck.
+Die Einrichtung des Programms, sofern dies noch notwendig ist, die Erstellung eines "Twitter"-Accounts, die Aktivierung eines "Twitter"-Profils und eine Erklärung aller Funktionen, zusammen mit der jeweiligen Benutzung im Programm.
 
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
 > Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
 
 ### 3.3 Geforderte Funktionen des Produkts
 > Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
+
+Die Funktionen des Produkts bestehen aus der Erstellung eines Bots, der Verwaltung eines Bots und dem Löschen eines Bots.
+Zu den Funktionen des Bots zählen das "Tweeten", das "Re-Tweeten", das "Liken", das "Kommentieren", das "Folgen" und "Nachrichten schreiben".
+Bot erstellen
+Bot verwalten
+Bot löschen
+Tweeten
+Re-Tweeten
+Liken
+Kommentieren
+Folgen
+Nachricht schreiben 
 
 | Bezeichnung      		   | XXX |
 | Zusammenfassung		   | XXX |
