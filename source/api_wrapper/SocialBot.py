@@ -1,4 +1,7 @@
 import twitter
+import random
+import time
+from threading import Thread
 from source.api_wrapper.Logger import Logger
 
 
@@ -39,6 +42,10 @@ class SocialBot:
 
         self.overwrite_sensitive = True
         self.__logger = Logger()
+
+        # min and max response times for tweeting at statuses out of a stream (in secs)
+        self.stream_min_response_time = 10
+        self.stream_max_response_time = 60
 
     """
     LOG:
@@ -111,7 +118,31 @@ class SocialBot:
 
         return resp
 
-    def favor(self, status=None, status_id=None):
+    def reply(self, status_id, message):
+
+        if not status_id:
+            raise ValueError('Missing a status_id')
+        elif type(status_id) != str and type(status_id) != int:
+            raise ValueError('Status_id is neither type str or int. Given: ', type(status_id))
+        elif not message:
+            raise ValueError('Missing a tweet text')
+        elif type(message) != str:
+            raise ValueError('The tweet text has to be of type str. Given:', type(message))
+
+        resp = self.__api.PostUpdate(message, in_reply_to_status_id=status_id)
+
+        self.__log({
+            'action': 'Replied to a status.',
+            'message': message,
+            'status_id': str(status_id),
+            'response': str(resp)
+        })
+
+        return resp
+
+
+
+    def favor(self, status, status_id):
         """
         Favor a status as authenticated user.
         :return:
@@ -395,3 +426,68 @@ class SocialBot:
                 break
 
         return result
+
+    def tweet_at_stream(self, message, nth_tweet=None, users=None, terms=None, limit=None):
+
+        if not message:
+            raise ValueError('Missing a message.')
+        elif message and type(message) != str:
+            raise ValueError('Message has to be of type str. Given: ', type(message))
+        elif not nth_tweet and nth_tweet != 0:
+            raise ValueError('Missing a tweet pointer on the stream.')
+        elif nth_tweet and type(nth_tweet) != int:
+            raise ValueError('Nth_tweet has to be of type int. Given: ', type(nth_tweet))
+        elif not users and not terms:
+            raise ValueError('Missing users or terms.')
+        elif (users and type(users) != list) or (terms and type(terms) != list):
+            raise ValueError('Both users and terms have to be of type list/array. Given:', type(users), type(terms))
+        elif not limit:
+            raise ValueError('Missing a limit.')
+        elif limit and type(limit) != int:
+            raise ValueError('Limit has to be of type int.')
+        elif limit <= nth_tweet:
+            raise ValueError('nth_tweet has to be smaller than the limit.')
+
+        thread = Thread(target=self.__tweet_at_stream_thread, args=(message, nth_tweet, users, terms, limit))
+        thread.start()
+
+        return thread
+
+    """
+    THREAD FUNCTIONS:
+    """
+
+    def __tweet_at_stream_thread(self, message, nth_tweet=None, users=None, terms=None, limit=None):
+
+        stream = self.stream(users=users, terms=terms)
+
+        stream_results = []
+        reply_results = []
+
+        for item in stream:
+            if len(stream_results) < limit:
+                print(item)
+                stream_results.append(item)
+            else:
+                break
+
+        if nth_tweet == -1:
+            for status in stream_results:
+                time.sleep(random.uniform(self.stream_min_response_time, self.stream_max_response_time))
+                reply_results.append(self.reply(status['id'], message))
+        elif nth_tweet != -1:
+            status = stream_results[nth_tweet]
+            time.sleep(random.uniform(self.stream_min_response_time, self.stream_max_response_time))
+            reply_results.append(self.reply(status['id'], message))
+
+        self.__log({
+            'action': 'Tweeted at stream',
+            'message': message,
+            'nth_tweet': str(nth_tweet),
+            'users': str(users),
+            'terms': str(terms),
+            'limit': str(limit),
+            'response': str(reply_results)
+        })
+
+        return reply_results
