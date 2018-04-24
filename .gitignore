@@ -49,4 +49,10 @@ venv
 *.iml
 *.ipr
 
+# Log files #
+#############
+Log.txt
 
+# Config files #
+################
+Config.txt
