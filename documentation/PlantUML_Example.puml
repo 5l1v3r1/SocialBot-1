@@ -55,6 +55,10 @@ class Singleton << (S,#FF7700) Singleton >> {
 
 }
 
+class Script << (S,#0FF077) Script >> {
+
+}
+
 enum Enum {
   ONE
   TWO
