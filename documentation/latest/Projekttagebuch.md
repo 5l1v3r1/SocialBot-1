@@ -9,7 +9,7 @@
 - grobe Zeitplanug erstellt
 
 ## 11. 04. 2018
-- Kundengespräch mit den STudentinnen aus Basel führen
+- Kundengespräch mit den Studentinnen aus Basel führen
 - Spezifikationen und Vorgaben für das Projekt mit dem Kunden besprechen
 - Erstellen des Dokuments zu den User Requirements Spezifikationen
 - Einarbeiten der Daten aus dem Kundengespräch in die User Requirements Spezifikation
@@ -28,4 +28,50 @@
 - Architektur erstellt
 
 ## 25. 04. 2018
-- 
+- erneutes Gespräach mit Studentinnen aus Basel
+
+Zwischenstand:
+
+Software:
+
+Vorhanden:
+
+- Twitter Bot erstellen
+- API Funktionen implementiert mit leichter Anpassung
+- Loggen
+- Tests
+- Threads implementiert
+- Wrapper, Bot ohne Managemnet starten
+- Config file lesen
+
+Zu tun:
+
+- Bot Verhalten
+- Thread Pool
+- Tweet List
+- Über Username UserID auslesen
+- Access token auslesen
+- Config file schreiben
+- Software als Module
+
+Dokumentation:
+
+Vorhanden:
+
+- Klassendiagramm erstellt
+- User Requirements
+
+Zu tun:
+
+- Klassendiagramm, Software aneinander anpassen
+- User Requirements vervollständigen
+
+UI:
+
+Zu tun:
+
+- Design
+- Bot starten
+- Bot stoppen
+- Log exportieren
+- Bot konfigurieren
