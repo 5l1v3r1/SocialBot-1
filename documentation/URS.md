@@ -56,7 +56,7 @@ Aus den erfassten Daten soll das soziale Leben des Bots beurteilt werden und ans
 
 Als Anforderung an die Funktionalität ist die Erstellung unterschiedlicher Bots gesetzt.
 Ein Bot für das soziale Netzwerk soll, nicht automatisiert, erstellt werden können.
-Die Bots sollen die grundlegensten Aktionen, bestehend aus "Tweeten", "Liken", "Kommentieren", "Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durchführen.
+Die Bots sollen die grundlegensten Aktionen, bestehend aus "Tweeten", "Liken", "Kommentieren", "Nutzer Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durchführen.
 Die Bots sollen einen vorgefertigten Text "Tweeten" können, ein "Like" auf bestimmte, vorher definierte "Tweets" geben können und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren" können.
 Jede Aktivität des Bots und die Reaktionen anderer Nutzer sollen in einem Aktivitäten-Log festgehalten werden.
 Die Reaktionen anderer Nutzer müssen abgespeichert werden und mit der entsprechenden Aktion des Bots in Verbindung gebracht werden können.
@@ -168,7 +168,20 @@ Nachricht schreiben
 ### 3.5 Schnittstellen des gewünschten System
 > Beschreibung der Benutzerschnittstellen; Beschreibung der Schnittstellen zu anderen Soft- und Hardwaresystemen. Zu berücksichtigende Normen
 
+Das Programm baut auf einer inoffizielen "Phyton-Twitter"-API auf. 
+Aufgrundlage dieser "Twitter-Phyton"-API wird die Anwendung aufgebaut.
+Unser Programm erweitert jede Funktion, um das geforderte Log. 
+Die Daten der Funktionen werden bei jedem Funktionsaufruf in das Log geschrieben.
+
+Das Nutzer Interface stellt die Funktionalitäten für den Nutzer bereit.
+Die meisten Funktionen sollen über einen Klick auf einen Button gewährlsietet werden.
+Die Funktionen  
+
 ### 3.6 Zu berücksichtigende Normen
+
+Für das Projekt sind keine Normen zu beachten. 
+Die Nutzung der Software ist nur für die private Nutzung innerhalb der Universität Basel ausgelegt.
+Die private Nutzung innerhalb einer Universität unterliegt keinen Normen.
 
 ### 3.7 Qualitätsanforderungen / sonstige Entwicklerorientierte Anforderungen
 

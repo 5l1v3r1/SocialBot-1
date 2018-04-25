@@ -26,3 +26,6 @@
 - Umstieg auf die soziale Plattform "Twitter"
 - Umändern aller bestehenden Dokumente auf die neue Plattform
 - Architektur erstellt
+
+## 25. 04. 2018
+- 
