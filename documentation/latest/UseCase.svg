@@ -153,13 +153,13 @@ Benutzer</text>
 <polyline fill="none" points="60,396 382,386" stroke="#000000" stroke-width="1"/>
 <polyline fill="none" points="60,396 409,443" stroke="#000000" stroke-width="1"/>
 <polyline fill="none" points="58,380 419,255" stroke="#000000" stroke-width="1"/>
-<polygon fill="#ffffff" points="126,454 301,454 311,464 311,512 126,512 126,454" stroke="#ffffff" stroke-width="1"/>
-<polyline fill="none" points="126,454 301,454 311,464 311,512 126,512 126,454" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="118,454 301,454 311,464 311,512 118,512 118,454" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="118,454 301,454 311,464 311,512 118,512 118,454" stroke="#000000" stroke-width="1"/>
 <polygon fill="#ffffff" points="301,454 311,464 301,464 301,454" stroke="#ffffff" stroke-width="1"/>
 <polyline fill="none" points="301,454 311,464 301,464 301,454" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="129" y="469">
+<text font-family="Dialog" font-size="12" x="121" y="469">
 Bedingung{Bot.status=start}</text>
-<text font-family="Dialog" font-size="12" x="129" y="484">
+<text font-family="Dialog" font-size="12" x="121" y="484">
 Extension point: Login Twitter</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="420" x2="415" y1="490" y2="490"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="410" x2="405" y1="490" y2="490"/>
@@ -181,15 +181,15 @@ Twitter</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="928" x2="923" y1="374" y2="389"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="928" x2="933" y1="374" y2="389"/>
 <polyline fill="none" points="666,153 920,346" stroke="#000000" stroke-width="1"/>
-<polyline fill="none" points="923,412 758,518 648,543" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="923,412 766,526 651,545" stroke="#000000" stroke-width="1"/>
 <polyline fill="none" points="423,544 614,606 726,582 923,412" stroke="#000000" stroke-width="1"/>
 <rect fill="none" height="21" stroke="#ffffff" stroke-width="1" width="82" x="430" y="30"/>
 <text font-family="Dialog" font-size="16" font-weight="bold" x="431" y="47">
 Socialbot</text>
-<polygon fill="#ffffff" points="566,454 738,454 748,464 748,512 566,512 566,454" stroke="#ffffff" stroke-width="1"/>
-<polyline fill="none" points="566,454 738,454 748,464 748,512 566,512 566,454" stroke="#000000" stroke-width="1"/>
-<polygon fill="#ffffff" points="738,454 748,464 738,464 738,454" stroke="#ffffff" stroke-width="1"/>
-<polyline fill="none" points="738,454 748,464 738,464 738,454" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="566,454 755,454 765,464 765,512 566,512 566,454" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="566,454 755,454 765,464 765,512 566,512 566,454" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="755,454 765,464 755,464 755,454" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="755,454 765,464 755,464 755,454" stroke="#000000" stroke-width="1"/>
 <text font-family="Dialog" font-size="12" x="569" y="469">
 Bedingung{Bot.account=true}</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="532" x2="537" y1="500" y2="500"/>
