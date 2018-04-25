@@ -165,17 +165,28 @@ Nachricht schreiben
 ### 3.4 Struktur und Verhalten des Systems
 > Beschreibung der verschiedenen statischen Strukturaspekte des Systems (Klassen-, Paket-, Komponenten-, Verteilungsdiagramm) sowie Beschreibung der Dynamik, der internen Abläufe und des Zusammenspiels der Systemteile (Aktivität-, Sequenz-, Zustand-, Timingdiagramm).
 
+*Klassendiagramm*
+
 ### 3.5 Schnittstellen des gewünschten System
 > Beschreibung der Benutzerschnittstellen; Beschreibung der Schnittstellen zu anderen Soft- und Hardwaresystemen. Zu berücksichtigende Normen
 
 Das Programm baut auf einer inoffizielen "Phyton-Twitter"-API auf. 
 Aufgrundlage dieser "Twitter-Phyton"-API wird die Anwendung aufgebaut.
-Unser Programm erweitert jede Funktion, um das geforderte Log. 
-Die Daten der Funktionen werden bei jedem Funktionsaufruf in das Log geschrieben.
-
-Das Nutzer Interface stellt die Funktionalitäten für den Nutzer bereit.
-Die meisten Funktionen sollen über einen Klick auf einen Button gewährlsietet werden.
-Die Funktionen  
+Unser Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log. 
+Für jeden Bot wird ein neues Log angelegt, das für jeden Bot gespeichert wird.
+Änderungen am Verhalten des Bots und ausgeführte Aktionen des Bots werden in das entsprechende Log des Bots eingetragen.
+Das Log kann jederzeit im Programm angezeigt und ausgelesen werden.
+Die Funktionen für den Nutzer werden in einem Nutzer Interface bereit gestellt.
+Das Nutzer Interface stellt die meisten Funktionen für die Nutzer über Buttons zur Verfügung.
+Die möglichen Funktionen, die über einen Button Klick ausführbar sind, beschränken sich auf "Bot erstellen", "Bot löschen", "Botverhalten anpassen", "Botprotokoll betrachten", und "Bot starten/stoppen".
+Um einen neuen Bot anzulegen, wird die Funktion "Bot erstellen" über den entsprechenden Button ausgeführt.
+Anschließend wird der Bot erstellt und das Verhalten für den Bot wird eingestellt.
+Um einen bereits erstlellten Bot zu entfernen, wird über den Button "Bot löschen" die entsprechende Funktion ausgeführt.
+Um die bereits erstellten Bots in ihrem Verhalten anzupassen, wird die Funktion, zum Verändern des Verhaltens, über den Button "Botverhalten anpassen" ausgeführt.
+Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, wird der Button "Bot starten/stoppen" verwendet.
+Der Button startet den ausgewählten Bot oder stoppt ihn wieder, sollte er bereits laufen.
+Nachdem ein Bot in Betrieb genommen wurde und Aktionen ausgeführt wurden, kann das Log für den Bot angezeigt werden.
+Das Log kann über den Button "Botprotokoll betrachten" angezeigt werden.
 
 ### 3.6 Zu berücksichtigende Normen
 
@@ -192,18 +203,45 @@ Spezifikation von Anforderungen hinsichtlich Performance, Ressourcen, Safety (Sc
 ### 4.1 Anforderungen an die Realisierung
 > z. B. Angaben über zu verwendende Software, Hardware, Entwicklungsmethode, Termine, Ausbaustufen, zugekaufte Produkte
 
+Als Vorgaben an das Projekt sind die Entwicklungsmethode und der Zeitraum gesetzt.
+Die eingesetzte Entwicklungsmethode ist Kanban.
+Bei Kanban handelt es sich um eine agile Entwicklungsmethode.
+Die Aufgaben werden in Form von Backlog Items festgehalten und durch die einzelnen Bearbeitungsschritte durchgeführt.
+Die Bearbeitungsschritte bestehen aus Product Backlog, Bereit, Entwicklung, Release und Fertig.
+Ein Product Backlog Item wird von einem Mitarbeiter oder von mehreren durch die gesamten Bearbeitungsschritte grführt.
+Die einzelnen Bearbeitungsschritte sind auf eine bestimmte Anzahl an Items beschränkt, die sich maximal in diesem Schritt befinden dürfen.
+Es können dynamisch neue Product Backlog Items in das Product Backlog hinzugefügt werden und die Aufgaben können dynamisch bearbeitet werden.
+Es gibt keine zeitliche Vorgabe für die Bearbeitung eines Product Backlog Items, noch eine mindest Anforderung an der Anzahl die ein Mitarbeiter bearbeiten muss.
+Insgesamt wird dadurch Agil entwickelt.
+Als terminliche Vorgabe ist der Zeitraum des Semesters gesetzt.
+Das Projekt soll vom ersten Vorlesungstermin bis zum letzte Vorlesungstermin laufen.
+Als genauer Zeitraum ist 04.04.2018 bis 13.06.2018 gesetzt.
+
 ### 4.2 Abnahmebedingungen
 > Bedingungen des Auftraggebers für die Abnahme, wogegen?, wie?, welche Unterlagen
+
+Für die Abnahme des Kunden sind eine Dokumentation und eine Anleitung, zur Bedienung des Programms unablässlich.
+Die Dokumentation umfasst die geleistete Arbeit und die umgesetzten Funktionen.
+In der Dokumentation müssen zusätzlich die Anforderungen und die Probleme festgehalten sein.
+Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die Bedienung der Funktionalitäten des Programms umfassen.
 
 ### 4.3 Fertige und zugekaufte Komponenten
 > z. B. Standardsoftware, wiederverwendete eigene Software, Software des Auftraggebers, Betriebssysteme, ...
 
+
+
 ### 4.4 Lieferbedingungen
 > z.B. Lieferplan mit Terminen, Form der Lieferungen, geforderte Dokumentation
 
+
+
 ### 4.5 Gewährleistung
 
-Da dies ein Forschungsprojekt ist, entfällt jegliche Gewährleistung und Wartung
+Unter den Bedingungen, dass dies ein nicht kommerzielles Projekt für eine Universität ist, entfällt jegliche Garantie und Gewährleistung.
+Eine Wartung ist für die Software nicht vorgesehen.
+Der ausgelieferte Stand entspricht dem gewährleisteten Stand der Software.
+
+Da dies ein Forschungsprojekt ist, entfällt jegliche Gewährleistung und Wartung.
 
 ## 5. Durchführbarkeitsuntersuchungen
 > Markt- und Kundenanalyse, Durchführbarkeitsanalyse,...
