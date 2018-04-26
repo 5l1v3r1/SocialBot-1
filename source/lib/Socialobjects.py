@@ -1,11 +1,21 @@
 import threading
 import datetime
 
+class Bothandler:
+    def __init__(self):
+        self.botList = []
+    def getBots(self):
+        pass
+    def addBot(self):
+        pass
+    def deleteBot(self):
+        pass
+    def loadConfig(self):
+        pass
+
 class Human:
-    def __init__(self, operand_a, operand_b):
-        self.operand_a = operand_a
-        self.operand_b = operand_b
-        super().__init__()
+    def __init__(self):
+        pass
     def getFirstname(self):
         pass
     def getLastname(self):
@@ -31,26 +41,14 @@ class Human:
     def searchTweet(self):
         pass
 
-class Bothandler:
-    def __init__(self):
-        pass
-    def getBots(self):
-        pass
-    def addBot(self):
-        pass
-    def deleteBot(self):
-        pass
-    def loadConfig(self):
-        pass
-
-
-
 class Bot(Human, threading.Thread):
-    def __init__(self, name):
+    def __init__(self, iname):
+        super().__init__()
         threading.Thread.__init__(self)
-        print("Created Bot")
-        self.name = name
+
+        self.name = iname
         self.status = -1
+        print("Created Bot" + self.name)
         
     def getStatus(self):
         return self.status
@@ -83,10 +81,8 @@ class Log:
         self.__message = message
         self.__typ = typ
         self.__time = datetime.datetime.now()
-
     def __str__(self):
         return str(self.__time) + " - " + "[" + self.__typ + "] - " + self.__message
-
     def getMessage(self):
         return self.__message
 
@@ -97,8 +93,6 @@ def main():
     bot2 = Bot("Bob2")
     bot.start()
     bot2.start()
-    log = Log("Message", "TEST")
-    print(str(log))
 
 
 if __name__ == "__main__":
