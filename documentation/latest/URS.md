@@ -24,7 +24,7 @@ Umänderung des Dokument: 18.04.2018
 
 ### 1.4 Zusammenhang mit anderen Dokumenten
 
---
+UseCase.svg = Use Case Diagramm
 
 ## 2. Allgemeine Beschreibung des gewünschten Systems
 
@@ -136,20 +136,42 @@ Die Einrichtung des Programms, sofern dies noch notwendig ist, die Erstellung ei
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
 > Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
 
+'UseCase.svg'
+
 ### 3.3 Geforderte Funktionen des Produkts
 > Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
 
-Die Funktionen des Produkts bestehen aus der Erstellung eines Bots, der Verwaltung eines Bots und dem Löschen eines Bots.
-Zu den Funktionen des Bots zählen das "Tweeten", das "Re-Tweeten", das "Liken", das "Kommentieren", das "Folgen" und "Nachrichten schreiben".
+Die grundlegenden Funktionen im Use Case Diagramm werden genauer beschrieben.
+Die Aufgabe "Bot erstellen" beschreibt das Erstellen eines Bots.
+Zum Erstellen eines Bots gehört das Anlegen einer App und das Verbinden des Accounts mit der entsprechenden App. 
+Die Aufgabe "Bot erstellen" inkludiert die Aufgabe "Botinfo einpflegen". 
+Die Aufgabe "Botinfo einflegen" bezeichnet das initiale Festlegen vom Verhalten.
+Beim Erstellen des Bots wird das Verhalten des Bots festgelegt.
+Außerdem wird die Aufgabe "Twitter Account erstellen" von der Aufgabe "Bot erstellen" inkludiert.
+Bei der Aufgabe "Twitter Account erstellen" wird der Account bei "Twitter" angelegt, der fortan verwendet wird.
+Bei der Aufgabe "Bot löschen" wird ein bereits erstellter Bot wieder entfernt.
+Das Verhalten des Bots wird durch die Aufgabe "Botverhalten anpassen" dargestellt.
+Bei der Aufgabe wird das momentane Verhalten des Bots angepasst oder durch ein anderes Verhalten ersetzt.
+Die Aufgabe "Begrenzungen setzen" erweitert die Aufgabe "Botverhalten anpassen".
+Die Aufgabe legt fest, wieviele Aktionen in einer bestimmten Zeit durchgeführt werden können.
+Die Aufgabe "Botprotokoll betrachten" beschreibt die Funktion, das Log des Bots anzuzeigen.
+Die Aufgabe "Export Protokoll" erweitert die Aufgabe "Botprotokoll betrachten", um den Export des Logs eines Bots.
+Bei der Aufgabe "Bot starten/stoppen" handelt es sich um die Funktion einen Bot starten oder stoppen zu lassen.
+Die Aufgabe "Login Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die Funktion den Account von Twitter einzuloggen. 
+Die Aufgabe "Logout Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die Funktion den Account von Twitter auszuloggen.
+
 Bot erstellen
-Bot verwalten
+-> Botinfo einpflegen 
+-> Twitter Account erstellen
 Bot löschen
-Tweeten
-Re-Tweeten
-Liken
-Kommentieren
-Folgen
-Nachricht schreiben 
+Botverhalten anpassen
+Botprotokoll anpassen
+<- Begrenzung setzen
+Botprotokoll betrachten
+<- Export Protokoll
+Bot start/stop
+<- Logout Twitter
+-> Login Twitter
 
 | Bezeichnung      		   | XXX |
 | Zusammenfassung		   | XXX |
@@ -193,6 +215,18 @@ Das Log kann über den Button "Botprotokoll betrachten" angezeigt werden.
 Für das Projekt sind keine Normen zu beachten. 
 Die Nutzung der Software ist nur für die private Nutzung innerhalb der Universität Basel ausgelegt.
 Die private Nutzung innerhalb einer Universität unterliegt keinen Normen.
+Die Software behandelt keine Lebensbedrohlichen Systeme oder kann zur direkten Gefährdung von Menschen führen.
+Die Software ist an die allgemeinen Geschäftsbedingungen des sozialen Netzwerks gebunden.
+Die AGBs von Twitter geben den Rahmen für das Programm vor.
+Die durch das Programm enstehenden Gefahren für Nutzer und andere involvierte Personen unterliegen nicht den Entwicklern.
+Die Benutzer der Software müssen sich der Gefahr, die ein Bot in einem sozialen Netzwerk hat, bewusst sein.
+Die durch einen Bot enstandenen Veränderungen und Auswirkungen unterliegen nicht den Entwicklern, vielmehr dem Nutzer.
+Der Nutzer ist selbst verantwortlich und trägt selbst jegliche Konsequenzen für die Auwirkungen eines Bots.
+Die Entwickler behalten sich vor, die Daten zur späteren Auswertung von den Nutzern einzuziehen.
+Die Entwickler haften nicht für den Missbrauch der Software.
+Für den Einsatz der Software entgegen den ursprünglichen Nutzungbestimmungen haftet der Nutzer.
+Der Wiederverkauf der Software ist nicht genehmigt und Strafbar.
+Die Entwickler übernehemen keine Haftung für Schäden jeglicher Art.
 
 ### 3.7 Qualitätsanforderungen / sonstige Entwicklerorientierte Anforderungen
 
@@ -217,6 +251,10 @@ Als terminliche Vorgabe ist der Zeitraum des Semesters gesetzt.
 Das Projekt soll vom ersten Vorlesungstermin bis zum letzte Vorlesungstermin laufen.
 Als genauer Zeitraum ist 04.04.2018 bis 13.06.2018 gesetzt.
 
+
+- Softwareversionen
+
+
 ### 4.2 Abnahmebedingungen
 > Bedingungen des Auftraggebers für die Abnahme, wogegen?, wie?, welche Unterlagen
 
@@ -228,19 +266,27 @@ Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die
 ### 4.3 Fertige und zugekaufte Komponenten
 > z. B. Standardsoftware, wiederverwendete eigene Software, Software des Auftraggebers, Betriebssysteme, ...
 
-
+Für die Entwickung wurden keine zusätzlichen Komponenten gekauft.
+Die zur Enwticklung verwendeten Komponenten sind kostenlosen Lösungen und für den Nutzer frei zugänglich.
+Die verwendeten Software-Komponenten sind unter "4.1 Anforderungen an die Realisierung" aufgeführt.
 
 ### 4.4 Lieferbedingungen
 > z.B. Lieferplan mit Terminen, Form der Lieferungen, geforderte Dokumentation
 
-
+Die Lieferungen werden in Form von regelmäßigen Lieferungen durchgeführt.
+Der aktuelle Stand der software ist durchgängig auf dem angegebenen Repository auf "GitHub" für die Nutzer verfügbar.
+Sofern die Nutzer den Stand kontrollieren wollen, besteht jederzeit die Möglichkeit die Software herunterzuladen.
+Andernfalls wird mit Abschluss des Projekts, das Endprodukt mit allen vereinbarten Komponenten an die Kunden ausgelifert.
+Der endgültig angestrebte Lieferzeitpunkt ist auf den 13.06.2018 angesetzt.
 
 ### 4.5 Gewährleistung
 
 Unter den Bedingungen, dass dies ein nicht kommerzielles Projekt für eine Universität ist, entfällt jegliche Garantie und Gewährleistung.
-Eine Wartung ist für die Software nicht vorgesehen.
+Für die Software wird keine Wartung oder Fehlerbehebung nach Auslieferung durchgeführt.
+Es werden nach der Auslieferung keine Funktionen nachgeliefert oder das Produkt aktualisiert.
+Für die Fehlerfreie Funktionsfähigkeit wird nach Auslieferung nicht gesorgt, ebenso wenig wie für die Funtkionsfähigkeit der Software mit anderen Version der benutzen Software-Komponenten.
+Auch die Funktionsfähigkeit für das soziale Netzwerk "Twitter" wird für zukünftige Versionen nicht gewährleistet.
 Der ausgelieferte Stand entspricht dem gewährleisteten Stand der Software.
-
 Da dies ein Forschungsprojekt ist, entfällt jegliche Gewährleistung und Wartung.
 
 ## 5. Durchführbarkeitsuntersuchungen
@@ -264,3 +310,7 @@ Das Projekt wird auf das soziale Netzwerk "Twitter" umgestellt und die bisherige
 ## 7. Verpflichtungen des Auftaggebers
 > z.B.: gestellte Hardware / Software, Schulung von Entwicklern oder von Auftraggeberpersonal, Ansprechpartner, zur Verfügung stellen von Räumen, Rechenzentrum, Reaktionszeiten des Auftraggebers auf Anfragen
 
+Der Auftraggeber verpflichtet sich, mit den aufkommenden Anforderungen zeitnah zu den Entwicklern zu kommen.
+Die Auftraggeber unterliegen der Verantwortung, das Projekt mit ihren Wünschen voranzutreiben.
+Die gewünschten Anforderungen werden an die Entwickler weitergetragen und von den Entwicklern in den "User Requirements Specification" niedergeschrieben.
+Die Auftraggeber verpflichten sich, die in den "User Requirements Specification" nidergeschriebenen Anforderungen, duchzulesen und zu akzeptieren.
