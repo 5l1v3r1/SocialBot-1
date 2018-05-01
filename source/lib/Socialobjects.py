@@ -45,9 +45,9 @@ class Bot(Human, threading.Thread):
     def __init__(self, iname):
         super().__init__()
         threading.Thread.__init__(self)
-
         self.name = iname
         self.status = -1
+        self.logbook = Logbook
         print("Created Bot" + self.name)
         
     def getStatus(self):
@@ -69,11 +69,16 @@ class Bot(Human, threading.Thread):
         print(self.name + " is running...")
         self.status=0
 
-
-
 class Logbook:
-    def addLog(self):
+    def __init__(self):
         self.loglist = []
+    def addLog(self, log):
+        if type(log) is Log:
+            self.loglist.append(log)
+        else:
+            print("Logbook: its not a Log Object.")
+    def getLogs(self):
+        return self.loglist
 
 
 class Log:
@@ -86,13 +91,13 @@ class Log:
     def getMessage(self):
         return self.__message
 
-
-
 def main():
-    bot = Bot("Bob")
-    bot2 = Bot("Bob2")
-    bot.start()
-    bot2.start()
+    logbook = Logbook()
+    log = Log("Meine Nachricht", "TEST")
+    logbook.addLog(log)
+    del log
+
+    print(logbook.getLogs())
 
 
 if __name__ == "__main__":
