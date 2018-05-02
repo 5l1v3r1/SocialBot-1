@@ -28,7 +28,11 @@
 - Architektur erstellt
 
 ## 25. 04. 2018
-- erneutes Gespräach mit Studentinnen aus Basel
+- erneutes Gespräch mit Studentinnen aus Basel
+
+## 02. 05. 2018
+- 
+
 
 Zwischenstand:
 

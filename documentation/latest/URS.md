@@ -28,14 +28,7 @@ UseCase.svg = Use Case Diagramm
 
 ## 2. Allgemeine Beschreibung des gewünschten Systems
 
-Das Projekt besteht aus der Erstellung von Bots für das soziale Netzwerk "Twitter".
-Die soziale Plattform "Twitter" ist eine Internetseite, auf der Personen miteinander kommunizieren und Meinungen miteinander teilen können.
-Die Personen haben ein eigenes Profil und können über mehrere Möglichkeiten mit anderen Nutzern in Kontakt treten.
-Zu den wichtigsten Aktionen der Interaktion zwischen Nutzern zählen "Tweeten", "Liken", "Kommentieren", "Nachrichten schreiben", "Re-Tweeten" und "Folgen". 
-Zu den ursprünglichen Anforderungen zählte die Anbindung an das soziale Netzwerk "FaceBook".
-Die Aktionen bei "Twitter" haben Äquivalente Aktionen bei "FaceBook".
-Das Äquivalent zu "Tweeten" ist "Posten", "Liken", "Kommentieren" und "Persönliche Nachrichten" werden in beiden sozialen Netzwerken gleich gehandhabt.
-Das Äquivalent zu "Re-Tweeten" in "Twitter" ist "Teilen" in "FaceBook" und zu "Folgen" ist das Äquivalent eine "Freundschaft".
+Das Projekt besteht aus dem Erstellen einer Software zur Erstellung von Bots für das soziale Netzwerk "Twitter".
 Die Bots sollen die wichtigsten Aktionen in "Twitter" automatisiert ausführen und auf vordefinierte "Tweets" automatisiert reagieren.
 Der Nutzer kann die Aktionen, Reaktionen und die Stichwörter der "Tweetes" im Vorfeld selbst definieren und ändern.
 In einem Log sollen alle Aktionen des Bots einsehbar sein.
@@ -44,18 +37,27 @@ Jeder "Tweet" des Bots, jede Reaktion auf einen "Tweet" und jegliche andere Akti
 ### 2.1 Zweck des gewünschten Systems
 
 Der Zweck des Projekts besteht aus der Beobachtung des sozialen Aspekts eines Bots in einem Sozialen Netzwerk.
+Als soziales Netzwerk wird die Plattform "Twitter" eingesetzt.
+Die soziale Plattform "Twitter" ist eine Internetseite, auf der Personen miteinander kommunizieren und Meinungen miteinander teilen können.
+Die Personen haben ein eigenes Profil und können über mehrere Möglichkeiten mit anderen Nutzern in Kontakt treten.
 Die Interaktion des Bots mit anderen Nutzern, eventuell auch dargestellt durch andere Bots, soll beobachtet werden.
 Die Interaktion mit anderen Nutzern in Form von Menschen steht im Mittelpunkt der Beobachtung.
-Besonders die Reaktionen der anderen Nutzer auf den Bot sind der Haupt Beobachtungsaspekt.
+Besonders die Reaktionen der anderen Nutzer auf den Bot sind der Haupt-Beobachtungsaspekt.
+Ursprünglich war die Plattform "FaceBook" als soziales Netzwerk angestrebt.
+Die Aktionen bei "Twitter" haben Äquivalente Aktionen bei "FaceBook".
+Das Äquivalent zu "Tweeten" ist "Posten", "Liken", "Kommentieren" und "Persönliche Nachrichten" werden in beiden sozialen Netzwerken gleich gehandhabt.
+Das Äquivalent zu "Re-Tweeten" in "Twitter" ist "Teilen" in "FaceBook" und zu "Folgen" ist das Äquivalent eine "Freundschaft".
 Flexibilität des Bots ist wichtig, um unterschiedliche soziale Einstellungen des Bots gewährleisten zu können und umfangreiche Reaktionen anderer Nutzer hervorzurufen.
 Der Bot soll unterschiedliche Aktionen, abhängig von seinen im Vorfeld getätigten Einstellungen, ausführen und verschiedene Reaktionen bei den Nutzern hervorrufen.
+Zu den wichtigsten Aktionen der Interaktion zwischen Nutzern zählen "Tweeten", "Liken", "Kommentieren", "Nachrichten schreiben", "Re-Tweeten" und "Folgen". 
 Die Aktionen des Bots und die Reaktionen anderer Nutzer sollen im Log einsehbar sein.
 Aus den erfassten Daten soll das soziale Leben des Bots beurteilt werden und anschließend in die Studie der Kunden übernommen werden. 
 
 ### 2.2 Überblick über die geforderte Funktionalität
 
 Als Anforderung an die Funktionalität ist die Erstellung unterschiedlicher Bots gesetzt.
-Ein Bot für das soziale Netzwerk soll, nicht automatisiert, erstellt werden können.
+Ein Bot für das soziale Netzwerk soll erstellt werden können.
+Die Erstellung eines Bots soll dabei nicht automatisiert sein.
 Die Bots sollen die grundlegensten Aktionen, bestehend aus "Tweeten", "Liken", "Kommentieren", "Nutzer Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durchführen.
 Die Bots sollen einen vorgefertigten Text "Tweeten" können, ein "Like" auf bestimmte, vorher definierte "Tweets" geben können und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren" können.
 Jede Aktivität des Bots und die Reaktionen anderer Nutzer sollen in einem Aktivitäten-Log festgehalten werden.
@@ -65,23 +67,20 @@ Die Einstellungen für das Verhalten des Bots sollen vom Nutzer getätigt werden
 Explizit sollen die Nutzer die Texte des Bots und die Stichwörter auf die der Bot reagieren soll einstellen können.
 Der Algorithmus für die Zuordnung der Texte des Bots zu den Stichwörtern in Tweets soll austauschbar sein, um in Zukunft andere Relationen zuzulassen.
 Standardmäßig soll eine 1-zu-1-Relation von den Texten des Bots zu Stichwörtern geschaffen werden.
-Die Relation von Texten zu Stixhwörtern soll in Zukunft durch einen anderen Algorithmus austauschbar sein.
-Der Algorithmus des Bots muss floglich in einer gesonderten Form gehalten werden, um in Zukunft eine reibunglose Einbindung eines neuen Algorithmus zu gewährleisten.
+Die Relation von Texten zu Stichwörtern soll in Zukunft durch einen anderen Algorithmus austauschbar sein.
+Der Algorithmus des Bots muss folglich in einer gesonderten Form gehalten werden, um in Zukunft eine reibunglose Einbindung eines neuen Algorithmus zu gewährleisten.
 Die Benutzeroberfläche und die Funktionen des Bots sollen mit jedem Algorithmus, der Daten im selben Format verwendet, arbeiten können.
 Die Einstellungen für das Verhalten des Bots sollen über die Stichwörter, auf die der Bot reagieren soll, in Verbindung mit den zugeordneten Texten, getätigt werden.
 Außerdem können allgemeine Funktionen wie "Suchen" und "Streaming" zu einem Thema in der Benutzeroberfläche getätigt werden.
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
-Das Projekt soll ein einfach zu handhabendes Programm hervorbringen, dass ausgeführt werden muss.
+Das Projekt soll ein einfach zu handhabendes Programm hervorbringen, das ausgeführt werden muss.
 Alle wichtigen Funktionalitäten und Daten sollen in der Benutzeroberfläche vereint werden.
 Die Funktionalitäten sollen in der Benutzeroberfläche aufrufbar sein und die Daten sollen in einer Übersicht angezeigt werden.
 Das Programm soll Betriebssystem unabhängig agieren, um eine Plattform unabhängige Arbeitsweise zu gewährleisten.
 Als priorisierte Betriebssysteme werden Windows und MacOS angestrebt.
-Des weiteren soll die Software "OpenSource" gehalten werden, aufgrund der Konstitutionellen Voraussetzungen. 
-Die verwendete Software soll keine Kosten erzeugen und auf kostenloser Software basieren.
-Das Endprodukt soll keine Lizenz-Eingrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
-Das Endprodukt wird auschließlich zur nicht kommerziellen Nutzung verwendet.
+Die Datenspeicherung soll in einem Format ermöglicht werden, dass, unabhängig vom Betriebssystem, verwendbar ist.
 Die Anbindung an das soziale Netzwerk "Twitter" soll vom Programm intern gelöst werden.
 Die Verbindung der Software Komponenten untereinander wird vom Programm intern gelöst.
 
@@ -91,22 +90,28 @@ Die Software soll das Verhalten des Bots in einer eigenen Datei halten, um das V
 Nutzer können durch die Kapselung die Datei mit dem Verhalten, in Zukunft, einfacher austauschen.
 Der ursprüngliche Ansatz, den Bot für das soziale Netzwerk "FaceBook" zu entwerfen, wurde aufgrund der Richtlinien von "FaceBook" verworfen.
 Die Richtlinien von "FaceBook" verhindern die Umsetzung der geforderten Funktionalitäten. (Siehe "5. Durchführbarkeitsuntersuchungen")
-Die automatische Erstellung von Bots für "Twitter" ist nicht möglich und muss händisch durchgeführt werden.
-Die Software muss auf OpenSource Software-Lösungen basieren, um Kosten zu vermeiden.
+
+Die automatische Erstellung von Bots für "Twitter" ist nicht möglich und muss händisch durchgeführt werden. 
+
+Die Software muss auf "OpenSource"-Basis gehalten werden und soll bei Bedarf auch nur auf "OpenSource" Software zurückgreifen.
+Die verwendete Software soll keine direkten Kosten erzeugen und bei Bedarf nur auf kostenlose Software zurückgreifen.
+Das Endprodukt soll keine Lizenz-Eingrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
+Das Endprodukt wird auschließlich zur nicht kommerziellen Nutzung verwendet.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
 Das Programm soll Betriebssystem unabhängig sein, auf OpenSource-Software basieren und keine Kosten verursachen.
-Das Programm wird mit Python 3.6.3 entwickelt.
-Als weitere Software die zum Einsatz kommt wird die offiziele "Twitter" API als anbindung an das soziale Netzwerk "Twitter" verwendet.
-Als Programmierumgebung wird "PyCharm" von "JetBrains" in der Version "PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76".
-Für den Datenaustausch wird "GitHub" verwendet.
-Die Dateien zu diesem Projekt werden alle unter dem Repository "SocialBot" unter dem Link "https://github.com/weberval/SocialBot" gesammelt.
-An die Hardware sind keine besonderen Anfordewrungen gestellt.
+An die Hardware sind keine besonderen Anforderungen gestellt.
 Die Grundlegenden Eigenschaften zum Ausführen des Bots sind vorausgesetzt.
 Zu den grundlegenden Voraussetzungen zählen ein lauffähiger Computer mit Internet-Anbindung.
 An den Nutzer sind die Anforderungen gestellt, mit dem Umgang von Software auf dem Computer Erfahrung zu haben.
 Das Wissen um die Bedienung von "Twitter" wird als Anforderung gesetzt, um die Funktionalität des Programms verstehen zu können.
+
+Als weitere Software die zum Einsatz kommt wird die offiziele "Twitter" API als anbindung an das soziale Netzwerk "Twitter" verwendet.
+Als Programmierumgebung wird "PyCharm" von "JetBrains" in der Version "PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76".
+Für den Datenaustausch wird "GitHub" verwendet. 
+Die Dateien zu diesem Projekt werden alle unter dem Repository "SocialBot" unter dem Link "https://github.com/weberval/SocialBot" gesammelt.
+
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
@@ -130,8 +135,9 @@ Bei Auslieferung des Programms sollen alle benötigten Programmteile, soweit sie
 Die Programmteile werden schon eingerichtet und aufeinander abgestimmt an den Kunden geliefert.
 Die Dokumentation des Vorgehens und des Ablaufs des Projekts werden in Form eines oder mehrerer Dokumente geliefert.
 In den Dokumenten wird festgehalten wie das Projekt verlaufen ist, welche Funktionalitäten implementiert sind, welche Funktionen nicht umsetzbar sind und wie das Programm erstellt wurde.
-Als letztes wird bei Auslieferung eine Schrittweise ANleitung mitgeliefert, wie das Programm zu nutzen ist, für den vorgesehenen Zweck.
-Die Einrichtung des Programms, sofern dies noch notwendig ist, die Erstellung eines "Twitter"-Accounts, die Aktivierung eines "Twitter"-Profils und eine Erklärung aller Funktionen, zusammen mit der jeweiligen Benutzung im Programm.
+Außerdem wird ein "End User License Agreement" beigelegt, um die Nutzungsbdeingungen zu klären.
+Als letztes wird bei der Auslieferung eine Schrittweise Anleitung mitgeliefert, wie das Programm, für den vorgesehenen Zweck, zu nutzen ist.
+In der Anleitung werden Punkte geklärt, wie die Einrichtung des Programms, sofern dies noch notwendig ist, die Erstellung eines "Twitter"-Accounts, die Aktivierung eines "Twitter"-Profils und eine Erklärung aller Funktionen, zusammen mit der jeweiligen Benutzung im Programm.
 
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
 > Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
@@ -192,32 +198,32 @@ Bot start/stop
 ### 3.5 Schnittstellen des gewünschten System
 > Beschreibung der Benutzerschnittstellen; Beschreibung der Schnittstellen zu anderen Soft- und Hardwaresystemen. Zu berücksichtigende Normen
 
-Das Programm baut auf einer inoffizielen "Phyton-Twitter"-API auf. 
+Der Grundbaustein der Anwendung besteht aus einer inoffizielen "Phyton-Twitter"-API. 
 Aufgrundlage dieser "Twitter-Phyton"-API wird die Anwendung aufgebaut.
-Unser Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log. 
-Für jeden Bot wird ein neues Log angelegt, das für jeden Bot gespeichert wird.
+Das Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log und weitere zusätzliche Funktionen. 
+Für jeden Bot wird ein neues Log angelegt, das für jeden Bot tageweise gespeichert wird.
 Änderungen am Verhalten des Bots und ausgeführte Aktionen des Bots werden in das entsprechende Log des Bots eingetragen.
-Das Log kann jederzeit im Programm angezeigt und ausgelesen werden.
+Das Log kann jederzeit im Programm angezeigt und ausgelesen werden oder die entsprechende Datei kann außerhalb des Programms geöffnet werden.
 Die Funktionen für den Nutzer werden in einem Nutzer Interface bereit gestellt.
 Das Nutzer Interface stellt die meisten Funktionen für die Nutzer über Buttons zur Verfügung.
 Die möglichen Funktionen, die über einen Button Klick ausführbar sind, beschränken sich auf "Bot erstellen", "Bot löschen", "Botverhalten anpassen", "Botprotokoll betrachten", und "Bot starten/stoppen".
 Um einen neuen Bot anzulegen, wird die Funktion "Bot erstellen" über den entsprechenden Button ausgeführt.
 Anschließend wird der Bot erstellt und das Verhalten für den Bot wird eingestellt.
-Um einen bereits erstlellten Bot zu entfernen, wird über den Button "Bot löschen" die entsprechende Funktion ausgeführt.
+Um einen bereits erstellten Bot zu entfernen, wird über den Button "Bot löschen" die entsprechende Funktion ausgeführt.
 Um die bereits erstellten Bots in ihrem Verhalten anzupassen, wird die Funktion, zum Verändern des Verhaltens, über den Button "Botverhalten anpassen" ausgeführt.
 Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, wird der Button "Bot starten/stoppen" verwendet.
-Der Button startet den ausgewählten Bot oder stoppt ihn wieder, sollte er bereits laufen.
-Nachdem ein Bot in Betrieb genommen wurde und Aktionen ausgeführt wurden, kann das Log für den Bot angezeigt werden.
+Der Button startet den ausgewählten Bot oder stoppt ihn wieder, sollte er bereits aktiv sein.
+Nachdem ein Bot in Betrieb genommen wurde und der Bot die gewünschten Aktivitäten ausgeführt hat, kann das Log für den Bot angezeigt werden.
 Das Log kann über den Button "Botprotokoll betrachten" angezeigt werden.
 
 ### 3.6 Zu berücksichtigende Normen
 
 Für das Projekt sind keine Normen zu beachten. 
 Die Nutzung der Software ist nur für die private Nutzung innerhalb der Universität Basel ausgelegt.
-Die private Nutzung innerhalb einer Universität unterliegt keinen Normen.
+Die AGBs von Twitter geben den Rahmen für das Programm vor.
+
 Die Software behandelt keine Lebensbedrohlichen Systeme oder kann zur direkten Gefährdung von Menschen führen.
 Die Software ist an die allgemeinen Geschäftsbedingungen des sozialen Netzwerks gebunden.
-Die AGBs von Twitter geben den Rahmen für das Programm vor.
 Die durch das Programm enstehenden Gefahren für Nutzer und andere involvierte Personen unterliegen nicht den Entwicklern.
 Die Benutzer der Software müssen sich der Gefahr, die ein Bot in einem sozialen Netzwerk hat, bewusst sein.
 Die durch einen Bot enstandenen Veränderungen und Auswirkungen unterliegen nicht den Entwicklern, vielmehr dem Nutzer.
@@ -242,7 +248,7 @@ Die eingesetzte Entwicklungsmethode ist Kanban.
 Bei Kanban handelt es sich um eine agile Entwicklungsmethode.
 Die Aufgaben werden in Form von Backlog Items festgehalten und durch die einzelnen Bearbeitungsschritte durchgeführt.
 Die Bearbeitungsschritte bestehen aus Product Backlog, Bereit, Entwicklung, Release und Fertig.
-Ein Product Backlog Item wird von einem Mitarbeiter oder von mehreren durch die gesamten Bearbeitungsschritte grführt.
+Ein Product Backlog Item wird von einem Mitarbeiter oder von mehreren durch die gesamten Bearbeitungsschritte geführt.
 Die einzelnen Bearbeitungsschritte sind auf eine bestimmte Anzahl an Items beschränkt, die sich maximal in diesem Schritt befinden dürfen.
 Es können dynamisch neue Product Backlog Items in das Product Backlog hinzugefügt werden und die Aufgaben können dynamisch bearbeitet werden.
 Es gibt keine zeitliche Vorgabe für die Bearbeitung eines Product Backlog Items, noch eine mindest Anforderung an der Anzahl die ein Mitarbeiter bearbeiten muss.
@@ -250,15 +256,21 @@ Insgesamt wird dadurch Agil entwickelt.
 Als terminliche Vorgabe ist der Zeitraum des Semesters gesetzt.
 Das Projekt soll vom ersten Vorlesungstermin bis zum letzte Vorlesungstermin laufen.
 Als genauer Zeitraum ist 04.04.2018 bis 13.06.2018 gesetzt.
-
-
-- Softwareversionen
+Die eingesetzten Versionen der Software werden im folgenden aufgelistet.
+> PyCharm -- PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76
+> Python3 -- Python 3.6.3
+> TwitterAPI -- TwitterAPI 3.0
+> 
+Zur Entwicklung wurden die aufgelisteten Software-Komponenten verwendet.
+Es wurde auf handelsüblichen Computer mit Internetanbindung entwickelt.
+Aus den Forderungen geht hervor, dass für die Umsetzung keine zusätzlichen Software-Komponenten erkauft wurden.
+Die eingesetzten Software-Komponenten sind nicht kostenpflichtig und frei verfügbar.
 
 
 ### 4.2 Abnahmebedingungen
 > Bedingungen des Auftraggebers für die Abnahme, wogegen?, wie?, welche Unterlagen
 
-Für die Abnahme des Kunden sind eine Dokumentation und eine Anleitung, zur Bedienung des Programms unablässlich.
+Für die Abnahme des Kunden sind eine Dokumentation und eine Anleitung, zur Bedienung des Programms, unablässlich.
 Die Dokumentation umfasst die geleistete Arbeit und die umgesetzten Funktionen.
 In der Dokumentation müssen zusätzlich die Anforderungen und die Probleme festgehalten sein.
 Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die Bedienung der Funktionalitäten des Programms umfassen.
@@ -267,8 +279,10 @@ Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die
 > z. B. Standardsoftware, wiederverwendete eigene Software, Software des Auftraggebers, Betriebssysteme, ...
 
 Für die Entwickung wurden keine zusätzlichen Komponenten gekauft.
-Die zur Enwticklung verwendeten Komponenten sind kostenlosen Lösungen und für den Nutzer frei zugänglich.
+Die zur Enwticklung verwendeten Komponenten sind kostenlose Lösungen und für den Nutzer frei zugänglich.
 Die verwendeten Software-Komponenten sind unter "4.1 Anforderungen an die Realisierung" aufgeführt.
+Die Hardware-Anforderungen sind auf einen handelsüblichen Computer mit Internetanbindung beschränkt.
+Durch das Betriebssystem wird keine Einschränkung erzielt.
 
 ### 4.4 Lieferbedingungen
 > z.B. Lieferplan mit Terminen, Form der Lieferungen, geforderte Dokumentation
@@ -283,6 +297,7 @@ Der endgültig angestrebte Lieferzeitpunkt ist auf den 13.06.2018 angesetzt.
 
 Unter den Bedingungen, dass dies ein nicht kommerzielles Projekt für eine Universität ist, entfällt jegliche Garantie und Gewährleistung.
 Für die Software wird keine Wartung oder Fehlerbehebung nach Auslieferung durchgeführt.
+Die Fehler, die während der Entwicklung auftreten, werden behoben und die Software wird, mit dem Stand zum Zeitpunkt der Auslieferung, ausgeliefert.
 Es werden nach der Auslieferung keine Funktionen nachgeliefert oder das Produkt aktualisiert.
 Für die Fehlerfreie Funktionsfähigkeit wird nach Auslieferung nicht gesorgt, ebenso wenig wie für die Funtkionsfähigkeit der Software mit anderen Version der benutzen Software-Komponenten.
 Auch die Funktionsfähigkeit für das soziale Netzwerk "Twitter" wird für zukünftige Versionen nicht gewährleistet.
