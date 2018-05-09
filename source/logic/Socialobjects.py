@@ -104,10 +104,10 @@ class Log:
 
 if __name__ == "__main__":
     access_info = {
-        'consumer_key': 'bTlVsty50JzCpJUz71Ntkc7EG',
-        'consumer_secret': 'mhM1tAeB352DwmzP2zASRCDmpwMDN0KArFnelnGouoMLgfr4d4',
-        'access_token': '986632583999119360-3TYR0QaLuRFUtjgAydQ7Kog8K4Puj1I',
-        'access_token_secret': '8ERLDifjUT7a7HA0JOochGu866Tvdx00Cpzb8HjR4TRs3'
+        'consumer_key': '',
+        'consumer_secret': '',
+        'access_token': '',
+        'access_token_secret': ''
     }
 
     bothandler = Bothandler()
