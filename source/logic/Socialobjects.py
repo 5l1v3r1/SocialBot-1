@@ -1,14 +1,12 @@
-import pytest
 import threading
 import datetime
-#package von lukas muss hinzugefügt werden
-#from api_wrapper.twitter import Twitter
+from api_wrapper.twitter import Twitter
 
 class Bothandler:
     def __init__(self):
         self.__bot_list = []
     def get_bots(self):
-        pass
+        return self.__bot_list
     def add_bot(self, obj):
         try:
             if type(obj) is Bot:
@@ -36,12 +34,13 @@ class Human:
     def get_timeline(self):
         self.twitterobj.get_tweets()
     def create_Account(self):
+        #vielleicht nicht möglich
         pass
-    def post_Tweet(self, message):
+    def post_tweet(self, message):
         self.twitterobj.tweet(text=message)
     def post_Retweet(self):
         pass
-    def like_Tweet(self, status=None, status_id=None):
+    def like_tweet(self, status=None, status_id=None):
         self.twitterobj.favor(status=status, status_id=status_id)
     def follow_User(self):
         pass
@@ -57,12 +56,12 @@ class Bot(Human, threading.Thread):
         ptp = Twitter(access_info=access_info)
         super().__init__(ptp)
         threading.Thread.__init__(self)
-        self.name = iname
-        self.status = -1
-        self.logbook = Logbook
+        self.__name = iname
+        self.__status = -1
+        self.__logbook = Logbook()
         print("Created Bot " + self.name)
     def get_run_status(self):
-        return self.status
+        return self.__status
     def react_to_direct_message(self):
         print("Message")
     def react_to_tweet(self):
@@ -73,20 +72,23 @@ class Bot(Human, threading.Thread):
         pass
     def run(self):
         print(self.name + " is running...")
-        self.status=0
-
+        self.__status=0
 
 
 class Logbook:
     def __init__(self):
-        self.loglist = []
-    def add_log(self, log):
-        if type(log) is Log:
-            self.loglist.append(log)
-        else:
-            print("Logbook: its not a Log Object.")
+        self.__loglist = []
+    def add_log(self, obj):
+        try:
+            if type(obj) is Log:
+                    self.__loglist.append(obj)
+            else:
+                raise TypeError(str(obj) + ": " + "This Object isn't from type Bot")
+
+        except TypeError as err:
+            raise
     def get_logs(self):
-        return self.loglist
+        return self.__loglist
 
 
 class Log:
@@ -99,7 +101,8 @@ class Log:
     def get_message(self):
         return self.__message
 
-def main():
+
+if __name__ == "__main__":
     access_info = {
         'consumer_key': 'bTlVsty50JzCpJUz71Ntkc7EG',
         'consumer_secret': 'mhM1tAeB352DwmzP2zASRCDmpwMDN0KArFnelnGouoMLgfr4d4',
@@ -109,8 +112,4 @@ def main():
 
     bothandler = Bothandler()
     bot = Bot("Bot1", access_info)
-    bothandler.delete_bot(Logbook())
-
-
-if __name__ == "__main__":
-    main()
+    bothandler.add_bot(bot)

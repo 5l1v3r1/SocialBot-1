@@ -4,6 +4,7 @@ from pathlib import Path
 
 class Logger:
     def __init__(self):
+        self.development = False
         self.__logging = False
         self.__logFile = ''
 
@@ -18,26 +19,26 @@ class Logger:
         """
 
         if path == '':
-            raise Exception('Missing path for the logging file')
+            raise Exception('Missing path for the logging file.')
         elif name == '':
-            raise Exception('Missing name for logging file')
+            raise Exception('Missing name for logging file.')
 
         f = Path(path)
 
         if not f.is_dir():
-            raise Exception('The directory "' + path + '" does not exist')
+            raise Exception('The directory "' + path + '" does not exist.')
 
         log_file_path = path + '/' + name + '.txt'
         f = Path(log_file_path)
 
         if f.exists() and overwrite_sensitive:
-            raise Exception('The logging file already exists')
+            raise Exception('The logging file already exists.')
 
         self.__logging = True
         self.__logFile = path + '/' + name + '.txt'
 
         file = open(self.__logFile, 'a')
-        file.write('Log File for SocialBot created on ' + str(datetime.datetime.now()).split('.')[0] + '\n')
+        file.write('Log File for SocialBot created on ' + str(datetime.datetime.now()).split('.')[0] + '.\n')
         file.write('####' + '\n')
         file.close()
 
@@ -46,7 +47,7 @@ class Logger:
         Logs a message if a log file was specified with activate_log.
         It can handle a simple string or a dict as message object.
         If message is a dict the key and the content are written to the log file.
-        Every log to the log file contains a datestamp.
+        Every log to the log file contains a date stamp.
         :param message:
         :return:
         """
@@ -55,7 +56,7 @@ class Logger:
             if isinstance(message, str):
                 f = open(self.__logFile, 'a')
                 f.write(str(datetime.datetime.now()).split('.')[0] + ' | ' + message + '\n')
-                f.write('####' + '\n')
+                f.write('####\n' + '\n')
                 f.close()
 
             elif isinstance(message, dict):
@@ -63,8 +64,13 @@ class Logger:
                 f.write(str(datetime.datetime.now()).split('.')[0] + ': ' + '\n')
                 keys = message.keys()
 
+                if self.development and 'response' in keys:
+                    del message['response']
+                elif self.development and 'result' in keys:
+                    del message['result']
+
                 for key in keys:
                     f.write(key + ': ' + message[key] + '\n')
 
-                f.write('####' + '\n')
+                f.write('####\n' + '\n')
                 f.close()

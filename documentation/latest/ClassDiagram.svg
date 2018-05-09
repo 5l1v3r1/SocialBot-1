@@ -1,142 +1,164 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="596" version="1.1" width="772" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#ffffff" height="264" stroke="#ffffff" stroke-width="1" width="166" x="294" y="126"/>
-<rect fill="none" height="264" stroke="#000000" stroke-width="1" width="166" x="294" y="126"/>
-<text font-family="Dialog" font-size="12" x="368" y="139">
+<svg height="980" version="1.1" width="1468" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#ffffff" points="14,174 924,174 924,197 973,197 973,645 14,645 14,174" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="174"/>
+<text font-family="Dialog" font-size="12" x="19" y="187">
+Logic</text>
+<rect fill="none" height="448" stroke="#000000" stroke-width="1" width="959" x="14" y="197"/>
+<polygon fill="#ffffff" points="14,702 924,702 924,725 973,725 973,965 14,965 14,702" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="702"/>
+<text font-family="Dialog" font-size="12" x="19" y="715">
+Data</text>
+<rect fill="none" height="240" stroke="#000000" stroke-width="1" width="959" x="14" y="725"/>
+<rect fill="#ffffff" height="264" stroke="#ffffff" stroke-width="1" width="181" x="382" y="334"/>
+<rect fill="none" height="264" stroke="#000000" stroke-width="1" width="181" x="382" y="334"/>
+<text font-family="Dialog" font-size="12" x="462" y="347">
 Bot</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="166" x="294" y="149"/>
-<text font-family="Dialog" font-size="12" x="298" y="163">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="181" x="382" y="357"/>
+<text font-family="Dialog" font-size="12" x="386" y="371">
 name : String</text>
-<text font-family="Dialog" font-size="12" x="298" y="179">
-benutzer : User</text>
-<text font-family="Dialog" font-size="12" x="298" y="195">
+<text font-family="Dialog" font-size="12" x="386" y="387">
+benutzer : Human</text>
+<text font-family="Dialog" font-size="12" x="386" y="403">
 logbuch : Logbook</text>
-<text font-family="Dialog" font-size="12" x="298" y="211">
+<text font-family="Dialog" font-size="12" x="386" y="419">
 status : int</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="166" x="294" y="221"/>
-<text font-family="Dialog" font-size="12" x="298" y="235">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="181" x="382" y="429"/>
+<text font-family="Dialog" font-size="12" x="386" y="443">
 postTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="251">
+<text font-family="Dialog" font-size="12" x="386" y="459">
 postRetweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="267">
+<text font-family="Dialog" font-size="12" x="386" y="475">
 likeTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="283">
+<text font-family="Dialog" font-size="12" x="386" y="491">
 followUser() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="299">
+<text font-family="Dialog" font-size="12" x="386" y="507">
 sendDirectMessage() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="315">
+<text font-family="Dialog" font-size="12" x="386" y="523">
 searchTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="331">
+<text font-family="Dialog" font-size="12" x="386" y="539">
 getDirectMessages() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="347">
+<text font-family="Dialog" font-size="12" x="386" y="555">
 getTimeline() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="363">
+<text font-family="Dialog" font-size="12" x="386" y="571">
 runBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="298" y="379">
+<text font-family="Dialog" font-size="12" x="386" y="587">
 createAccount() : ApiObject</text>
-<rect fill="#ffffff" height="168" stroke="#ffffff" stroke-width="1" width="120" x="14" y="86"/>
-<rect fill="none" height="168" stroke="#000000" stroke-width="1" width="120" x="14" y="86"/>
-<text font-family="Dialog" font-size="12" x="43" y="99">
+<rect fill="#ffffff" height="168" stroke="#ffffff" stroke-width="1" width="124" x="102" y="294"/>
+<rect fill="none" height="168" stroke="#000000" stroke-width="1" width="124" x="102" y="294"/>
+<text font-family="Dialog" font-size="12" x="129" y="307">
 Bothandler</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="120" x="14" y="109"/>
-<text font-family="Dialog" font-size="12" x="18" y="123">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="124" x="102" y="317"/>
+<text font-family="Dialog" font-size="12" x="106" y="331">
 botList : List</text>
-<text font-family="Dialog" font-size="12" x="18" y="139">
+<text font-family="Dialog" font-size="12" x="106" y="347">
 configPath : String</text>
-<text font-family="Dialog" font-size="12" x="18" y="155">
+<text font-family="Dialog" font-size="12" x="106" y="363">
 config : Object</text>
-<text font-family="Dialog" font-size="12" x="18" y="171">
+<text font-family="Dialog" font-size="12" x="106" y="379">
 newAttr : Integer</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="120" x="14" y="181"/>
-<text font-family="Dialog" font-size="12" x="18" y="195">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="124" x="102" y="389"/>
+<text font-family="Dialog" font-size="12" x="106" y="403">
 getBots() : List</text>
-<text font-family="Dialog" font-size="12" x="18" y="211">
+<text font-family="Dialog" font-size="12" x="106" y="419">
 addBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="18" y="227">
+<text font-family="Dialog" font-size="12" x="106" y="435">
 deleteBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="18" y="243">
+<text font-family="Dialog" font-size="12" x="106" y="451">
 loadConfig() : bool</text>
-<rect fill="#ffffff" height="152" stroke="#ffffff" stroke-width="1" width="144" x="614" y="430"/>
-<rect fill="none" height="152" stroke="#000000" stroke-width="1" width="144" x="614" y="430"/>
-<text font-family="Dialog" font-size="12" x="676" y="443">
+<rect fill="#ffffff" height="152" stroke="#ffffff" stroke-width="1" width="144" x="702" y="766"/>
+<rect fill="none" height="152" stroke="#000000" stroke-width="1" width="144" x="702" y="766"/>
+<text font-family="Dialog" font-size="12" x="763" y="779">
 Log</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="614" y="453"/>
-<text font-family="Dialog" font-size="12" x="618" y="467">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="702" y="789"/>
+<text font-family="Dialog" font-size="12" x="706" y="803">
 time : Date</text>
-<text font-family="Dialog" font-size="12" x="618" y="483">
+<text font-family="Dialog" font-size="12" x="706" y="819">
 typ : String</text>
-<text font-family="Dialog" font-size="12" x="618" y="499">
+<text font-family="Dialog" font-size="12" x="706" y="835">
 message : String</text>
-<text font-family="Dialog" font-size="12" x="618" y="515">
+<text font-family="Dialog" font-size="12" x="706" y="851">
 newAttr : Integer</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="614" y="525"/>
-<text font-family="Dialog" font-size="12" x="618" y="539">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="702" y="861"/>
+<text font-family="Dialog" font-size="12" x="706" y="875">
 getTime() : Date</text>
-<text font-family="Dialog" font-size="12" x="618" y="555">
+<text font-family="Dialog" font-size="12" x="706" y="891">
 getTyp() : String</text>
-<text font-family="Dialog" font-size="12" x="618" y="571">
+<text font-family="Dialog" font-size="12" x="706" y="907">
 getMessage() : String</text>
-<rect fill="#ffffff" height="245" stroke="#ffffff" stroke-width="1" width="184" x="534" y="14"/>
-<rect fill="none" height="245" stroke="#000000" stroke-width="1" width="184" x="534" y="14"/>
-<text font-family="Dialog" font-size="12" font-style="italic" x="613" y="46">
-User</text>
-<text font-family="Dialog" font-size="12" x="582" y="28">
-&lt;&lt;abstract&gt;&gt;</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="184" x="534" y="56"/>
-<text font-family="Dialog" font-size="12" x="538" y="70">
+<rect fill="#ffffff" height="267" stroke="#ffffff" stroke-width="1" width="198" x="622" y="222"/>
+<rect fill="none" height="267" stroke="#000000" stroke-width="1" width="198" x="622" y="222"/>
+<text font-family="Dialog" font-size="12" x="699" y="235">
+Human</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="622" y="245"/>
+<text font-family="Dialog" font-size="12" x="626" y="259">
 firstname : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="86">
+<text font-family="Dialog" font-size="12" x="626" y="275">
 lastname : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="102">
+<text font-family="Dialog" font-size="12" x="626" y="291">
 email : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="118">
+<text font-family="Dialog" font-size="12" x="626" y="307">
 tAccount : ApiObject</text>
-<text font-family="Dialog" font-size="12" x="538" y="134">
+<text font-family="Dialog" font-size="12" x="626" y="323">
 newAttr : Integer</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="184" x="534" y="144"/>
-<text font-family="Dialog" font-size="12" x="538" y="158">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="622" y="342"/>
+<text font-family="Dialog" font-size="12" x="626" y="356">
 getFirstname() : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="174">
+<text font-family="Dialog" font-size="12" x="626" y="372">
 getLastname() : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="190">
+<text font-family="Dialog" font-size="12" x="626" y="388">
 getEmail() : String</text>
-<text font-family="Dialog" font-size="12" x="538" y="206">
+<text font-family="Dialog" font-size="12" x="626" y="404">
 reactToDirectMessage() : bool</text>
-<text font-family="Dialog" font-size="12" x="538" y="222">
+<text font-family="Dialog" font-size="12" x="626" y="420">
 reactToTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="538" y="238">
+<text font-family="Dialog" font-size="12" x="626" y="436">
 reactToRetweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="538" y="254">
+<text font-family="Dialog" font-size="12" x="626" y="452">
 reactToTimeline() : bool</text>
-<rect fill="#ffffff" height="88" stroke="#ffffff" stroke-width="1" width="144" x="318" y="462"/>
-<rect fill="none" height="88" stroke="#000000" stroke-width="1" width="144" x="318" y="462"/>
-<text font-family="Dialog" font-size="12" x="365" y="475">
+<text font-family="Dialog" font-size="12" x="626" y="468">
+newOperation()</text>
+<rect fill="#ffffff" height="104" stroke="#ffffff" stroke-width="1" width="144" x="406" y="798"/>
+<rect fill="none" height="104" stroke="#000000" stroke-width="1" width="144" x="406" y="798"/>
+<text font-family="Dialog" font-size="12" x="451" y="811">
 Logbook</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="318" y="485"/>
-<text font-family="Dialog" font-size="12" x="322" y="499">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="406" y="821"/>
+<text font-family="Dialog" font-size="12" x="410" y="835">
 logs : List</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="318" y="509"/>
-<text font-family="Dialog" font-size="12" x="322" y="523">
+<text font-family="Dialog" font-size="12" x="410" y="851">
+path : String</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="144" x="406" y="861"/>
+<text font-family="Dialog" font-size="12" x="410" y="875">
 addLog(Log) : void</text>
-<text font-family="Dialog" font-size="12" x="322" y="539">
+<text font-family="Dialog" font-size="12" x="410" y="891">
 searchLog() : Log</text>
-<polyline fill="none" points="461,470 614,470" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="480" y="485">
+<polyline fill="none" points="549,806 702,806" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="568" y="821">
 1</text>
-<text font-family="Dialog" font-size="12" x="585" y="485">
+<text font-family="Dialog" font-size="12" x="673" y="821">
 n</text>
-<polyline fill="none" points="133,150 294,150" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="152" y="165">
+<polyline fill="none" points="225,358 382,358" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="244" y="373">
 1</text>
-<text font-family="Dialog" font-size="12" x="265" y="165">
+<text font-family="Dialog" font-size="12" x="353" y="373">
 n</text>
-<polyline fill="none" points="326,389 326,462" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="302" y="409">
+<polyline fill="none" points="414,597 414,798" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="390" y="617">
 1</text>
-<text font-family="Dialog" font-size="12" x="302" y="434">
+<text font-family="Dialog" font-size="12" x="390" y="770">
 1</text>
-<polyline fill="none" points="406,126 406,70 534,70" stroke="#000000" stroke-width="1"/>
-<polygon fill="#ffffff" points="534,70 522,77 522,63" stroke="#ffffff" stroke-width="1"/>
-<polygon fill="none" points="534,70 522,77 522,63" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="494,334 494,278 622,278" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="622,278 610,285 610,271" stroke="#ffffff" stroke-width="1"/>
+<polygon fill="none" points="622,278 610,285 610,271" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="14,14 924,14 924,37 973,37 973,149 14,149 14,14" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="14"/>
+<text font-family="Dialog" font-size="12" x="19" y="27">
+GUI</text>
+<rect fill="none" height="112" stroke="#000000" stroke-width="1" width="959" x="14" y="37"/>
+<polygon fill="#ffffff" points="1038,318 1404,318 1404,341 1453,341 1453,517 1038,517 1038,318" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="366" x="1038" y="318"/>
+<text font-family="Dialog" font-size="12" x="1043" y="331">
+API Wrapper</text>
+<rect fill="none" height="176" stroke="#000000" stroke-width="1" width="415" x="1038" y="341"/>
 </svg>
