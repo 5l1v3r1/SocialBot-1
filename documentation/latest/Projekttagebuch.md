@@ -29,9 +29,21 @@
 
 ## 25. 04. 2018
 - erneutes Gespräch mit Studentinnen aus Basel
+- Anforderungen an den Bot klären
+- Änderungen der bereits entstandenen Programmteile besprechen
+- 
 
 ## 02. 05. 2018
 - 
+
+## 09. 05. 2018
+- Letztes Kundengespräch mit Studentinnen aus Basel
+- Kundgebung des momentanen Arbeitsstand an die Studentinnen
+- 
+
+## 16 05. 2018
+- 
+
 
 
 Zwischenstand:
