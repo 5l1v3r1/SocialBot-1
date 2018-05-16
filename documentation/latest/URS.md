@@ -4,14 +4,15 @@
 
 In diesem Dokument werden die User Requirements für das Projekt "Social Life eines Bots" festgehalten.
 Bei dem Projekt handelt es sich um die Erstellung eines Bots für das soziale Netzwerk "Twitter".
-Die Bots sollen automatisiert bestimmte Funktionen ausführen und dabei beobachtet werden können.
+Die Bots führen automatisiert bestimmte Funktionen aus und können dabei beobachtet werden.
 Die Anforderungen an diese Bots werden im Folgenden genauer dokumentiert.
 
 ### 1.1 Zweck des Dokuments
 
 In diesem Dokument werden die User Requirements für den Kundenauftrag zu dem Projekt "Social Life eines Bots" festgelegt. 
-Die Kundenansprüche werden festgehalten, um einen Überblick zu erschaffen und den Umfang des Projekts zu definieren.
-Die Anforderungen definieren die zu erledigende Arbeit und definieren den Umfang, der geleistet werden muss.
+Die vom Kunden geforderten und akzeptierten Funtkionalitäten werden in diesem Dokument festgehalten.
+Das Dokument dient als Übersicht über die geforderten Funktionalitäten, sowohl für die Kunden als auch für die Auftragnehmer.
+Die niedergeschriebenen Anforderungen definieren die zu vollbringende Arbeit und definieren den zu leistenden Umfang.
 
 ### 1.2 Gültigkeit des Dokuments
 
@@ -28,11 +29,15 @@ UseCase.svg = Use Case Diagramm
 
 ## 2. Allgemeine Beschreibung des gewünschten Systems
 
-Das Projekt besteht aus dem Erstellen einer Software zur Erstellung von Bots für das soziale Netzwerk "Twitter".
-Die Bots sollen die wichtigsten Aktionen in "Twitter" automatisiert ausführen und auf vordefinierte "Tweets" automatisiert reagieren.
-Der Nutzer kann die Aktionen, Reaktionen und die Stichwörter der "Tweetes" im Vorfeld selbst definieren und ändern.
-In einem Log sollen alle Aktionen des Bots einsehbar sein.
-Jeder "Tweet" des Bots, jede Reaktion auf einen "Tweet" und jegliche andere Aktivität des Bots soll im Log zusammen mit den Reaktionen anderer Nutzer beobachtbar sein.
+Das vom Kunden geforderte Endprodukt wird durch eine Software-Anwendung dargestellt.
+Die Software-Anwendung umfasst die Erstellung von "Bots" für das soziale Netzwerk "Twitter".
+Die "Bots" funktionieren als eigenständiges Programm.
+Ein Bot kann gestartet werden, nachdem der Bot entsprechend eingerichtet und konfiguriert wurde, um die festgelegten Funktionen automatisiert auszuführen.
+Zu den Funktionen, die automatisiert durch einen Bot ausgeführt werden, zählen die wichtigsten Aktionen in "Twitter".
+Der Nutzer kann die Aktionen, Reaktionen und die Ereignisse, auf die reagiert wird, selbst definieren und ändern.
+Alle ausgeführten Aktionen des Bots werden in einem "Log-File" festgehalten.
+Das "Log-File" ist für den Nutzer sowohl im Programm, als auch außerhalb des Programms in der Betriebsumgebung, einsehbar.
+Jede, von einem Bot getätigte, Aktion und die Reaktionen anderer Nutzer auf die Aktion des Bots, wird in das Log-File geschrieben.
 
 ### 2.1 Zweck des gewünschten Systems
 
@@ -40,8 +45,9 @@ Der Zweck des Projekts besteht aus der Beobachtung des sozialen Aspekts eines Bo
 Als soziales Netzwerk wird die Plattform "Twitter" eingesetzt.
 Die soziale Plattform "Twitter" ist eine Internetseite, auf der Personen miteinander kommunizieren und Meinungen miteinander teilen können.
 Die Personen haben ein eigenes Profil und können über mehrere Möglichkeiten mit anderen Nutzern in Kontakt treten.
-Die Interaktion des Bots mit anderen Nutzern, eventuell auch dargestellt durch andere Bots, soll beobachtet werden.
-Die Interaktion mit anderen Nutzern in Form von Menschen steht im Mittelpunkt der Beobachtung.
+Ein Bot soll, gegenüber anderen Nutzern, als regulärer Nutzer in "Twitter" auftreten.
+Die Interaktionen eines Bots mit anderen Nutzern, eventuell auch dargestellt durch andere Bots, soll beobachtet werden.
+Die Interaktion mit anderen Nutzern in Form von Menschen steht im Mittelpunkt der Beobachtung mit dem Haupt-Beobachtungsaspekt auf die Reaktion der anderen Nutzer.
 Besonders die Reaktionen der anderen Nutzer auf den Bot sind der Haupt-Beobachtungsaspekt.
 Ursprünglich war die Plattform "FaceBook" als soziales Netzwerk angestrebt.
 Die Aktionen bei "Twitter" haben Äquivalente Aktionen bei "FaceBook".
@@ -55,106 +61,104 @@ Aus den erfassten Daten soll das soziale Leben des Bots beurteilt werden und ans
 
 ### 2.2 Überblick über die geforderte Funktionalität
 
-Als Anforderung an die Funktionalität ist die Erstellung unterschiedlicher Bots gesetzt.
-Ein Bot für das soziale Netzwerk soll erstellt werden können.
-Die Erstellung eines Bots soll dabei nicht automatisiert sein.
-Die Bots sollen die grundlegensten Aktionen, bestehend aus "Tweeten", "Liken", "Kommentieren", "Nutzer Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durchführen.
-Die Bots sollen einen vorgefertigten Text "Tweeten" können, ein "Like" auf bestimmte, vorher definierte "Tweets" geben können und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren" können.
-Jede Aktivität des Bots und die Reaktionen anderer Nutzer sollen in einem Aktivitäten-Log festgehalten werden.
-Die Reaktionen anderer Nutzer müssen abgespeichert werden und mit der entsprechenden Aktion des Bots in Verbindung gebracht werden können.
-Die Daten aus dem Aktivitäten-Log sollen in einer Übersicht in der Nutzeroberfläche angezeigt werden.
-Die Einstellungen für das Verhalten des Bots sollen vom Nutzer getätigt werden können.
-Explizit sollen die Nutzer die Texte des Bots und die Stichwörter auf die der Bot reagieren soll einstellen können.
-Der Algorithmus für die Zuordnung der Texte des Bots zu den Stichwörtern in Tweets soll austauschbar sein, um in Zukunft andere Relationen zuzulassen.
-Standardmäßig soll eine 1-zu-1-Relation von den Texten des Bots zu Stichwörtern geschaffen werden.
-Die Relation von Texten zu Stichwörtern soll in Zukunft durch einen anderen Algorithmus austauschbar sein.
-Der Algorithmus des Bots muss folglich in einer gesonderten Form gehalten werden, um in Zukunft eine reibunglose Einbindung eines neuen Algorithmus zu gewährleisten.
-Die Benutzeroberfläche und die Funktionen des Bots sollen mit jedem Algorithmus, der Daten im selben Format verwendet, arbeiten können.
-Die Einstellungen für das Verhalten des Bots sollen über die Stichwörter, auf die der Bot reagieren soll, in Verbindung mit den zugeordneten Texten, getätigt werden.
+Als Anforderung an die Funktionalität ist die Erstellung von Bots für das soziale Netzwerk gesetzt.
+Die Erstellung eines Bots findet nicht automatisiert statt.
+Die Bots führen die grundlegensten Aktionen von "Twitter", bestehend aus "Tweeten", "Liken", "Kommentieren", "Nutzer Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durch.
+Genauer können die Bots einen vorgefertigten Text "Tweeten", ein "Like" auf bestimmte, vorher definierte "Tweets" geben und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren".
+Jede Aktivität des Bots und die Reaktionen anderer Nutzer auf die Aktionen werden in einem Aktivitäten-Log festgehalten.
+Die Reaktionen anderer Nutzer werden abgespeichert und mit der entsprechenden Aktion des Bots in Verbindung gebracht.
+Die Daten aus dem Aktivitäten-Log werden in einer Übersicht in der Nutzeroberfläche angezeigt oder können in der Datei im Betriebssystem eingesehen werden.
+Das Verhalten eines Bots kann vom Nutzer getätigt werden und der zugehörige Algorithmus wird in einer externen, austauschbaren Datei gehalten.
+Explizit können die Nutzer die Texte, für die Aktionen des Bots, und die Stichwörter, auf die der Bot reagieren soll, einstellen.
+Der Algorithmus, für die Zuordnung der Texte des Bots, zu den Stichwörtern in Tweets, ist austauschbar, um in Zukunft andere Algorithmen zuzulassen.
+Standardmäßig wird eine 1-zu-1-Relation von den Texten des Bots zu den Stichwörtern geschaffen.
+Die Relation von Texten zu Stichwörtern ist in Zukunft durch einen anderen Algorithmus austauschbar.
+Der Algorithmus des Bots wird in einer ausgelagerten Datei gehalten, um in Zukunft eine reibunglose Einbindung eines neuen Algorithmus zu gewährleisten.
+Die Benutzeroberfläche und die Funktionen des Bots arbeiten mit jedem Algorithmus, der Daten im selben Format verwendet, zusammen.
+Die Einstellungen für das Verhalten des Bots werden über die Stichwörter, auf die der Bot reagieren soll, in Verbindung mit den zugeordneten Texten, getätigt.
 Außerdem können allgemeine Funktionen wie "Suchen" und "Streaming" zu einem Thema in der Benutzeroberfläche getätigt werden.
 
 ### 2.3 Abgrenzung und Einbettung des gewünschten Systems
 
-Das Projekt soll ein einfach zu handhabendes Programm hervorbringen, das ausgeführt werden muss.
-Alle wichtigen Funktionalitäten und Daten sollen in der Benutzeroberfläche vereint werden.
-Die Funktionalitäten sollen in der Benutzeroberfläche aufrufbar sein und die Daten sollen in einer Übersicht angezeigt werden.
-Das Programm soll Betriebssystem unabhängig agieren, um eine Plattform unabhängige Arbeitsweise zu gewährleisten.
+Das Produkt, das aus dem Projekt entsteht, ist einfach zu handhaben und übersichtlich für Endanwender.
+Alle wichtigen Funktionalitäten und Daten werden in der Benutzeroberfläche vereint.
+Die Funktionalitäten sind in der Benutzeroberfläche aufrufbar und die Daten werden in einer Übersicht angezeigt.
+Das Programm agiert Betriebssystem unabhängig, um eine Plattform unabhängige Arbeitsweise zu gewährleisten.
 Als priorisierte Betriebssysteme werden Windows und MacOS angestrebt.
-Die Datenspeicherung soll in einem Format ermöglicht werden, dass, unabhängig vom Betriebssystem, verwendbar ist.
-Die Anbindung an das soziale Netzwerk "Twitter" soll vom Programm intern gelöst werden.
+Die Datenspeicherung wird in einem Format ermöglicht, dass, unabhängig vom Betriebssystem, verwendbar ist.
+Die Anbindung an das soziale Netzwerk "Twitter" wird vom Programm intern gelöst.
 Die Verbindung der Software Komponenten untereinander wird vom Programm intern gelöst.
 
 ### 2.4 Allgemeine Einschränkungen
 
-Die Software soll das Verhalten des Bots in einer eigenen Datei halten, um das Verhalten in Zukunft austauschbar zu halten. 
+Die Software hält das Verhalten des Bots in einer eigenen Datei, um das Verhalten in Zukunft austauschbar zu halten. 
 Nutzer können durch die Kapselung die Datei mit dem Verhalten, in Zukunft, einfacher austauschen.
 Der ursprüngliche Ansatz, den Bot für das soziale Netzwerk "FaceBook" zu entwerfen, wurde aufgrund der Richtlinien von "FaceBook" verworfen.
 Die Richtlinien von "FaceBook" verhindern die Umsetzung der geforderten Funktionalitäten. (Siehe "5. Durchführbarkeitsuntersuchungen")
-
-Die automatische Erstellung von Bots für "Twitter" ist nicht möglich und muss händisch durchgeführt werden. 
-
-Die Software muss auf "OpenSource"-Basis gehalten werden und soll bei Bedarf auch nur auf "OpenSource" Software zurückgreifen.
-Die verwendete Software soll keine direkten Kosten erzeugen und bei Bedarf nur auf kostenlose Software zurückgreifen.
-Das Endprodukt soll keine Lizenz-Eingrenzungen erhalten und für alle Nutzer in vollem Umfang zur Verfügung stehen.
+Aufgrund der Sicherheitsvorkehrungen durch "Twitter" ist die automatische Account-Erstellung nicht realisierbar.
+Die Erstellung von Accounts für "Twitter" und die zugehörigen Bots muss händisch durchgeführt werden. 
+Die Software muss auf "OpenSource"-Basis gehalten werden und darf, bei Bedarf, nur auf "OpenSource" Software zurückgreifen.
+Die verwendete Software erzeugt keine direkten Kosten und greift, bei Bedarf, nur auf kostenlose Software zurück.
+Das Endprodukt erhält keine Lizenz-Eingrenzungen und steht für alle Nutzer in vollem Umfang zur Verfügung.
 Das Endprodukt wird auschließlich zur nicht kommerziellen Nutzung verwendet.
 
 ### 2.5 Vorgaben zu Hardware und Software
 
-Das Programm soll Betriebssystem unabhängig sein, auf OpenSource-Software basieren und keine Kosten verursachen.
+Das Programm ist Betriebssystem unabhängig, basiert auf OpenSource-Software und verursacht keine Kosten.
 An die Hardware sind keine besonderen Anforderungen gestellt.
 Die Grundlegenden Eigenschaften zum Ausführen des Bots sind vorausgesetzt.
 Zu den grundlegenden Voraussetzungen zählen ein lauffähiger Computer mit Internet-Anbindung.
-An den Nutzer sind die Anforderungen gestellt, mit dem Umgang von Software auf dem Computer Erfahrung zu haben.
-Das Wissen um die Bedienung von "Twitter" wird als Anforderung gesetzt, um die Funktionalität des Programms verstehen zu können.
-
-Als weitere Software die zum Einsatz kommt wird die offiziele "Twitter" API als anbindung an das soziale Netzwerk "Twitter" verwendet.
-Als Programmierumgebung wird "PyCharm" von "JetBrains" in der Version "PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76".
-Für den Datenaustausch wird "GitHub" verwendet. 
-Die Dateien zu diesem Projekt werden alle unter dem Repository "SocialBot" unter dem Link "https://github.com/weberval/SocialBot" gesammelt.
-
+Grundlegende Kenntniss des Kunden über die Verwendung von Software unter dem Betriebssystem wird vorausgesetzt.
+Eine Grundkenntniss über die Funktionalitäten von "Twitter" wird als Anforderung an den Kunden gesetzt, um die Funktionalität des Programms verstehen zu können.
+Für den Kunden sind die Einarbeitung in das Programm und die Durcharbeitung der Dokumentation uanblässlich, um komplettes Verständniss des Programms zu erlangen.
 
 ### 2.6 Anforderungsquellen / Zielgruppen
 
 Das Hauptziel ist die Auswertung der sozialen Interaktionen zwischen dem Bot und der Umwelt.
 Die Hauptnutzer werden durch Studentinnen und Studenten der Universität Basel dargstellt.
-Die Hauptnutzer beziehen die Daten für ihre Analyse aus den Daten des Programms.
+Die Hauptnutzer beziehen die Daten für ihre Analysen aus den Daten des Programms.
 Die Studienrichtung der Studentinnen und Studenten sind die Sozialwissenschaften.
 Explizit sind die Kunden der Kulturanthropologie zugeschrieben.
 Weitere Zielgruppen können in Zukunft hinzukommen, sind aber keine geplanten Nutzer des Programms und werden nicht weiter aufgeführt.
-Das Programm soll unabhängig vom Nutzer und weiteren Gegebenheiten funktionieren und eine einfach Handhbung garantieren.
-Weder Software-technische noch Hardware-technische Einschränkungen sollen auftreten.
-Das Programm soll unabhängig von allen Eigenschaften eines beliebigen Computers funktionieren.
+Das Programm funktioniert unabhängig vom Nutzer und weiteren Gegebenheiten und garantiert eine einfach Handhbung.
+Weder Software-technische noch Hardware-technische Einschränkungen treten auf.
+Das Programm funktioniert unabhängig von allen Eigenschaften eines beliebigen Computers.
 
 ## 3. Detailierte Beschreibung der Anforderung (Leistungsmerkmale)
 
 ### 3.1 Lieferumfang
 
-Zu der Lieferung gehört ein Programm mit allen zugehörigen Komponenten, eine Dokumentation der implementierten Funktionen und eine Einweisung in die Funktionen der Software.
-Die Komponenten des Programms bestehen aus der Benutzeroberfläche, dem Programmteil für die Abwicklung der Funktionen und dem austauschbaren Algorithmus.
-Bei Auslieferung des Programms sollen alle benötigten Programmteile, soweit sie in ihrer Entwicklung bis zu diesem Zeitpunkt sind, in einem Paket ausgeliefert werden.
-Die Programmteile werden schon eingerichtet und aufeinander abgestimmt an den Kunden geliefert.
+Der Lieferumfang besteht aus einem Programm mit allen zugehörigen Komponenten, eine Dokumentation des Programms und eine Einweisung in das Programm.
+Die für den Nutzer relevanten Komponenten des Programms bestehen aus der Benutzeroberfläche, dem Programmteil für die Abwicklung der Funktionen und dem austauschbaren Algorithmus.
+Bei Auslieferung des Programms werden alle benötigten Programmteile, soweit der Entwicklungsstand der Programmteile zum Auslieferungstermin ist, in einem Paket ausgeliefert.
+Die Programmteile, die in dem Paket ausgeliefert werden, sind bereits aufeinander abgestimmt und eingerichtet.
+Die Programmteile erfordern keine zusätzliche Konfiguration, um die Funktionalität zu gewährleisten.
 Die Dokumentation des Vorgehens und des Ablaufs des Projekts werden in Form eines oder mehrerer Dokumente geliefert.
-In den Dokumenten wird festgehalten wie das Projekt verlaufen ist, welche Funktionalitäten implementiert sind, welche Funktionen nicht umsetzbar sind und wie das Programm erstellt wurde.
-Außerdem wird ein "End User License Agreement" beigelegt, um die Nutzungsbdeingungen zu klären.
-Als letztes wird bei der Auslieferung eine Schrittweise Anleitung mitgeliefert, wie das Programm, für den vorgesehenen Zweck, zu nutzen ist.
-In der Anleitung werden Punkte geklärt, wie die Einrichtung des Programms, sofern dies noch notwendig ist, die Erstellung eines "Twitter"-Accounts, die Aktivierung eines "Twitter"-Profils und eine Erklärung aller Funktionen, zusammen mit der jeweiligen Benutzung im Programm.
+In den Dokumenten werden der Projektverlauf, die implementierten Funktionen und Probleme bei der Bearbeitung festgehalten.
+Dem ausgelieferten Paket liegt ein "End User License Agreement" bei, in dem die Nutzungsbedingungen festgehalten sind.
+Bei der Einweisung in das Programm, die im ausgelieferten Paket enthalten ist, handelt es sich um eine schrittweise Einleitung, wie das Programm zu nutzen ist.
+In der Einweisung werden die Erstellung eines "Twitter"-Accounts, die Erstellung eines Bots und das Nutzen eines Bots erläutert.
 
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
-> Typische Abläufe z.B. mit Anwendungsfall-Diagrammen darstellen.
 
-'UseCase.svg'
+Für die Beschreibung der typischen Abläufe wird auf das Dokument 'UseCase.svg' verwiesen.
+In dem Dokument werden alle möglichen Aktionen und die Abhängigkeiten zwischen den Aktionen beschrieben.
 
 ### 3.3 Geforderte Funktionen des Produkts
-> Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
+> Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. 
+Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
 
-Die grundlegenden Funktionen im Use Case Diagramm werden genauer beschrieben.
-Die Aufgabe "Bot erstellen" beschreibt das Erstellen eines Bots.
-Zum Erstellen eines Bots gehört das Anlegen einer App und das Verbinden des Accounts mit der entsprechenden App. 
-Die Aufgabe "Bot erstellen" inkludiert die Aufgabe "Botinfo einpflegen". 
-Die Aufgabe "Botinfo einflegen" bezeichnet das initiale Festlegen vom Verhalten.
-Beim Erstellen des Bots wird das Verhalten des Bots festgelegt.
-Außerdem wird die Aufgabe "Twitter Account erstellen" von der Aufgabe "Bot erstellen" inkludiert.
-Bei der Aufgabe "Twitter Account erstellen" wird der Account bei "Twitter" angelegt, der fortan verwendet wird.
+Die Funktionen im Use Case Diagramm werden genauer beschrieben.
+Der Benutzer hat Zugriff auf die Funktionen "Bot erstellen", "Bot löschen", "Botverhalten anpassen", "Botverhalten betrachten" und "Bot start/stoppen".
+Der zweite Nutzer, durch "Twitter" dargestellt, hat Zugriff auf die Funktionen "Twitter Account erstellen", "Login Twitter" und "Logout Twitter". 
+
+Die Aufgabe "Bot erstellen" die Funktion die sich mit dem Erstellen eines Bots beschäftigt.
+Zum Erstellen eines Bots gehört das Anlegen einer App und das Verbinden eines "Twitter"-Accounts mit der entsprechenden App. 
+Die Aufgabe "Botinfo einpflegen" und "Twitter Account anlegen" werden von der Aufgabe "Bot erstellen" inkludiert. 
+Die Aufgabe "Botinfo einflegen" bezeichnet das initiale Festlegen vom Verhalten eines Bots und das Festlegen der Eigenschaften eines Bots.
+Die Aufgabe "Twitter Account erstellen" beinhaltet das Erstellen eines "Twitter"-Accounts bei der sozialen Plattform "Twitter".
+
+Die Aufgabe
 Bei der Aufgabe "Bot löschen" wird ein bereits erstellter Bot wieder entfernt.
 Das Verhalten des Bots wird durch die Aufgabe "Botverhalten anpassen" dargestellt.
 Bei der Aufgabe wird das momentane Verhalten des Bots angepasst oder durch ein anderes Verhalten ersetzt.
@@ -178,17 +182,6 @@ Botprotokoll betrachten
 Bot start/stop
 <- Logout Twitter
 -> Login Twitter
-
-| Bezeichnung      		   | XXX |
-| Zusammenfassung		   | XXX |
-| Akteure  			   | XXX |
-| Vorbedingung 			   | XXX |
-| Ablaufbeschreibung 		   | XXX |
-| Verwendungen (Include-Beziehung) | XXX |
-| Erweiterungen (Extend-Beziehung) | XXX |
-| Alternativen  		   | XXX |
-| Nachbedingung 		   | XXX |
-| Fehlschlag    		   | XXX |
 
 ### 3.4 Struktur und Verhalten des Systems
 > Beschreibung der verschiedenen statischen Strukturaspekte des Systems (Klassen-, Paket-, Komponenten-, Verteilungsdiagramm) sowie Beschreibung der Dynamik, der internen Abläufe und des Zusammenspiels der Systemteile (Aktivität-, Sequenz-, Zustand-, Timingdiagramm).
