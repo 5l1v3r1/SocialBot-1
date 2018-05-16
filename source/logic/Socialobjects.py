@@ -1,12 +1,12 @@
 ##### FOR TESTING #####
 import json
 ##### FOR TESTING #####
-import logic.Bot
-import data.Bothandler
+from logic.Bot import Bot
+from logic.Bothandler import Bothandler
 
 if __name__ == "__main__":
     ##### FOR TESTING #####
-    config = open("./Config.txt", "r")
+    config = open("./logic/Config.txt", "r")
     parsed_json = json.loads(config.read())
     config.close()
 

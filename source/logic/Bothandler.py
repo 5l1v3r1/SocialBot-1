@@ -1,4 +1,4 @@
-import logic.Bot
+from logic.Bot import Bot
 
 
 class Bothandler:
