@@ -67,6 +67,7 @@ Die Bots führen die grundlegensten Aktionen von "Twitter", bestehend aus "Tweet
 Genauer können die Bots einen vorgefertigten Text "Tweeten", ein "Like" auf bestimmte, vorher definierte "Tweets" geben und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren".
 Jede Aktivität des Bots und die Reaktionen anderer Nutzer auf die Aktionen werden in einem Aktivitäten-Log festgehalten.
 Die Reaktionen anderer Nutzer werden abgespeichert und mit der entsprechenden Aktion des Bots in Verbindung gebracht.
+Jeder Bot legt tageweise ein neues Log an, um Übersichtlichkeit zu gewährlesiten.
 Die Daten aus dem Aktivitäten-Log werden in einer Übersicht in der Nutzeroberfläche angezeigt oder können in der Datei im Betriebssystem eingesehen werden.
 Das Verhalten eines Bots kann vom Nutzer getätigt werden und der zugehörige Algorithmus wird in einer externen, austauschbaren Datei gehalten.
 Explizit können die Nutzer die Texte, für die Aktionen des Bots, und die Stichwörter, auf die der Bot reagieren soll, einstellen.
@@ -145,43 +146,27 @@ Für die Beschreibung der typischen Abläufe wird auf das Dokument 'UseCase.svg'
 In dem Dokument werden alle möglichen Aktionen und die Abhängigkeiten zwischen den Aktionen beschrieben.
 
 ### 3.3 Geforderte Funktionen des Produkts
-> Das Produkt wird aus funktionaler Sicht anhand von Anwendungsfällen (Use Cases) beschrieben. 
-Jeder Anwendungsfall wird in Form einer Tabelle spezifiziert:
 
 Die Funktionen im Use Case Diagramm werden genauer beschrieben.
 Der Benutzer hat Zugriff auf die Funktionen "Bot erstellen", "Bot löschen", "Botverhalten anpassen", "Botverhalten betrachten" und "Bot start/stoppen".
 Der zweite Nutzer, durch "Twitter" dargestellt, hat Zugriff auf die Funktionen "Twitter Account erstellen", "Login Twitter" und "Logout Twitter". 
-
-Die Aufgabe "Bot erstellen" die Funktion die sich mit dem Erstellen eines Bots beschäftigt.
+Die Aufgabe "Bot erstellen" umfasst die Funktion, die sich mit dem Erstellen eines Bots beschäftigt.
 Zum Erstellen eines Bots gehört das Anlegen einer App und das Verbinden eines "Twitter"-Accounts mit der entsprechenden App. 
 Die Aufgabe "Botinfo einpflegen" und "Twitter Account anlegen" werden von der Aufgabe "Bot erstellen" inkludiert. 
-Die Aufgabe "Botinfo einflegen" bezeichnet das initiale Festlegen vom Verhalten eines Bots und das Festlegen der Eigenschaften eines Bots.
+Die Aufgabe "Botinfo einpflegen" bezeichnet das initiale Festlegen vom Verhalten eines Bots und das Festlegen der Eigenschaften eines Bots.
 Die Aufgabe "Twitter Account erstellen" beinhaltet das Erstellen eines "Twitter"-Accounts bei der sozialen Plattform "Twitter".
-
-Die Aufgabe
-Bei der Aufgabe "Bot löschen" wird ein bereits erstellter Bot wieder entfernt.
-Das Verhalten des Bots wird durch die Aufgabe "Botverhalten anpassen" dargestellt.
-Bei der Aufgabe wird das momentane Verhalten des Bots angepasst oder durch ein anderes Verhalten ersetzt.
+Die Aufgabe "Bot löschen" enthält die Funktionalität, einen bereits erstellten Bot zu entfernen.
+Das Verhalten eines bereits existenten Bots kann durch die Aufgabe "Botverhalten anpassen" verändert werden.
 Die Aufgabe "Begrenzungen setzen" erweitert die Aufgabe "Botverhalten anpassen".
 Die Aufgabe legt fest, wieviele Aktionen in einer bestimmten Zeit durchgeführt werden können.
-Die Aufgabe "Botprotokoll betrachten" beschreibt die Funktion, das Log des Bots anzuzeigen.
+Der Aufgabe "Begrenzungen setzen" liegt ein formales Beispiel bei, bei dem die Begrenzung auf maximal 20 Tweets pro Tag gesetzt wurde. 
+Die Aufgabe "Botprotokoll betrachten" beschreibt die Funktion, das Log des Bots auszulesen und anzuzeigen.
+Das von einem Bot erstellte Log wird ausgelesen und die Einträge über die ausgeführten Aktivitäten werden angezeigt.
 Die Aufgabe "Export Protokoll" erweitert die Aufgabe "Botprotokoll betrachten", um den Export des Logs eines Bots.
-Bei der Aufgabe "Bot starten/stoppen" handelt es sich um die Funktion einen Bot starten oder stoppen zu lassen.
+Das angelegte Log kann mit der Aufgabe in eine Datei exportiert werden.
+Bei der "Bot Start/Stoppen" handelt es sich um die Funktion, einen bereits erstellten Bot starten/stoppen zu können.
 Die Aufgabe "Login Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die Funktion den Account von Twitter einzuloggen. 
 Die Aufgabe "Logout Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die Funktion den Account von Twitter auszuloggen.
-
-Bot erstellen
--> Botinfo einpflegen 
--> Twitter Account erstellen
-Bot löschen
-Botverhalten anpassen
-Botprotokoll anpassen
-<- Begrenzung setzen
-Botprotokoll betrachten
-<- Export Protokoll
-Bot start/stop
-<- Logout Twitter
--> Login Twitter
 
 ### 3.4 Struktur und Verhalten des Systems
 > Beschreibung der verschiedenen statischen Strukturaspekte des Systems (Klassen-, Paket-, Komponenten-, Verteilungsdiagramm) sowie Beschreibung der Dynamik, der internen Abläufe und des Zusammenspiels der Systemteile (Aktivität-, Sequenz-, Zustand-, Timingdiagramm).
@@ -189,31 +174,30 @@ Bot start/stop
 *Klassendiagramm*
 
 ### 3.5 Schnittstellen des gewünschten System
-> Beschreibung der Benutzerschnittstellen; Beschreibung der Schnittstellen zu anderen Soft- und Hardwaresystemen. Zu berücksichtigende Normen
 
-Der Grundbaustein der Anwendung besteht aus einer inoffizielen "Phyton-Twitter"-API. 
+Der Grundbaustein der Anwendung besteht aus einer inoffizielen "Phyton-Twitter"-API.
 Aufgrundlage dieser "Twitter-Phyton"-API wird die Anwendung aufgebaut.
-Das Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log und weitere zusätzliche Funktionen. 
-Für jeden Bot wird ein neues Log angelegt, das für jeden Bot tageweise gespeichert wird.
-Änderungen am Verhalten des Bots und ausgeführte Aktionen des Bots werden in das entsprechende Log des Bots eingetragen.
-Das Log kann jederzeit im Programm angezeigt und ausgelesen werden oder die entsprechende Datei kann außerhalb des Programms geöffnet werden.
+Das Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log und weitere zusätzliche Funktionen.
 Die Funktionen für den Nutzer werden in einem Nutzer Interface bereit gestellt.
-Das Nutzer Interface stellt die meisten Funktionen für die Nutzer über Buttons zur Verfügung.
-Die möglichen Funktionen, die über einen Button Klick ausführbar sind, beschränken sich auf "Bot erstellen", "Bot löschen", "Botverhalten anpassen", "Botprotokoll betrachten", und "Bot starten/stoppen".
-Um einen neuen Bot anzulegen, wird die Funktion "Bot erstellen" über den entsprechenden Button ausgeführt.
-Anschließend wird der Bot erstellt und das Verhalten für den Bot wird eingestellt.
-Um einen bereits erstellten Bot zu entfernen, wird über den Button "Bot löschen" die entsprechende Funktion ausgeführt.
-Um die bereits erstellten Bots in ihrem Verhalten anzupassen, wird die Funktion, zum Verändern des Verhaltens, über den Button "Botverhalten anpassen" ausgeführt.
-Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, wird der Button "Bot starten/stoppen" verwendet.
+Die möglichen Funktionen für den Nutzer, sind meist über einen Button Klick ausführbar.
+Der Nutzer kann einen neuen Bot über den Button "Bot erstellen" erstellen und anlegen.
+Der Nutzer kann anschließend das Verhalten für den Bot einstellen.
+Um einen bereits erstellten Bot zu entfernen, kann der Nutzer über den Button "Bot löschen" die entsprechende Funktion ausführen.
+Um die bereits erstellten Bots in ihrem Verhalten anzupassen, kann der Nutzer die Funktion, zum Verändern des Verhaltens, über den Button "Botverhalten anpassen" ausführen.
+Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, betätigt der Nutzer den Button "Bot starten/stoppen".
 Der Button startet den ausgewählten Bot oder stoppt ihn wieder, sollte er bereits aktiv sein.
 Nachdem ein Bot in Betrieb genommen wurde und der Bot die gewünschten Aktivitäten ausgeführt hat, kann das Log für den Bot angezeigt werden.
 Das Log kann über den Button "Botprotokoll betrachten" angezeigt werden.
+Die Schnittstellen innerhlab des Programms sind intern gelöst und für den Nutzer nicht relevant.
+Die Schnittstellen können aus dem Klassendiagramm entnommen werden.
 
 ### 3.6 Zu berücksichtigende Normen
 
 Für das Projekt sind keine Normen zu beachten. 
 Die Nutzung der Software ist nur für die private Nutzung innerhalb der Universität Basel ausgelegt.
 Die AGBs von Twitter geben den Rahmen für das Programm vor.
+Die Lizenzen der verwendeten Programme sind den jeweiligen Lizenzverträgen zu entnehmen.
+Grundsätzlich unterliegt die Software keinen Einschränkungen durch Lizenzen. 
 
 Die Software behandelt keine Lebensbedrohlichen Systeme oder kann zur direkten Gefährdung von Menschen führen.
 Die Software ist an die allgemeinen Geschäftsbedingungen des sozialen Netzwerks gebunden.
@@ -229,12 +213,16 @@ Die Entwickler übernehemen keine Haftung für Schäden jeglicher Art.
 
 ### 3.7 Qualitätsanforderungen / sonstige Entwicklerorientierte Anforderungen
 
-Spezifikation von Anforderungen hinsichtlich Performance, Ressourcen, Safety (Schutz und Sicherheit), Datensicherheit, Portabilität, Reliability, Wartung, Wiederverwendung, Usability, Serviceability
+Als Anforderungen an die Qualität sind ein ausreichend kommentierter Source-Code, eine ausgereifte Dokumentation und ein lauffähiges Programm.
+Der geschriebene Source-Code soll übersichtlich und verständlich sein.
+Kommentare im Source-Code sollen die Funktionalität verständlich beschreiben.
+Die Dokumentation soll sowohl für zukünftige Bearbeiter des Projekts, als auch für Laien, die das Produkt benutzen, die Funktion des Programms klar stellen.
+In der Dokumentation werden die geleisteten Funktionen beschrieben und der Produktumfang genau festgehalten.
+Alle weiteren Anforderungen sind dem "User Requirements Specification"-Dokument zu entnehmen.
 
 ## 4. Vorgaben des Auftraggebers an die Projektabwicklung
 
 ### 4.1 Anforderungen an die Realisierung
-> z. B. Angaben über zu verwendende Software, Hardware, Entwicklungsmethode, Termine, Ausbaustufen, zugekaufte Produkte
 
 Als Vorgaben an das Projekt sind die Entwicklungsmethode und der Zeitraum gesetzt.
 Die eingesetzte Entwicklungsmethode ist Kanban.
@@ -242,26 +230,29 @@ Bei Kanban handelt es sich um eine agile Entwicklungsmethode.
 Die Aufgaben werden in Form von Backlog Items festgehalten und durch die einzelnen Bearbeitungsschritte durchgeführt.
 Die Bearbeitungsschritte bestehen aus Product Backlog, Bereit, Entwicklung, Release und Fertig.
 Ein Product Backlog Item wird von einem Mitarbeiter oder von mehreren durch die gesamten Bearbeitungsschritte geführt.
-Die einzelnen Bearbeitungsschritte sind auf eine bestimmte Anzahl an Items beschränkt, die sich maximal in diesem Schritt befinden dürfen.
+Die einzelnen Bearbeitungsschritte sind auf eine bestimmte Anzahl an Items beschränkt, die sich maximal in diesem Bearbeitungsschritt befinden dürfen.
 Es können dynamisch neue Product Backlog Items in das Product Backlog hinzugefügt werden und die Aufgaben können dynamisch bearbeitet werden.
 Es gibt keine zeitliche Vorgabe für die Bearbeitung eines Product Backlog Items, noch eine mindest Anforderung an der Anzahl die ein Mitarbeiter bearbeiten muss.
 Insgesamt wird dadurch Agil entwickelt.
-Als terminliche Vorgabe ist der Zeitraum des Semesters gesetzt.
-Das Projekt soll vom ersten Vorlesungstermin bis zum letzte Vorlesungstermin laufen.
+Als terminliche Vorgabe ist der Zeitraum von 3 Monaten gesetzt.
 Als genauer Zeitraum ist 04.04.2018 bis 13.06.2018 gesetzt.
-Die eingesetzten Versionen der Software werden im folgenden aufgelistet.
-> PyCharm -- PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76
-> Python3 -- Python 3.6.3
-> TwitterAPI -- TwitterAPI 3.0
-> 
-Zur Entwicklung wurden die aufgelisteten Software-Komponenten verwendet.
-Es wurde auf handelsüblichen Computer mit Internetanbindung entwickelt.
+Am 13.06.2018 wird das fertige Produkt an den Kunden ausgeliefert.
+Die Entwicklung wurde auf handelsüblichen Computern mit Internetanbindung getätigt.
+Die eingesetzten Computer bei der Entwicklung laufen auf den Betriebssystemen "Ubuntu" und "Windows".  
 Aus den Forderungen geht hervor, dass für die Umsetzung keine zusätzlichen Software-Komponenten erkauft wurden.
 Die eingesetzten Software-Komponenten sind nicht kostenpflichtig und frei verfügbar.
+Zur Entwicklung wurden die aufgelisteten Software-Komponenten verwendet.
+Die eingesetzten Versionen der Software werden im folgenden aufgelistet.
+- Python-Twitter 3.4.1
+- Pytz 2018.3
+- Fuzzywuzzy 0.16.0
+- Pytest 3.5.1
+- Python 3.6.3
+- PyQT 5.10.1
 
+> PyCharm -- PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76
 
 ### 4.2 Abnahmebedingungen
-> Bedingungen des Auftraggebers für die Abnahme, wogegen?, wie?, welche Unterlagen
 
 Für die Abnahme des Kunden sind eine Dokumentation und eine Anleitung, zur Bedienung des Programms, unablässlich.
 Die Dokumentation umfasst die geleistete Arbeit und die umgesetzten Funktionen.
@@ -269,22 +260,24 @@ In der Dokumentation müssen zusätzlich die Anforderungen und die Probleme fest
 Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die Bedienung der Funktionalitäten des Programms umfassen.
 
 ### 4.3 Fertige und zugekaufte Komponenten
-> z. B. Standardsoftware, wiederverwendete eigene Software, Software des Auftraggebers, Betriebssysteme, ...
 
 Für die Entwickung wurden keine zusätzlichen Komponenten gekauft.
 Die zur Enwticklung verwendeten Komponenten sind kostenlose Lösungen und für den Nutzer frei zugänglich.
 Die verwendeten Software-Komponenten sind unter "4.1 Anforderungen an die Realisierung" aufgeführt.
 Die Hardware-Anforderungen sind auf einen handelsüblichen Computer mit Internetanbindung beschränkt.
 Durch das Betriebssystem wird keine Einschränkung erzielt.
+Die Funktionalität der Software basiert auf dem eigens-entwickelten Programm "Python-Twitter-Plus".
+"Python-Twitter-Plus" unterliegt den dort vereinbarten Nutzungsbedingungen und ist für dieses Programm in der Nutzung freigegeben.
 
 ### 4.4 Lieferbedingungen
-> z.B. Lieferplan mit Terminen, Form der Lieferungen, geforderte Dokumentation
 
 Die Lieferungen werden in Form von regelmäßigen Lieferungen durchgeführt.
-Der aktuelle Stand der software ist durchgängig auf dem angegebenen Repository auf "GitHub" für die Nutzer verfügbar.
-Sofern die Nutzer den Stand kontrollieren wollen, besteht jederzeit die Möglichkeit die Software herunterzuladen.
-Andernfalls wird mit Abschluss des Projekts, das Endprodukt mit allen vereinbarten Komponenten an die Kunden ausgelifert.
+Der aktuelle Stand der Software ist durchgängig auf einem Repository auf "GitHub" für die Kunden verfügbar.
+Sofern die Kunden den Stand kontrollieren wollen, besteht jederzeit die Möglichkeit die Software herunterzuladen.
+Andernfalls wird mit Abschluss des Projekts, das Endprodukt mit allen vereinbarten Komponenten an die Kunden ausgeliefert.
 Der endgültig angestrebte Lieferzeitpunkt ist auf den 13.06.2018 angesetzt.
+Das Programm wird auf einer gebrannten CD ausgeliefert mit allen benötigten Komponenten und der Dokumentation.
+Der Lieferumfang ist unter "3.1 Lieferumfang" beschrieben.
 
 ### 4.5 Gewährleistung
 
@@ -295,30 +288,29 @@ Es werden nach der Auslieferung keine Funktionen nachgeliefert oder das Produkt 
 Für die Fehlerfreie Funktionsfähigkeit wird nach Auslieferung nicht gesorgt, ebenso wenig wie für die Funtkionsfähigkeit der Software mit anderen Version der benutzen Software-Komponenten.
 Auch die Funktionsfähigkeit für das soziale Netzwerk "Twitter" wird für zukünftige Versionen nicht gewährleistet.
 Der ausgelieferte Stand entspricht dem gewährleisteten Stand der Software.
-Da dies ein Forschungsprojekt ist, entfällt jegliche Gewährleistung und Wartung.
 
 ## 5. Durchführbarkeitsuntersuchungen
-> Markt- und Kundenanalyse, Durchführbarkeitsanalyse,...
 
 Beim ersten Ansatz wurde als soziales Netzwerk "FaceBook" angestrebt.
 Bei der Abstimmung der umsetzbaren Funktionalität gegenüber den Anforderungen wurde festgestellt, dass die Umsetzung nahezu unmöglich ist.
 Durch die strengen Richtlinien von "FaceBook" werden die meisten Funktionen für ein externes Programm gesperrt.
 Um die Funktionen umsetzen zu können, würde ein enormer Mehraufwand notwendig werden und die Zukunftsfähigkeit wird stark eingeschränkt.
 Die Umsetung ist abhängig von der momentanen Version von "FaceBook" und den damit eingeführten Richtlinien.
-Die Richtlinien haben in den letzen Monaten immer mehr und mehr Funktionen von "FaceBook" für den externen Gebrauch gesperrt und mit der momentanen Debatte (Stand: 18.04.2018) werden weitere Funktionen gesperrt und gesperrt werden.
+Die Richtlinien haben in den letzen Monaten immer mehr und mehr Funktionen von "FaceBook" für den externen Gebrauch gesperrt.
+Auf Grund der momentanen Debatte (Stand: 18.04.2018) sind weitere Funktionen gesperrt und werden in Zukunft gesperrt werden.
 Durch die eingeschränkte Funktionalität können den Kunden nicht die geforderten Anforderungen garantiert werden.
-Um dem Kunden das beste Gesamtergebnis zu gewährlsieten wird auf die soziale Plattform "Twitter" gewechselt.
+Um dem Kunden das beste Gesamtergebnis zu gewährleisten wird auf die soziale Plattform "Twitter" gewechselt.
 Die Kunden sind  nicht explizit an ein soziales Netzwerk gebunden, da der Fokus auf der Interaktion mit anderen Nutzern in einem beliebigen sozialen Netzwerk liegt.
 Bei genauerer Analyse der Funktionalitäten gegenüber den Anforderungen hat sich "Twitter" als beste Alternative heraus kristallisiert.
-Das Projekt wird auf das soziale Netzwerk "Twitter" umgestellt und die bisherige Arbeit wird überarbeitet und an die Gegebenheiten von "Twitter" angepasst.
+Das Projekt wird auf das soziale Netzwerk "Twitter" umgestellt und die bisherige Arbeit wird überarbeitet und an die Gegebenheiten von "Twitter" angepasst.("1.2 Gültigkeit des Dokuments")
 
-## 6. Bewertung der Anforderungen
-> Falls bei der Beschreibung der funktionalen Eigenschaften des Produkts noch nicht erfolgt: Klassifizierung, Priorisierung, Auswahl (Paketierung) mit Auswahlbegründungen
+## 6. Verpflichtungen des Auftaggebers
 
-## 7. Verpflichtungen des Auftaggebers
-> z.B.: gestellte Hardware / Software, Schulung von Entwicklern oder von Auftraggeberpersonal, Ansprechpartner, zur Verfügung stellen von Räumen, Rechenzentrum, Reaktionszeiten des Auftraggebers auf Anfragen
-
-Der Auftraggeber verpflichtet sich, mit den aufkommenden Anforderungen zeitnah zu den Entwicklern zu kommen.
+Der Auftraggeber verpflichtet sich, aufkommende Anforderungen und Änderungsanforderungen zeitnah mit den Entwicklern zu klären.
 Die Auftraggeber unterliegen der Verantwortung, das Projekt mit ihren Wünschen voranzutreiben.
 Die gewünschten Anforderungen werden an die Entwickler weitergetragen und von den Entwicklern in den "User Requirements Specification" niedergeschrieben.
 Die Auftraggeber verpflichten sich, die in den "User Requirements Specification" nidergeschriebenen Anforderungen, duchzulesen und zu akzeptieren.
+Änderungen der Anforderungen werden von den Kunden an die Entwickler weitergegeben oder nicht weiter verfolgt.
+Der Auftraggeber verpflichtet sich, die Auftragnehmer über jede Änderung in den Anforderungen oder Gegebenheiten zu informieren.
+Die Auftraggeber erscheinen an den festgelegten Terminen zu den Gesprächen mit den Auftragsnehmern.
+Die Auftraggeber stellen weder Hardware, noch Software oder Monetäre Mittel, Räumlichkeiten oder Schulungen für die Auftragnehmer.
