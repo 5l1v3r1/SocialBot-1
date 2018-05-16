@@ -42,7 +42,8 @@
 - 
 
 ## 16 05. 2018
-- 
+- EULA erstellt
+- URS fertig spezifiziert
 
 
 
