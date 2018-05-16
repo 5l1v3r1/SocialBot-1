@@ -1,7 +1,9 @@
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import twitter
 import random
 import time
-from fuzzywuzzy import process
+from fuzzywuzzy import process, fuzz
 from src.threads.thread_management import ThreadManagement
 from src.logger import Logger
 from src.helper import Helper
@@ -48,12 +50,22 @@ class Twitter:
         self.__thread_management = ThreadManagement()
 
         # min and max response times for tweeting at statuses out of a stream (in secs)
+        # Is also used for answer_my_mentions.
         self.min_response_time = 10
         self.max_response_time = 60
 
+        # Time interval in which the mentions refresh when using answer_my_mentions
+        self.refresh_mentions_time = 300
+
+        # min and max delay to follow a user when using follow_by_category
         self.min_follow_time = 120
         self.max_follow_time = 600
+
         self.__categories = []
+
+        self.__user = self.__API.VerifyCredentials()
+        if self.__user:
+            print('Initialize...')
 
     """
     LOG:
@@ -147,11 +159,11 @@ class Twitter:
 
         return resp
 
-    def reply(self, status_id, message):
+    def reply(self, status_id, text):
         """
         Reply to a status with a message.
         :param status_id:
-        :param message:
+        :param text:
         :return:
         """
 
@@ -159,16 +171,16 @@ class Twitter:
             raise ValueError('Missing a status_id')
         elif type(status_id) != str and type(status_id) != int:
             raise ValueError('Status_id is neither type str or int. Given: ', type(status_id))
-        elif not message:
+        elif not text:
             raise ValueError('Missing a tweet text')
-        elif type(message) != str:
-            raise ValueError('The tweet text has to be of type str. Given:', type(message))
+        elif type(text) != str:
+            raise ValueError('The tweet text has to be of type str. Given:', type(text))
 
-        resp = self.__API.PostUpdate(message, in_reply_to_status_id=status_id)
+        resp = self.__API.PostUpdate(text, in_reply_to_status_id=status_id)
 
         self.__log({
             'action': 'Replied to a status.',
-            'message': message,
+            'message': text,
             'status_id': str(status_id),
             'response': str(resp)
         })
@@ -427,6 +439,21 @@ class Twitter:
 
         return resp
 
+    def get_my_dms(self):
+        """
+        Gets the most recent direct messages send to the authenticated user.
+        :return:
+        """
+
+        resp = self.__API.GetDirectMessages()
+
+        self.__log({
+            'action': 'Got direct messages of the authenticated user.',
+            'response': str(resp)
+        })
+
+        return resp
+
     """
     STREAM FUNCTIONS:
     """
@@ -594,7 +621,72 @@ class Twitter:
         self.__categories = self.__API.GetUserSuggestionCategories()
 
         self.__thread_management.add_new_thread(f=self.__manage_follow_category,
-                                                       args=(category, delay))
+                                                args=(category, delay))
+
+        self.__log({
+            'action': 'Followed people in a category',
+            'category': str(category),
+            'delay': str(delay)
+        })
+
+    def answer_my_mentions(self, answers):
+        """
+        Starts the __reply_to_mentions thread.
+        Prepares it's arguments and splits them into different lists.
+        :param answers:
+        :return:
+        """
+
+        if not answers:
+            raise ValueError('Missing answers.')
+        elif answers and type(answers) != list:
+            raise ValueError('The argument answers has to be of type list.')
+
+        exactly = []
+        match = []
+        tags = []
+
+        for a in answers:
+            keys = a.keys()
+            if 'exactly' not in keys and 'match' not in keys and 'tags' not in keys:
+                raise ValueError('The answers dict is missing either the exactly, match or tags key.', str(a))
+            elif 'exactly' in keys and not a['exactly']:
+                raise ValueError('Found exactly key, but it has no content.', str(a))
+            elif 'match' in keys and not a['match']:
+                raise ValueError('Found match key, but it has no content.', str(a))
+            elif 'tags' in keys:
+                if len(a['tags']) == 0:
+                    raise ValueError('Found tags key, but it has no content.', str(a))
+                else:
+                    for item in a['tags']:
+                        if not item or type(item) != str:
+                            raise ValueError('Tags key, has no or wrong content (has to be str).', str(a))
+            elif 'answer' not in keys or not a['answer']:
+                raise ValueError('Missing a answer key.', str(a))
+            elif 'match' in keys and 'accuracy' not in keys:
+                raise ValueError('Found match key, missing a accuracy key.', str(a))
+            elif 'accuracy' in keys and (not a['accuracy'] or a['accuracy'] > 1):
+                raise ValueError('Found accuracy key, but it has no or wrong content (> 1).', str(a))
+            elif 'options' in keys:
+                opt_keys = a['options'].keys()
+                if 'case_sensitive' not in opt_keys:
+                    raise ValueError('Unknown key found in options.', str(opt_keys), str(a))
+                elif type(a['options']['case_sensitive']) != bool:
+                    raise ValueError('Case_sensitive value has to be of type bool.', str(a))
+
+            if 'exactly' in keys and 'answer' in keys:
+                exactly.append(a)
+            elif 'match' in keys and 'accuracy' in keys and 'answer' in keys:
+                match.append(a)
+            elif 'tags' in keys and len(a['tags']) > 0 and 'answer' in keys:
+                tags.append(a)
+
+        self.__thread_management.add_new_thread(f=self.__reply_to_mentions,
+                                                args=(exactly, match, tags))
+        self.__log({
+            'action': 'Started a mention listener.',
+            'answers': str(answers)
+        })
 
     """
     TWEET THREAD FUNCTIONS:
@@ -614,7 +706,7 @@ class Twitter:
         self.__log({
             'action': 'Tweeted at juncture',
             'text': text,
-            'sleep_duration': sleep_duration,
+            'sleep_duration': str(sleep_duration),
             'response': str(resp)
         })
 
@@ -667,6 +759,102 @@ class Twitter:
         })
 
         return reply_results
+
+    def __reply_to_mentions(self, exactly_list, match_list, tags_list):
+        """
+        Gets all mentions and answers to mentions that were created after the start of the method.
+        The answers are specified by different objects inside of the answers list.
+        There are 3 different cases that a mention could match.
+        1:
+            A mention contains exactly the text specified in a exactly attribute.
+        2:
+            A mention matches with a text specified in a match attribute, by more or exactly the
+            percentage specified in the accuracy attribute.
+        3:
+            A mention contains all words specified in the tags attribute.
+
+        If any of the above cases are true, the answer specified in the matching answers object is
+        send as a reply to the mention.
+
+        :param exactly_list:
+        :param match_list:
+        :param tags_list:
+        :return:
+        """
+        started_at = Helper.get_utc_timestamp_now()
+        found_answer = ''
+        answered_mentions = []
+
+        while True:
+            time.sleep(self.refresh_mentions_time)
+            new_mentions = self.get_my_mentions()
+            matched_answer_obj = {}
+
+            for mention in new_mentions:
+                mention.text = mention.text.replace('@' + self.__user.screen_name + ' ', '')
+                mention_time = Helper.get_time_stamp_from_twitter_date(mention.created_at)
+                if mention_time > started_at and mention.id not in answered_mentions:
+                    for entry in exactly_list:
+                        if ('options' in entry and 'case_sensitive' in entry['options']
+                                and entry['options']['case_sensitive']):
+                            if mention.text == entry['exactly']:
+                                found_answer = entry['answer']
+                                matched_answer_obj = entry
+                                break
+                        else:
+                            if mention.text.lower() == entry['exactly'].lower():
+                                found_answer = entry['answer']
+                                matched_answer_obj = entry
+                                break
+
+                    if not found_answer:
+                        for entry in match_list:
+                            if ('options' in entry and 'case_sensitive' in entry['options'] and
+                                    entry['options']['case_sensitive']):
+                                if (fuzz.ratio(mention.text, entry['match']) / 100) > entry['accuracy']:
+                                    found_answer = entry['answer']
+                                    matched_answer_obj = entry
+                                    break
+                            else:
+                                if ((fuzz.ratio(mention.text.lower(), entry['match'].lower()) / 100) >
+                                        entry['accuracy']):
+                                    found_answer = entry['answer']
+                                    matched_answer_obj = entry
+                                    break
+
+                    if not found_answer:
+                        for entry in tags_list:
+                            every_tag = True
+                            if ('options' in entry and 'case_sensitive' in entry['options']
+                                    and entry['options']['case_sensitive']):
+                                for tag in entry['tags']:
+                                    if tag not in mention.text:
+                                        every_tag = False
+                                        break
+                            else:
+                                for tag in entry['tags']:
+                                    if tag.lower() not in mention.text.lower():
+                                        every_tag = False
+                                        break
+                            if every_tag:
+                                found_answer = entry['answer']
+                                matched_answer_obj = entry
+                                break
+
+                    if found_answer:
+                        resp = self.reply(status_id=mention.id, text=found_answer)
+                        print(resp)
+                        self.__log({
+                            'action': 'Answered a mention.',
+                            'matched_answer_obj': str(matched_answer_obj),
+                            'mention': str(mention),
+                            'found_answer': found_answer,
+                            'response': str(resp)
+                        })
+                        answered_mentions.append(mention.id)
+                        found_answer = ''
+                    else:
+                        print('Could not find an answer for the mention:', mention)
 
     """
     FOLLOW THREAD FUNCTIONS:

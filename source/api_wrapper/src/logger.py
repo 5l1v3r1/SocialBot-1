@@ -38,7 +38,7 @@ class Logger:
         self.__logFile = path + '/' + name + '.txt'
 
         file = open(self.__logFile, 'a')
-        file.write('Log File for SocialBot created on ' + str(datetime.datetime.now()).split('.')[0] + '.\n')
+        file.write('Log File for Python-Twitter-Plus. Created on ' + str(datetime.datetime.now()).split('.')[0] + '.\n')
         file.write('####' + '\n')
         file.close()
 

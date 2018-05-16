@@ -1,6 +1,9 @@
+##### FOR TESTING #####
+import json
+##### FOR TESTING #####
 import threading
 import datetime
-from api_wrapper.twitter import Twitter
+from api_wrapper.src.twitter import Twitter
 
 class Bothandler:
     def __init__(self):
@@ -16,36 +19,39 @@ class Bothandler:
         except TypeError as err:
             raise
     def delete_bot(self, obj):
-        try:
-            if type(obj) is Bot:
-                self.__bot_list.append(obj)
-            else:
-                raise TypeError(str(obj) + ": " + "This Object isn't from type Bot")
-        except TypeError as err:
-            raise
+        if type(obj) is Bot:
+            self.__bot_list.append(obj)
+        else:
+            raise TypeError(str(obj) + ": " + "This Object isn't from type Bot")
     def load_config(self):
         pass
 
-class Human:
+class Human(object):
     def __init__(self, twitterobj):
         self.twitterobj = twitterobj
     def get_direct_messages(self):
-        pass
+        self.twitterobj.get_my_dms()
     def get_timeline(self):
         self.twitterobj.get_tweets()
+    def get_retweets(self):
+        self.twitterobj.get_my_retweets()
+    def get_mention(self):
+        self.twitterobj.get_my_mentions()
+    def get_followers(self, username=None, user_id=None, page=-1):
+        self.twitterobj.get_followers(username, user_id, page)
     def create_Account(self):
         #vielleicht nicht möglich
         pass
     def post_tweet(self, message):
         self.twitterobj.tweet(text=message)
-    def post_Retweet(self):
-        pass
+    def post_Retweet(self, tweet_id):
+        self.twitterobj.retweet(tweet_id)
     def like_tweet(self, status=None, status_id=None):
         self.twitterobj.favor(status=status, status_id=status_id)
-    def follow_User(self):
-        pass
-    def send_direct_message(self):
-        pass
+    def follow_User(self, username=None, user_id=None):
+        self.twitterobj.follow(username, user_id)
+    def send_direct_message(self, username=None, user_id=None, message=None):
+        self.twitterobj.send_dm(username, user_id, message)
     def search_tweet(self, term):
         return self.twitterobj.search_tweet(term=term)
     def search_user(self, term):
@@ -59,9 +65,12 @@ class Bot(Human, threading.Thread):
         self.__name = iname
         self.__status = -1
         self.__logbook = Logbook()
-        print("Created Bot " + self.name)
+        print("Created Bot: " + self.__name)
+
     def get_run_status(self):
         return self.__status
+    def get_name(self):
+        return self.__name
     def react_to_direct_message(self):
         print("Message")
     def react_to_tweet(self):
@@ -71,7 +80,7 @@ class Bot(Human, threading.Thread):
     def react_to_timeline(self):
         pass
     def run(self):
-        print(self.name + " is running...")
+        print(self.__name + " is running...")
         self.__status=0
 
 
@@ -103,13 +112,22 @@ class Log:
 
 
 if __name__ == "__main__":
+    ##### FOR TESTING #####
+    config = open("./Config.txt", "r")
+    parsed_json = json.loads(config.read())
+    config.close()
+
     access_info = {
-        'consumer_key': '',
-        'consumer_secret': '',
-        'access_token': '',
-        'access_token_secret': ''
+        'consumer_key': parsed_json["consumer_key"],
+        'consumer_secret': parsed_json["consumer_secret"],
+        'access_token': parsed_json["access_token"],
+        'access_token_secret': parsed_json["access_token_secret"]
     }
 
+    #parsed_json = json.loads(json_string)
+
     bothandler = Bothandler()
-    bot = Bot("Bot1", access_info)
+    bot = Bot("Bot 1", access_info)
     bothandler.add_bot(bot)
+    #bothandler.add_bot(bot)
+    ##### FOR TESTING #####
