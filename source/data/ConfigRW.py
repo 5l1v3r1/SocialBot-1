@@ -1,6 +1,5 @@
 import xml.etree.ElementTree
 import pickle
-import io
 
 
 class configRW:
@@ -37,8 +36,8 @@ class configRW:
         """
         Set the constomer_token and the customer_secret.
 
-        :param ck:
-        :param cs:
+        param ck: customer key
+        param cs: cistomer secret
         """
         self.__root.set('consumer_key', ck)
         self.__root.set('consumer_secret', cs)
