@@ -51,8 +51,8 @@ venv
 
 # Log files #
 #############
-Log.txt
+log.txt
 
 # Config files #
 ################
-Config.txt
+config.xml
