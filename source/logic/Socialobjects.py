@@ -22,5 +22,11 @@ if __name__ == "__main__":
     bothandler = Bothandler()
     bot = Bot("Bot 1", access_info)
     bothandler.add_bot(bot)
+    #test = bot.post_tweet("sdf Again")
+    #print(test)
+    print(bot.get_timeline())
+    #test2 = bot.like_tweet("996761793681854465")
+    #print(test2)
+    #print(type(test2))
     #bothandler.add_bot(bot)
     ##### FOR TESTING #####
