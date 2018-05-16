@@ -1,69 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="980" version="1.1" width="1468" xmlns="http://www.w3.org/2000/svg">
-<polygon fill="#ffffff" points="14,174 924,174 924,197 973,197 973,645 14,645 14,174" stroke="#ffffff" stroke-width="1"/>
-<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="174"/>
-<text font-family="Dialog" font-size="12" x="19" y="187">
+<svg height="980" version="1.1" width="1452" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#ffffff" points="22,182 932,182 932,205 981,205 981,653 22,653 22,182" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="22" y="182"/>
+<text font-family="Dialog" font-size="12" x="27" y="195">
 Logic</text>
-<rect fill="none" height="448" stroke="#000000" stroke-width="1" width="959" x="14" y="197"/>
+<rect fill="none" height="448" stroke="#000000" stroke-width="1" width="959" x="22" y="205"/>
 <polygon fill="#ffffff" points="14,702 924,702 924,725 973,725 973,965 14,965 14,702" stroke="#ffffff" stroke-width="1"/>
 <rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="702"/>
 <text font-family="Dialog" font-size="12" x="19" y="715">
 Data</text>
 <rect fill="none" height="240" stroke="#000000" stroke-width="1" width="959" x="14" y="725"/>
-<rect fill="#ffffff" height="264" stroke="#ffffff" stroke-width="1" width="181" x="382" y="334"/>
-<rect fill="none" height="264" stroke="#000000" stroke-width="1" width="181" x="382" y="334"/>
-<text font-family="Dialog" font-size="12" x="462" y="347">
+<rect fill="#ffffff" height="312" stroke="#ffffff" stroke-width="1" width="184" x="374" y="286"/>
+<rect fill="none" height="312" stroke="#000000" stroke-width="1" width="184" x="374" y="286"/>
+<text font-family="Dialog" font-size="12" x="455" y="299">
 Bot</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="181" x="382" y="357"/>
-<text font-family="Dialog" font-size="12" x="386" y="371">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="184" x="374" y="309"/>
+<text font-family="Dialog" font-size="12" x="378" y="323">
 name : String</text>
-<text font-family="Dialog" font-size="12" x="386" y="387">
+<text font-family="Dialog" font-size="12" x="378" y="339">
 benutzer : Human</text>
-<text font-family="Dialog" font-size="12" x="386" y="403">
+<text font-family="Dialog" font-size="12" x="378" y="355">
 logbuch : Logbook</text>
-<text font-family="Dialog" font-size="12" x="386" y="419">
+<text font-family="Dialog" font-size="12" x="378" y="371">
 status : int</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="181" x="382" y="429"/>
-<text font-family="Dialog" font-size="12" x="386" y="443">
-postTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="459">
-postRetweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="475">
-likeTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="491">
-followUser() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="507">
-sendDirectMessage() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="523">
-searchTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="539">
-getDirectMessages() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="555">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="184" x="374" y="397"/>
+<text font-family="Dialog" font-size="12" x="378" y="411">
+__init__()</text>
+<text font-family="Dialog" font-size="12" x="378" y="427">
 getTimeline() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="571">
-runBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="386" y="587">
+<text font-family="Dialog" font-size="12" x="378" y="443">
+getDirectMessages() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="459">
+postTweet() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="475">
+postRetweet() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="491">
+likeTweet() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="507">
+followUser() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="523">
+sendDirectMessage() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="539">
+searchTweet() : bool</text>
+<text font-family="Dialog" font-size="12" x="378" y="555">
 createAccount() : ApiObject</text>
-<rect fill="#ffffff" height="146" stroke="#ffffff" stroke-width="1" width="120" x="102" y="294"/>
-<rect fill="none" height="146" stroke="#000000" stroke-width="1" width="120" x="102" y="294"/>
-<text font-family="Dialog" font-size="12" x="127" y="307">
+<text font-family="Dialog" font-size="12" x="378" y="571">
+runBot() : bool</text>
+<rect fill="#ffffff" height="168" stroke="#ffffff" stroke-width="1" width="124" x="110" y="302"/>
+<rect fill="none" height="168" stroke="#000000" stroke-width="1" width="124" x="110" y="302"/>
+<text font-family="Dialog" font-size="12" x="137" y="315">
 Bothandler</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="120" x="102" y="317"/>
-<text font-family="Dialog" font-size="12" x="106" y="331">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="124" x="110" y="325"/>
+<text font-family="Dialog" font-size="12" x="114" y="339">
 botList : List</text>
-<text font-family="Dialog" font-size="12" x="106" y="347">
+<text font-family="Dialog" font-size="12" x="114" y="355">
 configPath : String</text>
-<text font-family="Dialog" font-size="12" x="106" y="363">
+<text font-family="Dialog" font-size="12" x="114" y="371">
 config : Object</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="120" x="102" y="367"/>
-<text font-family="Dialog" font-size="12" x="106" y="381">
+<text font-family="Dialog" font-size="12" x="114" y="387">
+newAttr : Integer</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="124" x="110" y="397"/>
+<text font-family="Dialog" font-size="12" x="114" y="411">
 getBots() : List</text>
-<text font-family="Dialog" font-size="12" x="106" y="397">
+<text font-family="Dialog" font-size="12" x="114" y="427">
 addBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="106" y="413">
+<text font-family="Dialog" font-size="12" x="114" y="443">
 deleteBot() : bool</text>
-<text font-family="Dialog" font-size="12" x="106" y="429">
+<text font-family="Dialog" font-size="12" x="114" y="459">
 loadConfig() : bool</text>
 <rect fill="#ffffff" height="152" stroke="#ffffff" stroke-width="1" width="144" x="702" y="766"/>
 <rect fill="none" height="152" stroke="#000000" stroke-width="1" width="144" x="702" y="766"/>
@@ -85,33 +89,35 @@ getTime() : Date</text>
 getTyp() : String</text>
 <text font-family="Dialog" font-size="12" x="706" y="907">
 getMessage() : String</text>
-<rect fill="#ffffff" height="267" stroke="#ffffff" stroke-width="1" width="198" x="622" y="222"/>
-<rect fill="none" height="267" stroke="#000000" stroke-width="1" width="198" x="622" y="222"/>
-<text font-family="Dialog" font-size="12" x="699" y="235">
+<rect fill="#ffffff" height="232" stroke="#ffffff" stroke-width="1" width="198" x="630" y="230"/>
+<rect fill="none" height="232" stroke="#000000" stroke-width="1" width="198" x="630" y="230"/>
+<text font-family="Dialog" font-size="12" x="707" y="243">
 Human</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="622" y="245"/>
-<text font-family="Dialog" font-size="12" x="626" y="259">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="630" y="253"/>
+<text font-family="Dialog" font-size="12" x="634" y="267">
 firstname : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="275">
+<text font-family="Dialog" font-size="12" x="634" y="283">
 lastname : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="291">
+<text font-family="Dialog" font-size="12" x="634" y="299">
 email : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="307">
+<text font-family="Dialog" font-size="12" x="634" y="315">
 tAccount : ApiObject</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="622" y="342"/>
-<text font-family="Dialog" font-size="12" x="626" y="356">
+<text font-family="Dialog" font-size="12" x="634" y="331">
+newAttr : Integer</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="198" x="630" y="341"/>
+<text font-family="Dialog" font-size="12" x="634" y="355">
 getFirstname() : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="372">
+<text font-family="Dialog" font-size="12" x="634" y="371">
 getLastname() : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="388">
+<text font-family="Dialog" font-size="12" x="634" y="387">
 getEmail() : String</text>
-<text font-family="Dialog" font-size="12" x="626" y="404">
+<text font-family="Dialog" font-size="12" x="634" y="403">
 reactToDirectMessage() : bool</text>
-<text font-family="Dialog" font-size="12" x="626" y="420">
+<text font-family="Dialog" font-size="12" x="634" y="419">
 reactToTweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="626" y="436">
+<text font-family="Dialog" font-size="12" x="634" y="435">
 reactToRetweet() : bool</text>
-<text font-family="Dialog" font-size="12" x="626" y="452">
+<text font-family="Dialog" font-size="12" x="634" y="451">
 reactToTimeline() : bool</text>
 <rect fill="#ffffff" height="104" stroke="#ffffff" stroke-width="1" width="144" x="406" y="798"/>
 <rect fill="none" height="104" stroke="#000000" stroke-width="1" width="144" x="406" y="798"/>
@@ -132,27 +138,77 @@ searchLog() : Log</text>
 1</text>
 <text font-family="Dialog" font-size="12" x="673" y="821">
 n</text>
-<polyline fill="none" points="221,358 382,358" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="240" y="373">
+<polyline fill="none" points="233,366 374,366" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="252" y="381">
 1</text>
-<text font-family="Dialog" font-size="12" x="353" y="373">
+<text font-family="Dialog" font-size="12" x="345" y="381">
 n</text>
 <polyline fill="none" points="414,597 414,798" stroke="#000000" stroke-width="1"/>
 <text font-family="Dialog" font-size="12" x="390" y="617">
 1</text>
 <text font-family="Dialog" font-size="12" x="390" y="770">
 1</text>
-<polyline fill="none" points="494,334 494,278 622,278" stroke="#000000" stroke-width="1"/>
-<polygon fill="#ffffff" points="622,278 610,285 610,271" stroke="#ffffff" stroke-width="1"/>
-<polygon fill="none" points="622,278 610,285 610,271" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="557,318 630,318" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="630,318 618,325 618,311" stroke="#ffffff" stroke-width="1"/>
+<polygon fill="none" points="630,318 618,325 618,311" stroke="#000000" stroke-width="1"/>
 <polygon fill="#ffffff" points="14,14 924,14 924,37 973,37 973,149 14,149 14,14" stroke="#ffffff" stroke-width="1"/>
 <rect fill="none" height="23" stroke="#000000" stroke-width="1" width="910" x="14" y="14"/>
 <text font-family="Dialog" font-size="12" x="19" y="27">
 GUI</text>
 <rect fill="none" height="112" stroke="#000000" stroke-width="1" width="959" x="14" y="37"/>
-<polygon fill="#ffffff" points="1038,318 1404,318 1404,341 1453,341 1453,517 1038,517 1038,318" stroke="#ffffff" stroke-width="1"/>
-<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="366" x="1038" y="318"/>
-<text font-family="Dialog" font-size="12" x="1043" y="331">
+<polygon fill="#ffffff" points="1030,174 1388,174 1388,197 1437,197 1437,637 1030,637 1030,174" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="358" x="1030" y="174"/>
+<text font-family="Dialog" font-size="12" x="1035" y="187">
 API Wrapper</text>
-<rect fill="none" height="176" stroke="#000000" stroke-width="1" width="415" x="1038" y="341"/>
+<rect fill="none" height="440" stroke="#000000" stroke-width="1" width="407" x="1030" y="197"/>
+<rect fill="#ffffff" height="200" stroke="#ffffff" stroke-width="1" width="223" x="78" y="750"/>
+<rect fill="none" height="200" stroke="#000000" stroke-width="1" width="223" x="78" y="750"/>
+<text font-family="Dialog" font-size="12" x="160" y="763">
+ConfigRW</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="223" x="78" y="773"/>
+<text font-family="Dialog" font-size="12" x="82" y="787">
+__file : FileDescriptor</text>
+<text font-family="Dialog" font-size="12" x="82" y="803">
+__xmltree : XMLTree</text>
+<text font-family="Dialog" font-size="12" x="82" y="819">
+__root : XMLRoot</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="223" x="78" y="837"/>
+<text font-family="Dialog" font-size="12" x="82" y="851">
+__init__(file) : void</text>
+<text font-family="Dialog" font-size="12" x="82" y="867">
+parseConfig() : void</text>
+<text font-family="Dialog" font-size="12" x="82" y="883">
+setCustomerTokens(ck,cs) : token</text>
+<text font-family="Dialog" font-size="12" x="82" y="899">
+getBots() : getProp</text>
+<text font-family="Dialog" font-size="12" x="82" y="915">
+addBot(id,object) : void</text>
+<text font-family="Dialog" font-size="12" x="82" y="931">
+writeConfig() : void</text>
+<rect fill="#ffffff" height="200" stroke="#ffffff" stroke-width="1" width="313" x="1102" y="318"/>
+<rect fill="none" height="200" stroke="#000000" stroke-width="1" width="313" x="1102" y="318"/>
+<text font-family="Dialog" font-size="12" x="1237" y="331">
+Twitter</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="313" x="1102" y="341"/>
+<text font-family="Dialog" font-size="12" x="1106" y="355">
+__API : Api</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="313" x="1102" y="365"/>
+<text font-family="Dialog" font-size="12" x="1106" y="379">
+__init__(accessInfo : associativeArray) : void</text>
+<text font-family="Dialog" font-size="12" x="1106" y="395">
+development_mode() : void</text>
+<text font-family="Dialog" font-size="12" x="1106" y="411">
+acitivate_log(path : String,name : String) : void</text>
+<text font-family="Dialog" font-size="12" x="1106" y="427">
+__log(message : String) : void</text>
+<text font-family="Dialog" font-size="12" x="1106" y="443">
+get_api_obj() : Api</text>
+<text font-family="Dialog" font-size="12" x="1106" y="459">
+tweet(text : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="1106" y="475">
+retweet(tweet_id : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="1106" y="491">
+reply() : Status</text>
+<text font-family="Dialog" font-size="12" x="1106" y="507">
+favor() : Status</text>
 </svg>
