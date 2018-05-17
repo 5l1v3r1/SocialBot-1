@@ -6,51 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>795</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Socialbot</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QTabWidget" name="protokoll">
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="browser">
-       <property name="accessibleName">
-        <string/>
-       </property>
-       <attribute name="title">
-        <string>Browser</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QWebView" name="webView">
-          <property name="url">
-           <url>
-            <string>about:blank</string>
-           </url>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="verhalten">
-       <attribute name="title">
-        <string>Verhalten</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Protokoll</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
       <property name="spacing">
@@ -59,14 +23,14 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="add">
           <property name="text">
            <string>Add Bot</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="delete_2">
           <property name="text">
            <string>Delete Bot</string>
           </property>
@@ -103,19 +67,175 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>248</width>
+           <width>382</width>
            <height>546</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QListWidget" name="listWidget"/>
+           <widget class="QListWidget" name="botTabelle">
+            <item>
+             <property name="text">
+              <string>1. Bot</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2. Bot</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QScrollBar" name="verticalScrollBar">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="protokoll">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="browser">
+       <property name="accessibleName">
+        <string/>
+       </property>
+       <attribute name="title">
+        <string>Browser</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QWebView" name="webView" native="true">
+          <property name="url" stdset="0">
+           <url>
+            <string>about:blank</string>
+           </url>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verhalten">
+       <attribute name="title">
+        <string>Verhalten</string>
+       </attribute>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>69</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Tweeten</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Retweeten</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QTextEdit" name="nachricht">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>351</width>
+          <height>51</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="suchkriteria">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>170</y>
+          <width>351</width>
+          <height>51</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nachricht</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>151</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Suchkriteria (bei Rewtweeten)</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="startButton">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>240</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>START</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Protokoll</string>
+       </attribute>
+       <widget class="QTextBrowser" name="protokoll_text">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>331</width>
+          <height>441</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="showProtokoll">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>480</y>
+          <width>75</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Protokoll</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
