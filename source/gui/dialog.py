@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.horizontalLayout_2.setObjectName(":horizontalLayout_2")
 
         #Add Bot Button
         self.add = QtWidgets.QPushButton(self.centralwidget)
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.protokoll_text.setGeometry(QtCore.QRect(20, 20, 331, 441))
         self.protokoll_text.setObjectName("protokoll_text")
 
-        #Button für Protokoll anzeigen
+        #Button für Protokoll anzeigenhttps://pypi.org/
         self.showProtokoll = QtWidgets.QPushButton(self.tab_2)
         self.showProtokoll.setGeometry(QtCore.QRect(280, 480, 75, 31))
         self.showProtokoll.setObjectName("showProtokoll")
@@ -156,7 +156,7 @@ class Ui_MainWindow(object):
 
         #Start Button für Bot Verhalten
         self.startButton.setText(_translate("MainWindow", "START"))
-        self.startButton.clicked.connect(self.startAct)
+        QWidget.connect(self.startButton, clicked(), this, self.startAct())
 
         self.protokoll.setTabText(self.protokoll.indexOf(self.verhalten), _translate("MainWindow", "Verhalten"))
 
@@ -166,10 +166,12 @@ class Ui_MainWindow(object):
         self.protokoll.setTabText(self.protokoll.indexOf(self.tab_2), _translate("MainWindow", "Protokoll"))
 
     def startAct(self):
-        tweetVal = self.nachricht.text()
+#        def setupUi(self, MainWindow):
+        tweetVal = self.nachricht.toPlainText()
         print(tweetVal)
-        searchVal = self.suchkriteria.text()
+        searchVal = self.suchkriteria.toPlainText()
         print(searchVal)
+        return True
 
 from PyQt5 import QtWebEngineWidgets
 
@@ -181,4 +183,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
