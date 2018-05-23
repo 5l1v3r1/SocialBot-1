@@ -10,12 +10,12 @@ SIGNIN_URL = 'https://api.twitter.com/oauth/authenticate'
 def get_access_token(consumer_key, consumer_secret):
     oauth_client = OAuth1Session(consumer_key, client_secret=consumer_secret, callback_uri='oob')
 
-    print('\nRequesting temp token from Twitter...\n')
+    print('\nRequesting templates token from Twitter...\n')
 
     try:
         resp = oauth_client.fetch_request_token(REQUEST_TOKEN_URL)
     except ValueError as e:
-        raise 'Invalid response from Twitter requesting temp token: {0}'.format(e)
+        raise 'Invalid response from Twitter requesting templates token: {0}'.format(e)
 
     url = oauth_client.authorization_url(AUTHORIZATION_URL)
 
@@ -37,7 +37,7 @@ def get_access_token(consumer_key, consumer_secret):
     try:
         resp = oauth_client.fetch_access_token(ACCESS_TOKEN_URL)
     except ValueError as e:
-        raise 'Invalid response from Twitter requesting temp token: {0}'.format(e)
+        raise 'Invalid response from Twitter requesting templates token: {0}'.format(e)
 
     at = resp.get('oauth_token')
     ats = resp.get('oauth_token_secret')

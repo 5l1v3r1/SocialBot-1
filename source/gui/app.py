@@ -1,15 +1,7 @@
-import sys
-from PyQt5.QtWidgets import QDialog, QApplication
-from dialog import Ui_Dialog
+from flask import Flask, render_template
+app = Flask(__name__)
 
-class AppWindow(QDialog):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self)
-        self.show()  
 
-app = QApplication(sys.argv)
-w = AppWindow()
-w.show()
-sys.exit(app.exec_())
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
