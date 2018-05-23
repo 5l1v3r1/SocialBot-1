@@ -26,6 +26,7 @@ Umänderung des Dokument: 18.04.2018
 ### 1.4 Zusammenhang mit anderen Dokumenten
 
 UseCase.svg = Use Case Diagramm
+ClassDiagram.svg = Class Diagramm
 
 ## 2. Allgemeine Beschreibung des gewünschten Systems
 
@@ -51,7 +52,7 @@ Die Interaktion mit anderen Nutzern in Form von Menschen steht im Mittelpunkt de
 Besonders die Reaktionen der anderen Nutzer auf den Bot sind der Haupt-Beobachtungsaspekt.
 Ursprünglich war die Plattform "FaceBook" als soziales Netzwerk angestrebt.
 Die Aktionen bei "Twitter" haben Äquivalente Aktionen bei "FaceBook".
-Das Äquivalent zu "Tweeten" ist "Posten", "Liken", "Kommentieren" und "Persönliche Nachrichten" werden in beiden sozialen Netzwerken gleich gehandhabt.
+Das Äquivalent zu "Tweeten" ist "Posten" und "Liken", "Kommentieren" und "Persönliche Nachrichten" werden in beiden sozialen Netzwerken gleich gehandhabt.
 Das Äquivalent zu "Re-Tweeten" in "Twitter" ist "Teilen" in "FaceBook" und zu "Folgen" ist das Äquivalent eine "Freundschaft".
 Flexibilität des Bots ist wichtig, um unterschiedliche soziale Einstellungen des Bots gewährleisten zu können und umfangreiche Reaktionen anderer Nutzer hervorzurufen.
 Der Bot soll unterschiedliche Aktionen, abhängig von seinen im Vorfeld getätigten Einstellungen, ausführen und verschiedene Reaktionen bei den Nutzern hervorrufen.
@@ -64,12 +65,12 @@ Aus den erfassten Daten soll das soziale Leben des Bots beurteilt werden und ans
 Als Anforderung an die Funktionalität ist die Erstellung von Bots für das soziale Netzwerk gesetzt.
 Die Erstellung eines Bots findet nicht automatisiert statt.
 Die Bots führen die grundlegensten Aktionen von "Twitter", bestehend aus "Tweeten", "Liken", "Kommentieren", "Nutzer Folgen", "Re-Tweeten" und "Direkte Nachrichten senden" automatisiert durch.
-Genauer können die Bots einen vorgefertigten Text "Tweeten", ein "Like" auf bestimmte, vorher definierte "Tweets" geben und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "kommentieren".
+Genauer können die Bots einen vorgefertigten Text "Tweeten", ein "Like" auf bestimmte, vorher definierte "Tweets" geben und unter ausgewählten "Tweets" einen festgelegten Text in Form eines Kommentars "Kommentieren".
 Jede Aktivität des Bots und die Reaktionen anderer Nutzer auf die Aktionen werden in einem Aktivitäten-Log festgehalten.
 Die Reaktionen anderer Nutzer werden abgespeichert und mit der entsprechenden Aktion des Bots in Verbindung gebracht.
-Jeder Bot legt tageweise ein neues Log an, um Übersichtlichkeit zu gewährlesiten.
+Jeder Bot legt zeitabhängig ein neues Log an, um Übersichtlichkeit zu gewährlesiten.
 Die Daten aus dem Aktivitäten-Log werden in einer Übersicht in der Nutzeroberfläche angezeigt oder können in der Datei im Betriebssystem eingesehen werden.
-Das Verhalten eines Bots kann vom Nutzer getätigt werden und der zugehörige Algorithmus wird in einer externen, austauschbaren Datei gehalten.
+Das Verhalten eines Bots kann vom Nutzer eingestellt werden und der zugehörige Algorithmus wird in einer externen, austauschbaren Datei gehalten.
 Explizit können die Nutzer die Texte, für die Aktionen des Bots, und die Stichwörter, auf die der Bot reagieren soll, einstellen.
 Der Algorithmus, für die Zuordnung der Texte des Bots, zu den Stichwörtern in Tweets, ist austauschbar, um in Zukunft andere Algorithmen zuzulassen.
 Standardmäßig wird eine 1-zu-1-Relation von den Texten des Bots zu den Stichwörtern geschaffen.
@@ -129,7 +130,7 @@ Das Programm funktioniert unabhängig von allen Eigenschaften eines beliebigen C
 
 ### 3.1 Lieferumfang
 
-Der Lieferumfang besteht aus einem Programm mit allen zugehörigen Komponenten, eine Dokumentation des Programms und eine Einweisung in das Programm.
+Der Lieferumfang besteht aus einem Programm mit allen zugehörigen Komponenten und einer Dokumentation.
 Die für den Nutzer relevanten Komponenten des Programms bestehen aus der Benutzeroberfläche, dem Programmteil für die Abwicklung der Funktionen und dem austauschbaren Algorithmus.
 Bei Auslieferung des Programms werden alle benötigten Programmteile, soweit der Entwicklungsstand der Programmteile zum Auslieferungstermin ist, in einem Paket ausgeliefert.
 Die Programmteile, die in dem Paket ausgeliefert werden, sind bereits aufeinander abgestimmt und eingerichtet.
@@ -137,8 +138,6 @@ Die Programmteile erfordern keine zusätzliche Konfiguration, um die Funktionali
 Die Dokumentation des Vorgehens und des Ablaufs des Projekts werden in Form eines oder mehrerer Dokumente geliefert.
 In den Dokumenten werden der Projektverlauf, die implementierten Funktionen und Probleme bei der Bearbeitung festgehalten.
 Dem ausgelieferten Paket liegt ein "End User License Agreement" bei, in dem die Nutzungsbedingungen festgehalten sind.
-Bei der Einweisung in das Programm, die im ausgelieferten Paket enthalten ist, handelt es sich um eine schrittweise Einleitung, wie das Programm zu nutzen ist.
-In der Einweisung werden die Erstellung eines "Twitter"-Accounts, die Erstellung eines Bots und das Nutzen eines Bots erläutert.
 
 ### 3.2 Abläufe (Szenarien) von Interaktionen mit der Umgebung
 
@@ -169,9 +168,9 @@ Die Aufgabe "Login Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die F
 Die Aufgabe "Logout Twitter" erweitert die Aufgabe "Bot starten/stoppen" um die Funktion den Account von Twitter auszuloggen.
 
 ### 3.4 Struktur und Verhalten des Systems
-> Beschreibung der verschiedenen statischen Strukturaspekte des Systems (Klassen-, Paket-, Komponenten-, Verteilungsdiagramm) sowie Beschreibung der Dynamik, der internen Abläufe und des Zusammenspiels der Systemteile (Aktivität-, Sequenz-, Zustand-, Timingdiagramm).
 
-*Klassendiagramm*
+Für die Beschreibung der Klassen wird auf das Dokument 'ClassDiagram.svg' verwiesen.
+In dem Dokument werden alle Klassen aufgelistet und die Abhängigkeiten zwischen den Klassen beschrieben.
 
 ### 3.5 Schnittstellen des gewünschten System
 
@@ -180,14 +179,14 @@ Aufgrundlage dieser "Twitter-Phyton"-API wird die Anwendung aufgebaut.
 Das Programm erweitert jede Funktion der "Twitter-Phyton"-API, um das geforderte Log und weitere zusätzliche Funktionen.
 Die Funktionen für den Nutzer werden in einem Nutzer Interface bereit gestellt.
 Die möglichen Funktionen für den Nutzer, sind meist über einen Button Klick ausführbar.
-Der Nutzer kann einen neuen Bot über den Button "Bot erstellen" erstellen und anlegen.
+Der Nutzer kann einen neuen Bot über einen Button erstellen und anlegen.
 Der Nutzer kann anschließend das Verhalten für den Bot einstellen.
-Um einen bereits erstellten Bot zu entfernen, kann der Nutzer über den Button "Bot löschen" die entsprechende Funktion ausführen.
-Um die bereits erstellten Bots in ihrem Verhalten anzupassen, kann der Nutzer die Funktion, zum Verändern des Verhaltens, über den Button "Botverhalten anpassen" ausführen.
-Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, betätigt der Nutzer den Button "Bot starten/stoppen".
+Um einen bereits erstellten Bot zu entfernen, kann der Nutzer über einen Button die entsprechende Funktion ausführen.
+Um die bereits erstellten Bots in ihrem Verhalten anzupassen, kann der Nutzer die Funktion, zum Verändern des Verhaltens, über einen Button ausführen.
+Um einen bereits erstellten Bot in Betrieb zu nehmen oder ihn anschließend wieder zu stoppen, betätigt der Nutzer den entsprechenden Button.
 Der Button startet den ausgewählten Bot oder stoppt ihn wieder, sollte er bereits aktiv sein.
 Nachdem ein Bot in Betrieb genommen wurde und der Bot die gewünschten Aktivitäten ausgeführt hat, kann das Log für den Bot angezeigt werden.
-Das Log kann über den Button "Botprotokoll betrachten" angezeigt werden.
+Das Log kann über den entsprechenden Button angezeigt werden.
 Die Schnittstellen innerhlab des Programms sind intern gelöst und für den Nutzer nicht relevant.
 Die Schnittstellen können aus dem Klassendiagramm entnommen werden.
 
@@ -195,19 +194,14 @@ Die Schnittstellen können aus dem Klassendiagramm entnommen werden.
 
 Für das Projekt sind keine Normen zu beachten. 
 Die Nutzung der Software ist nur für die private Nutzung innerhalb der Universität Basel ausgelegt.
-Die AGBs von Twitter geben den Rahmen für das Programm vor.
 Die Lizenzen der verwendeten Programme sind den jeweiligen Lizenzverträgen zu entnehmen.
-Grundsätzlich unterliegt die Software keinen Einschränkungen durch Lizenzen. 
-
-Die Software behandelt keine Lebensbedrohlichen Systeme oder kann zur direkten Gefährdung von Menschen führen.
+Die Software behandelt keine Lebensbedrohlichen Systeme oder kann nicht zur direkten Gefährdung von Menschen führen.
 Die Software ist an die allgemeinen Geschäftsbedingungen des sozialen Netzwerks gebunden.
-Die durch das Programm enstehenden Gefahren für Nutzer und andere involvierte Personen unterliegen nicht den Entwicklern.
-Die Benutzer der Software müssen sich der Gefahr, die ein Bot in einem sozialen Netzwerk hat, bewusst sein.
-Die durch einen Bot enstandenen Veränderungen und Auswirkungen unterliegen nicht den Entwicklern, vielmehr dem Nutzer.
-Der Nutzer ist selbst verantwortlich und trägt selbst jegliche Konsequenzen für die Auwirkungen eines Bots.
-Die Entwickler behalten sich vor, die Daten zur späteren Auswertung von den Nutzern einzuziehen.
+Die Benutzer der Software müssen sich der Gefahr, die ein Bot in einem sozialen Netzwerk erzeugt, bewusst sein.
+Die durch einen Bot enstandenen Auswirkungen unterliegen dem Nutzer, nicht den Entwicklern.
+Der Nutzer ist selbst verantwortlich und trägt selbst jegliche Konsequenzen für die Auswirkungen eines Bots.
 Die Entwickler haften nicht für den Missbrauch der Software.
-Für den Einsatz der Software entgegen den ursprünglichen Nutzungbestimmungen haftet der Nutzer.
+Für den missbräuchlichen Einsatz der Software entgegen den ursprünglichen Nutzungbestimmungen haftet der Nutzer.
 Der Wiederverkauf der Software ist nicht genehmigt und Strafbar.
 Die Entwickler übernehemen keine Haftung für Schäden jeglicher Art.
 
@@ -248,16 +242,15 @@ Die eingesetzten Versionen der Software werden im folgenden aufgelistet.
 - Fuzzywuzzy 0.16.0
 - Pytest 3.5.1
 - Python 3.6.3
-- PyQT 5.10.1
-
-> PyCharm -- PyCharm 2018.1.1 (Professional Edition) , Build #Py-181.4445.76
+- Flask 1.0.2
+- HTML 5
+- CSS 3
 
 ### 4.2 Abnahmebedingungen
 
-Für die Abnahme des Kunden sind eine Dokumentation und eine Anleitung, zur Bedienung des Programms, unablässlich.
+Für die Abnahme des Kunden ist eine Dokumentation unablässlich.
 Die Dokumentation umfasst die geleistete Arbeit und die umgesetzten Funktionen.
 In der Dokumentation müssen zusätzlich die Anforderungen und die Probleme festgehalten sein.
-Die Anleitung zur Bedienung des Programms, muss die Einrichtung des Bots und die Bedienung der Funktionalitäten des Programms umfassen.
 
 ### 4.3 Fertige und zugekaufte Komponenten
 
