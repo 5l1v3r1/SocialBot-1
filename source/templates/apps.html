@@ -38,7 +38,7 @@
                         <a class="navbar-item" href="/apps">
                             Apps
                         </a>
-                        <a class="navbar-item" href="/bot">
+                        <a class="navbar-item" href="/bots">
                             Bots
                         </a>
                         <a class="navbar-item" href="/">
@@ -66,7 +66,7 @@
                         </p>
                         <ul class="menu-list">
                             <li><a class="is-active">Apps</a></li>
-                            <li><a href="/bot">Bots</a></li>
+                            <li><a href="/bots">Bots</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -175,57 +175,58 @@
                 </footer>
             </div>
         </div>
-        <div class="modal" id="add-user-modal">
+        <div class="modal" id="add-bot-modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Add a User to your Twitter App</p>
-                    <button class="add-user-modal-close delete" aria-label="close"></button>
+                    <p class="modal-card-title">Add a Bot to SocialBot</p>
+                    <button class="add-bot-modal-close delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                     <div class="content">
+                        <p>To create a bot you need to add an user to your app.</p>
                         <p>To add a user to your twitter app be sure to be logged in as the user you want to add.</p>
                         <p>By clicking the 'Next' Button you will be taken to twitter to authenticate your user for the app.</p>
                         <p>You then need to press 'Authorize' and put displayed PIN into the field.</p>
-                        <p>As soon as the process is successfully finished the added user will be visible.</p>
+                        <p>As soon as the process is successfully finished the bot will be added.</p>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" id="add-user-next-modal">Next</button>
-                    <button class="button add-user-modal-close">Cancel</button>
+                    <button class="button is-success" id="add-bot-next-modal">Next</button>
+                    <button class="button add-bot-modal-close">Cancel</button>
                 </footer>
             </div>
         </div>
-        <div class="modal" id="add-user-form-modal">
+        <div class="modal" id="add-bot-form-modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Add a User to your Twitter App</p>
-                    <button class="add-user-form-modal-close delete" aria-label="close"></button>
+                    <button class="add-bot-form-modal-close delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                     <div class="content">
                         <p>To add the user to your app you need to type the pin you got from twitter into the form.</p>
-                        <p>To identify the added user please provide a username.</p>
+                        <p>Please also provide a name for your bot.</p>
                     </div>
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Botname</label>
                         <div class="control">
-                            <input class="input" type="text" id="add-user-name-input" placeholder="e.g. NewUser">
+                            <input class="input" type="text" id="add-bot-name-input" placeholder="e.g. NewUser">
                         </div>
-                        <p class="help" id="add-user-name-help"></p>
+                        <p class="help" id="add-bot-name-help"></p>
                     </div>
                     <div class="field">
                         <label class="label">PIN</label>
                         <div class="control">
-                            <input class="input" type="text" id="add-user-pin-input" placeholder="e.g. 123456">
+                            <input class="input" type="text" id="add-bot-pin-input" placeholder="e.g. 123456">
                         </div>
-                        <p class="help" id="add-user-pin-help"></p>
+                        <p class="help" id="add-bot-pin-help"></p>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" id="add-user-save-modal">Save changes</button>
-                    <button class="button add-user-form-modal-close">Cancel</button>
+                    <button class="button is-success" id="add-bot-save-modal">Save changes</button>
+                    <button class="button add-bot-form-modal-close">Cancel</button>
                 </footer>
             </div>
         </div>

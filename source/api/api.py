@@ -56,36 +56,15 @@ class API:
         req = res['req']
         act = req['action']
 
-        if act == 'change_credentials':
-            return ConfigMethods.change_credentials(req)
-        elif act == 'add_app':
+        if act == 'add_app':
             return ConfigMethods.add_app(req)
-        elif act == 'add_user':
-            return ConfigMethods.add_user(req)
-        elif act == 'add_user_pin':
-            return ConfigMethods.add_user_pin(req)
         elif act == 'add_bot':
             return ConfigMethods.add_bot(req)
-        elif act == 'get_users':
-            return ConfigMethods.get_users()
+        elif act == 'add_bot_pin':
+            return ConfigMethods.add_bot_pin(req)
         elif act == 'get_bots':
             return ConfigMethods.get_bots()
         elif act == 'get_apps':
             return ConfigMethods.get_apps()
-        else:
-            return APIError.create(message='Action given in request body is unknown.', code=400)
-
-    @staticmethod
-    def oauth(request):
-        res = API.test_request_return_req(request)
-
-        if type(res) != dict:
-            return res
-
-        req = res['req']
-        act = req['action']
-
-        if act == 'confirm_with_pin':
-            return
         else:
             return APIError.create(message='Action given in request body is unknown.', code=400)

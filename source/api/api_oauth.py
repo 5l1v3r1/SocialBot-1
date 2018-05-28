@@ -32,12 +32,6 @@ class OAuthProcess:
             'timestamp': int(time.time())
         }
 
-        JSONConnector.set_json_file_content(
-            directory=APIConfig.json_save_path,
-            name=APIConfig.json_oauth_file_name,
-            data=json_data
-        )
-
         return json_data
 
     @staticmethod

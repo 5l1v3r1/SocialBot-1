@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def dashboard():
     return render_template('index.html')
 
 
@@ -15,9 +15,9 @@ def apps():
     return render_template('apps.html')
 
 
-@app.route('/bot')
+@app.route('/bots')
 def bot():
-    return render_template('bot.html')
+    return render_template('bots.html')
 
 
 @app.route('/api')

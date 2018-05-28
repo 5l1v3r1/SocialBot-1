@@ -32,14 +32,9 @@ $(document).ready(function () {
                     <td>
                         <div class="field is-grouped is-grouped-right">
                             <p class="control">
-                                <a class="button add-user-btn" id="${apps[i].app_name}">
-                                    Add user
+                                <a class="button add-bot-btn" id="${apps[i].app_name}">
+                                    Add bot
                                  </a>
-                            </p>
-                            <p>
-                                <a class="button remove-user-btn" id="${apps[i].app_name}">
-                                    Remove user
-                                </a>
                             </p>
                         </div>
                     </td>`;
@@ -47,18 +42,18 @@ $(document).ready(function () {
                 }
                 $('#apps-table-body').html(table_html);
 
-                $('.add-user-btn').click(function () {
-                    let addUserModal = $('#add-user-modal');
+                $('.add-bot-btn').click(function () {
+                    let addUserModal = $('#add-bot-modal');
                     addUserModal.addClass('is-active');
                     let app = this.id;
 
-                    $('.add-user-modal-close').click(function () {
+                    $('.add-bot-modal-close').click(function () {
                         addUserModal.removeClass('is-active');
                     });
 
-                    $('#add-user-next-modal').click(function () {
+                    $('#add-bot-next-modal').click(function () {
                         let req = {
-                            'action': 'add_user',
+                            'action': 'add_bot',
                             'app_name': app
                         };
 
@@ -77,18 +72,32 @@ $(document).ready(function () {
                                     console.log(data);
                                     oauthData = data.dump;
                                     addUserModal.removeClass('is-active');
-                                    let addUserPINModal = $('#add-user-form-modal');
+                                    let addUserPINModal = $('#add-bot-form-modal');
                                     addUserPINModal.addClass('is-active');
 
-                                    $('.add-user-form-modal-close').click(function () {
+                                    $('.add-bot-form-modal-close').click(function () {
                                         addUserPINModal.removeClass('is-active');
                                     });
 
-                                    $('#add-user-save-modal').click(function () {
-                                        let pinInput = $('#add-user-pin-input');
-                                        let pinHelp = $('#add-user-pin-help');
-                                        let nameInput = $('#add-user-name-input');
-                                        let nameHelp = $('#add-user-name-help');
+                                    $('#add-bot-save-modal').click(function () {
+                                        let pinInput = $('#add-bot-pin-input');
+                                        let pinHelp = $('#add-bot-pin-help');
+                                        let nameInput = $('#add-bot-name-input');
+                                        let nameHelp = $('#add-bot-name-help');
+
+
+
+                                        pinInput.keypress(function () {
+                                            pinInput.removeClass('is-danger');
+                                            pinHelp.html('');
+                                            pinHelp.removeClass('is-danger');
+                                        });
+
+                                        nameInput.keypress(function () {
+                                            nameInput.removeClass('is-danger');
+                                            nameHelp.html('');
+                                            nameHelp.removeClass('is-danger');
+                                        });
 
                                         if (!nameInput) {
                                             nameInput.addClass('is-danger');
@@ -100,9 +109,9 @@ $(document).ready(function () {
                                             pinHelp.html('Missing a Pin Code.');
                                         } else {
                                             let requ = oauthData;
-                                            requ.action = 'add_user_pin';
+                                            requ.action = 'add_bot_pin';
                                             requ.pin_code = pinInput.val();
-                                            requ.username = nameInput.val();
+                                            requ.bot_name = nameInput.val();
 
                                             $.ajax({
                                                 type: "POST",
