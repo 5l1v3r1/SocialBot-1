@@ -619,10 +619,8 @@ class Twitter:
             raise ValueError('Category has to be of type str. Given: ', type(category))
 
         self.__categories = self.__API.GetUserSuggestionCategories()
-
         self.__thread_management.add_new_thread(f=self.__manage_follow_category,
                                                 args=(category, delay))
-
         self.__log({
             'action': 'Followed people in a category',
             'category': str(category),
