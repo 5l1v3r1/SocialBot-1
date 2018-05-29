@@ -126,7 +126,7 @@ class ConfigMethods:
                 }
 
                 if bots:
-                    for u in bots['users']:
+                    for u in bots['bots']:
                         if u['bot_name'] == bot['bot_name']:
                             return APIError.create(message='Bot with that botname already exists.', code=400)
                         elif u['access_token'] == bot['access_token']:
