@@ -37,18 +37,10 @@ class API:
         req = res['req']
         act = req['action']
 
-        if act == 'add_app':
+        if act == 'start_bot':
             return ConfigMethods.add_app(req)
-        elif act == 'add_bot':
-            return ConfigMethods.add_bot(req)
-        elif act == 'add_bot_pin':
-            return ConfigMethods.add_bot_pin(req)
-        elif act == 'get_bots':
-            return ConfigMethods.get_bots()
-        elif act == 'get_apps':
-            return ConfigMethods.get_apps()
-        elif act == 'configure_bot':
-            return ConfigMethods.configure_bot(req)
+        elif act == 'stop_bot':
+            return 
         else:
             return APIError.create(message='Action given in request body is unknown.', code=400)
 

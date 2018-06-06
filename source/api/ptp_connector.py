@@ -18,3 +18,8 @@ class PTPConnector:
         elif method == 'react_to_my_mentions':
             actions = args['actions']
             ptp.react_to_my_mentions(actions)
+        elif method == 'react_to_stream':
+            actions = args['actions']
+            terms = args['terms']
+            users = args['users']
+            ptp.react_to_stream(actions, terms=terms, users=users, include_retweets=False)
