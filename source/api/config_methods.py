@@ -196,6 +196,8 @@ class ConfigMethods:
             return APIError.create(message='No bot name in the request body.', code=400)
         elif 'action_name' not in keys:
             return APIError.create(message='No action name in the request body.', code=400)
+        elif 'method' not in keys:
+            return APIError.create(message='No method in the request body.', code=400)
         elif 'actions' not in keys:
             return APIError.create(message='No actions in the request body.', code=400)
 
@@ -211,8 +213,29 @@ class ConfigMethods:
                     elif not item['action']:
                         return APIError.create(message='Found a exactly key but the action key has no content', code=400)
                     elif item['action'] == 'reply' and not item['text']:
-                        return APIError.create(message='Found a exactly key but missing a text key for action reply.',
-                                               code=400)
+                        return APIError.create(message='Found a exactly key but missing a text key for action reply.', code=400)
+                elif 'match' in item_keys:
+                    if not item['match']:
+                        return APIError.create(message='Found a match key but it has no content.', code=400)
+                    elif 'accuracy' not in item_keys:
+                        return APIError.create(message='Found a match key but missing a accuracy key.', code=400)
+                    elif 'action' not in item_keys:
+                        return APIError.create(message='Found a match key but missing a action key.', code=400)
+                    elif not item['action']:
+                        return APIError.create(message='Found a match key but the action key has no content', code=400)
+                    elif item['action'] == 'reply' and not item['text']:
+                        return APIError.create(message='Found a match key but missing a text key for action reply.', code=400)
+                elif 'tags' in item_keys:
+                    if not item['tags']:
+                        return APIError.create(message='Found a tags key but it has no content.', code=400)
+                    elif type(item['tags']) != list:
+                        return APIError.create(message='Found a tags key but its not a list.', code=400)
+                    elif 'action' not in item_keys:
+                        return APIError.create(message='Found a tags key but missing a action key.', code=400)
+                    elif not item['action']:
+                        return APIError.create(message='Found a tags key but the action key has no content', code=400)
+                    elif item['action'] == 'reply' and not item['text']:
+                        return APIError.create(message='Found a tags key but missing a text key for action reply.', code=400)
 
         bot_actions = JSONConnector.get_json_file_content(
             directory=APIConfig.json_save_path,
@@ -222,6 +245,7 @@ class ConfigMethods:
         bot_action = {
             'bot_name': req['bot_name'],
             'action_name': req['action_name'],
+            'method': req['method'],
             'actions': req['actions']
         }
 
@@ -242,4 +266,4 @@ class ConfigMethods:
             data=bot_actions
         )
 
-        return APIMessage.create(message='Successfully added bot.', code=200)
+        return APIMessage.create(message='Successfully configured bot.', code=200)

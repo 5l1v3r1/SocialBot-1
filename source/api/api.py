@@ -35,14 +35,20 @@ class API:
             return res
 
         req = res['req']
-        keys = res['keys']
         act = req['action']
 
-        if act == 'create_bot':
-            if 'bot_name' not in keys:
-                return APIError.create(message='Missing a bot_name in the request body.', code=400)
-            else:
-                return 'Created Bot ' + req['bot_name'] + '!'
+        if act == 'add_app':
+            return ConfigMethods.add_app(req)
+        elif act == 'add_bot':
+            return ConfigMethods.add_bot(req)
+        elif act == 'add_bot_pin':
+            return ConfigMethods.add_bot_pin(req)
+        elif act == 'get_bots':
+            return ConfigMethods.get_bots()
+        elif act == 'get_apps':
+            return ConfigMethods.get_apps()
+        elif act == 'configure_bot':
+            return ConfigMethods.configure_bot(req)
         else:
             return APIError.create(message='Action given in request body is unknown.', code=400)
 
@@ -66,5 +72,7 @@ class API:
             return ConfigMethods.get_bots()
         elif act == 'get_apps':
             return ConfigMethods.get_apps()
+        elif act == 'configure_bot':
+            return ConfigMethods.configure_bot(req)
         else:
             return APIError.create(message='Action given in request body is unknown.', code=400)
