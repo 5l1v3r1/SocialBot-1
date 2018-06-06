@@ -6,4 +6,5 @@ class APIConfig:
     json_bots_file_name = 'bots'
     json_apps_file_name = 'apps'
     json_oauth_file_name = 'oauth'
+    json_bot_actions_file_name = 'bot_actions'
 

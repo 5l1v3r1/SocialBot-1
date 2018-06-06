@@ -188,3 +188,58 @@ class ConfigMethods:
         else:
             return APIError.create(message='No apps configured.', code=400)
 
+    @staticmethod
+    def configure_bot(req):
+        keys = req.keys()
+
+        if 'bot_name' not in keys:
+            return APIError.create(message='No bot name in the request body.', code=400)
+        elif 'action_name' not in keys:
+            return APIError.create(message='No action name in the request body.', code=400)
+        elif 'actions' not in keys:
+            return APIError.create(message='No actions in the request body.', code=400)
+
+        if 'actions' in keys:
+            for item in req['actions']:
+                item_keys = item.keys()
+
+                if 'exactly' in item_keys:
+                    if not item['exactly']:
+                        return APIError.create(message='Found a exactly key but it has no content.', code=400)
+                    elif 'action' not in item_keys:
+                        return APIError.create(message='Found a exactly key but missing a action key.', code=400)
+                    elif not item['action']:
+                        return APIError.create(message='Found a exactly key but the action key has no content', code=400)
+                    elif item['action'] == 'reply' and not item['text']:
+                        return APIError.create(message='Found a exactly key but missing a text key for action reply.',
+                                               code=400)
+
+        bot_actions = JSONConnector.get_json_file_content(
+            directory=APIConfig.json_save_path,
+            name=APIConfig.json_bots_actions_file_name
+        )
+
+        bot_action = {
+            'bot_name': req['bot_name'],
+            'action_name': req['action_name'],
+            'actions': req['actions']
+        }
+
+        if bot_actions:
+            for u in bot_actions['bots']:
+                if u['bot_name'] == bot_actions['bot_name']:
+                    return APIError.create(message='Bot with that botname already exists.', code=400)
+                elif u['action_name'] == bot_actions['action_name']:
+                    return APIError.create(message='Bot with that action name already exists.', code=400)
+
+            bot_actions['bot_actions'].append(bot_action)
+        else:
+            bot_actions = {'bot_actions': [bot_action]}
+
+        JSONConnector.set_json_file_content(
+            directory=APIConfig.json_save_path,
+            name=APIConfig.json_bots_file_name,
+            data=bot_actions
+        )
+
+        return APIMessage.create(message='Successfully added bot.', code=200)
