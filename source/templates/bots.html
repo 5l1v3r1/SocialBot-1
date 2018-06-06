@@ -126,5 +126,86 @@
                 </footer>
             </div>
         </div>
+        <div class="modal" id="configuration-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+
+                  <div class="field">
+                    <label class="label">Source-Type:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select>
+                          <option>Timeline</option>
+                          <option>Mention</option>
+                          <option>Stream</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Filter:</label>
+                    <div class="control">
+                      <textarea class="textarea" placeholder="Enter the words you want to match. The words have to be seperated be a whitespace"></textarea>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Action:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select>
+                          <option>Retweet</option>
+                          <option>Reply</option>
+                          <option>Like</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success" id="configuration-next-modal">Next</button>
+                  <button class="button configuration-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="modal" id="configuration-reply-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                  <label class="label">Message:</label>
+                  <div class="control">
+                    <textarea class="textarea" placeholder="Enter the Reply Message."></textarea>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="configuration-reply-next-modal">Next</button>
+                    <button class="button">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Success</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <p>The bot was configured successfully</p>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button">OK</button>
+                </footer>
+            </div>
+        </div>
     </body>
 </html>
