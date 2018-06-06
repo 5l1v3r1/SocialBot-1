@@ -1,8 +1,8 @@
 ##### FOR TESTING #####
 import json
 ##### FOR TESTING #####
-from logic.Bot import Bot
-from logic.Bothandler import Bothandler
+from source.logic.Bot import Bot
+from source.logic.Bothandler import Bothandler
 
 if __name__ == "__main__":
     ##### FOR TESTING #####

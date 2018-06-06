@@ -1,7 +1,7 @@
-from api_wrapper.src.twitter import Twitter
+from source.api_wrapper.src.twitter import Twitter
 import threading
-from data.Logbook import Logbook
-from logic.Human import Human
+from source.data.Logbook import Logbook
+from source.logic.Human import Human
 
 class Bot(Human, threading.Thread):
     def __init__(self, iname, access_info):

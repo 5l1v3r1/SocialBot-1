@@ -2,11 +2,10 @@ import twitter
 import random
 import time
 from fuzzywuzzy import process
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from src.threads.thread_management import ThreadManagement
-from src.logger import Logger
-from src.helper import Helper
-from src.actions_handler import ActionsHandler
+from source.api_wrapper.src.threads.thread_management import ThreadManagement
+from source.api_wrapper.src.logger import Logger
+from source.api_wrapper.src.helper import Helper
+from source.api_wrapper.src.actions_handler import ActionsHandler
 
 
 class Twitter:
