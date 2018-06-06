@@ -2,10 +2,10 @@ import twitter
 import random
 import time
 from fuzzywuzzy import process
-from src.threads.thread_management import ThreadManagement
-from src.logger import Logger
-from src.helper import Helper
-from src.actions_handler import ActionsHandler
+from source.gui.ptp.src.threads.thread_management import ThreadManagement
+from source.gui.ptp.src.logger import Logger
+from source.gui.ptp.src.helper import Helper
+from source.gui.ptp.src.actions_handler import ActionsHandler
 
 
 class Twitter:

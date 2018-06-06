@@ -68,9 +68,11 @@
                 </div>
                 <div class="column is-9">
                     <section class="hero is-info welcome is-small">
+
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
+                                    <button class="btn_conf">Test1</button>
                                     Bots
                                 </h1>
                             </div>
@@ -139,10 +141,21 @@
                     <label class="label">Source-Type:</label>
                     <div class="control">
                       <div class="select">
-                        <select>
-                          <option>Timeline</option>
-                          <option>Mention</option>
-                          <option>Stream</option>
+                        <select id="source">
+                          <option value="react_to_my_timeline" selected="selected">Timeline</option>
+                          <option value="react_to_my_mentions">Mention</option>
+                          <option value="react_to_stream">Stream</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Text/Tags:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select id="text-tags">
+                          <option value="exactly" selected="selected">Exactly</option>
+                          <option value="tags">Tags</option>
                         </select>
                       </div>
                     </div>
@@ -150,19 +163,7 @@
                   <div class="field">
                     <label class="label">Filter:</label>
                     <div class="control">
-                      <textarea class="textarea" placeholder="Enter the words you want to match. The words have to be seperated be a whitespace"></textarea>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Action:</label>
-                    <div class="control">
-                      <div class="select">
-                        <select id="select-action">
-                          <option>Retweet</option>
-                          <option>Reply</option>
-                          <option>Like</option>
-                        </select>
-                      </div>
+                      <textarea class="textarea filter" placeholder="Enter the words you want to match. The words have to be seperated be a whitespace" id="filtertext"></textarea>
                     </div>
                   </div>
                 </section>
@@ -181,18 +182,23 @@
                     <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                  <label class="label">Message:</label>
-                  <div class="control">
-                    <textarea class="textarea" placeholder="Enter the Reply Message."></textarea>
+                    <div>
+                        <input type="checkbox" name="action1" value="reply" id="checkbox-reply" checked>Reply
+                        <input type="checkbox" name="action2" value="favor" id="checkbox-favor">Favor
+                        <input type="checkbox" name="action3" value="follow" id="checkbox-follow">Follow<br>
+                    </div>
+                    <label class="label replybox">Message:</label>
+                  <div class="control replybox">
+                    <textarea class="textarea" placeholder="Enter the Reply Message." id="replytext"></textarea>
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" id="configuration2-next">Next</button>
+                    <button class="button is-success" id="configuration2-next">Finish</button>
                     <button class="button">Cancel</button>
                 </footer>
             </div>
         </div>
-        <div class="modal">
+        <div class="modal" id="configurationFinish-modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
