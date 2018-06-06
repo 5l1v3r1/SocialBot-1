@@ -1,17 +1,17 @@
-import sys, os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import twitter
 import random
 import time
-from fuzzywuzzy import process, fuzz
+from fuzzywuzzy import process
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.threads.thread_management import ThreadManagement
 from src.logger import Logger
 from src.helper import Helper
+from src.actions_handler import ActionsHandler
 
 
 class Twitter:
     """
-    The SocialBot class is built on top of the twitter module.
+    The Twitter class is built on top of the twitter module.
     It restricts the functionality of the twitter module and includes logging.
     The user which is logged in is also called the authenticated user.
     """
@@ -45,6 +45,8 @@ class Twitter:
         )
 
         self.overwrite_sensitive = True
+        self.print_log = True
+        self.human_like_delays = True
         self.__development = False
         self.__LOGGER = Logger()
         self.__thread_management = ThreadManagement()
@@ -52,10 +54,13 @@ class Twitter:
         # min and max response times for tweeting at statuses out of a stream (in secs)
         # Is also used for answer_my_mentions.
         self.min_response_time = 10
-        self.max_response_time = 60
+        self.max_response_time = 600
 
-        # Time interval in which the mentions refresh when using answer_my_mentions
+        # Time interval in which the mentions refresh when using react_to_my_mentions
         self.refresh_mentions_time = 300
+
+        # Time interval in which the timeline refreshes when using react_to_my_timeline
+        self.refresh_timeline_time = 300
 
         # min and max delay to follow a user when using follow_by_category
         self.min_follow_time = 120
@@ -64,8 +69,9 @@ class Twitter:
         self.__categories = []
 
         self.__user = self.__API.VerifyCredentials()
+
         if self.__user:
-            print('Initialize...')
+            print('Initialized...')
 
     """
     LOG:
@@ -102,6 +108,8 @@ class Twitter:
         :return:
         """
 
+        if self.print_log:
+            print(str(message))
         self.__LOGGER.log(message)
 
     """
@@ -259,6 +267,8 @@ class Twitter:
             'user_id': str(user_id),
             'response': str(resp)
         })
+
+        return resp
 
     """
     SEARCH FUNCTIONS:
@@ -444,11 +454,25 @@ class Twitter:
         Gets the most recent direct messages send to the authenticated user.
         :return:
         """
-
         resp = self.__API.GetDirectMessages()
 
         self.__log({
             'action': 'Got direct messages of the authenticated user.',
+            'response': str(resp)
+        })
+
+        return resp
+
+    def get_my_timeline(self):
+        """
+        Gets the timeline of the authenticated user.
+        :return:
+        """
+
+        resp = self.__API.GetHomeTimeline()
+
+        self.__log({
+            'action': 'Got timeline of the authenticated user.',
             'response': str(resp)
         })
 
@@ -619,72 +643,138 @@ class Twitter:
             raise ValueError('Category has to be of type str. Given: ', type(category))
 
         self.__categories = self.__API.GetUserSuggestionCategories()
+
         self.__thread_management.add_new_thread(f=self.__manage_follow_category,
                                                 args=(category, delay))
+
         self.__log({
             'action': 'Followed people in a category',
             'category': str(category),
             'delay': str(delay)
         })
 
-    def answer_my_mentions(self, answers):
+    def react_to_my_mentions(self, actions):
         """
         Starts the __reply_to_mentions thread.
         Prepares it's arguments and splits them into different lists.
-        :param answers:
+        :param actions:
         :return:
         """
 
-        if not answers:
-            raise ValueError('Missing answers.')
-        elif answers and type(answers) != list:
-            raise ValueError('The argument answers has to be of type list.')
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('The argument actions has to be of type list.')
 
-        exactly = []
-        match = []
-        tags = []
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
 
-        for a in answers:
-            keys = a.keys()
-            if 'exactly' not in keys and 'match' not in keys and 'tags' not in keys:
-                raise ValueError('The answers dict is missing either the exactly, match or tags key.', str(a))
-            elif 'exactly' in keys and not a['exactly']:
-                raise ValueError('Found exactly key, but it has no content.', str(a))
-            elif 'match' in keys and not a['match']:
-                raise ValueError('Found match key, but it has no content.', str(a))
-            elif 'tags' in keys:
-                if len(a['tags']) == 0:
-                    raise ValueError('Found tags key, but it has no content.', str(a))
-                else:
-                    for item in a['tags']:
-                        if not item or type(item) != str:
-                            raise ValueError('Tags key, has no or wrong content (has to be str).', str(a))
-            elif 'answer' not in keys or not a['answer']:
-                raise ValueError('Missing a answer key.', str(a))
-            elif 'match' in keys and 'accuracy' not in keys:
-                raise ValueError('Found match key, missing a accuracy key.', str(a))
-            elif 'accuracy' in keys and (not a['accuracy'] or a['accuracy'] > 1):
-                raise ValueError('Found accuracy key, but it has no or wrong content (> 1).', str(a))
-            elif 'options' in keys:
-                opt_keys = a['options'].keys()
-                if 'case_sensitive' not in opt_keys:
-                    raise ValueError('Unknown key found in options.', str(opt_keys), str(a))
-                elif type(a['options']['case_sensitive']) != bool:
-                    raise ValueError('Case_sensitive value has to be of type bool.', str(a))
-
-            if 'exactly' in keys and 'answer' in keys:
-                exactly.append(a)
-            elif 'match' in keys and 'accuracy' in keys and 'answer' in keys:
-                match.append(a)
-            elif 'tags' in keys and len(a['tags']) > 0 and 'answer' in keys:
-                tags.append(a)
-
-        self.__thread_management.add_new_thread(f=self.__reply_to_mentions,
-                                                args=(exactly, match, tags))
+        self.__thread_management.add_new_thread(f=self.__react_to_mentions_thread,
+                                                args=(f_actions,))
         self.__log({
             'action': 'Started a mention listener.',
-            'answers': str(answers)
+            'answers': str(actions)
         })
+
+    def react_to_my_timeline(self, actions):
+        """
+        Starts the __reply_to_my_timeline thread.
+        Prepares it's arguments and splits them into different lists.
+        :param actions:
+        :return:
+        """
+
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('The argument actions has to be of type list.')
+
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
+
+        self.__thread_management.add_new_thread(f=self.__react_to_my_timeline,
+                                                args=(f_actions,))
+        self.__log({
+            'action': 'Started a timeline listener.',
+            'answers': str(actions)
+        })
+
+    def react_to_stream(self, actions, terms=None, users=None, limit=None, include_retweets=False):
+        """
+        Uses a actions object to specify which action to do if a certain status is found.
+        Checks statuses it gets from a limit_stream that can be specified with terms and users lists.
+        :param include_retweets:
+        :param actions:
+        :param terms:
+        :param users:
+        :param limit:
+        :return:
+        """
+
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('Actions has to be a list. Given:', type(actions))
+        elif not terms:
+            raise ValueError('Missing terms to stream.')
+        elif terms and type(terms) != list:
+            raise ValueError('Terms has to be a list. Given:', type(terms))
+        elif users and type(users) != list:
+            raise ValueError('Users has to be a list. Given:', type(users))
+        elif limit and type(limit) != int:
+            raise ValueError('Limit has to be of type int. Given:', type(limit))
+
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
+
+        self.__thread_management.add_new_thread(f=self.__react_to_stream_thread,
+                                                args=(f_actions, terms, users, limit, include_retweets))
+        self.__log({
+            'action': 'Started React to Stream Thread.',
+            'actions': str(actions),
+            'terms': str(terms),
+            'users': str(users),
+            'limit': str(limit),
+            'include_retweets': str(include_retweets)
+        })
+
+    """
+    EXTENDING HELPER FUNCTIONS:
+    """
+
+    def __react_to_status(self, action, status):
+        """
+        React to a status using a action object.
+        :param action:
+        :param status:
+        :return:
+        """
+
+        actions = []
+        waiting_time = 0
+
+        if self.human_like_delays:
+            waiting_time = random.uniform(self.min_response_time, self.max_response_time)
+
+        if type(action['action']) == str:
+            actions.append(action['action'])
+        elif type(action['action']) == list:
+            actions = action['action']
+
+        for item in actions:
+            if item == 'reply':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.reply,
+                                                        args=(status['id'], action['text']))
+            elif item == 'retweet':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.retweet,
+                                                        args=(status['id'],))
+            elif item == 'favor':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.favor,
+                                                        args=(None, status['id']))
+            elif item == 'follow':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.follow,
+                                                        args=(None, status['user']['id']))
 
     """
     TWEET THREAD FUNCTIONS:
@@ -739,11 +829,13 @@ class Twitter:
 
         if nth_tweet == -1:
             for status in stream_results:
-                time.sleep(random.uniform(self.min_response_time, self.max_response_time))
+                if self.human_like_delays:
+                    time.sleep(random.uniform(self.min_response_time, self.max_response_time))
                 reply_results.append(self.reply(status['id'], message))
         elif nth_tweet != -1:
             status = stream_results[nth_tweet]
-            time.sleep(random.uniform(self.min_response_time, self.max_response_time))
+            if self.human_like_delays:
+                time.sleep(random.uniform(self.min_response_time, self.max_response_time))
             reply_results.append(self.reply(status['id'], message))
 
         self.__log({
@@ -758,101 +850,123 @@ class Twitter:
 
         return reply_results
 
-    def __reply_to_mentions(self, exactly_list, match_list, tags_list):
+    def __react_to_stream_thread(self, f_actions=None, terms=None, users=None, limit=None, include_retweets=False):
         """
-        Gets all mentions and answers to mentions that were created after the start of the method.
-        The answers are specified by different objects inside of the answers list.
-        There are 3 different cases that a mention could match.
-        1:
-            A mention contains exactly the text specified in a exactly attribute.
-        2:
-            A mention matches with a text specified in a match attribute, by more or exactly the
-            percentage specified in the accuracy attribute.
-        3:
-            A mention contains all words specified in the tags attribute.
-
-        If any of the above cases are true, the answer specified in the matching answers object is
-        send as a reply to the mention.
-
-        :param exactly_list:
-        :param match_list:
-        :param tags_list:
+        Thread function for react_to_stream. Uses ActionHandler class for actions object handling.
+        :param f_actions:
+        :param terms:
+        :param users:
+        :param limit:
+        :param include_retweets:
         :return:
         """
+
+        if not limit:
+            limit = 0
+
+        action_counter = 0
+        nothing_found = False
+        stream = self.stream(users=users, terms=terms)
+
+        for item in stream:
+            keys = item.keys()
+
+            if 'text' not in keys:
+                continue
+            if item['text'][:3] == 'RT ' and 'retweeted_status' in keys:
+                if include_retweets:
+                    found_action = ActionsHandler.find_action(f_actions, text=item['retweeted_status']['text'])
+                    if found_action:
+                        self.__react_to_status(found_action, item['retweeted_status'])
+                        action_counter += 1
+                    else:
+                        nothing_found = True
+            else:
+                found_action = ActionsHandler.find_action(f_actions, text=item['text'])
+                if found_action:
+                    self.__react_to_status(found_action, item)
+                    action_counter += 1
+                else:
+                    nothing_found = True
+
+            if nothing_found:
+                print('Found nothing for stream item %s' % item)
+
+            if 0 < limit <= action_counter:
+                print('Action limit reached.')
+                break
+
+    def __react_to_mentions_thread(self, f_actions):
+        """
+        Gets all mentions and reacts to mentions that were created after the start of the method.
+        Checks with the ActionsHandler class which object of the actions list matches.
+        :param f_actions:
+        :return:
+        """
+
         started_at = Helper.get_utc_timestamp_now()
-        found_answer = ''
         answered_mentions = []
 
         while True:
             time.sleep(self.refresh_mentions_time)
             new_mentions = self.get_my_mentions()
-            matched_answer_obj = {}
 
             for mention in new_mentions:
                 mention.text = mention.text.replace('@' + self.__user.screen_name + ' ', '')
                 mention_time = Helper.get_time_stamp_from_twitter_date(mention.created_at)
+
                 if mention_time > started_at and mention.id not in answered_mentions:
-                    for entry in exactly_list:
-                        if ('options' in entry and 'case_sensitive' in entry['options']
-                                and entry['options']['case_sensitive']):
-                            if mention.text == entry['exactly']:
-                                found_answer = entry['answer']
-                                matched_answer_obj = entry
-                                break
-                        else:
-                            if mention.text.lower() == entry['exactly'].lower():
-                                found_answer = entry['answer']
-                                matched_answer_obj = entry
-                                break
+                    found_action = ActionsHandler.find_action(f_actions, text=mention.text)
 
-                    if not found_answer:
-                        for entry in match_list:
-                            if ('options' in entry and 'case_sensitive' in entry['options'] and
-                                    entry['options']['case_sensitive']):
-                                if (fuzz.ratio(mention.text, entry['match']) / 100) > entry['accuracy']:
-                                    found_answer = entry['answer']
-                                    matched_answer_obj = entry
-                                    break
-                            else:
-                                if ((fuzz.ratio(mention.text.lower(), entry['match'].lower()) / 100) >
-                                        entry['accuracy']):
-                                    found_answer = entry['answer']
-                                    matched_answer_obj = entry
-                                    break
-
-                    if not found_answer:
-                        for entry in tags_list:
-                            every_tag = True
-                            if ('options' in entry and 'case_sensitive' in entry['options']
-                                    and entry['options']['case_sensitive']):
-                                for tag in entry['tags']:
-                                    if tag not in mention.text:
-                                        every_tag = False
-                                        break
-                            else:
-                                for tag in entry['tags']:
-                                    if tag.lower() not in mention.text.lower():
-                                        every_tag = False
-                                        break
-                            if every_tag:
-                                found_answer = entry['answer']
-                                matched_answer_obj = entry
-                                break
-
-                    if found_answer:
-                        resp = self.reply(status_id=mention.id, text=found_answer)
-                        print(resp)
+                    if found_action:
+                        self.__react_to_status(action=found_action, status=mention)
                         self.__log({
-                            'action': 'Answered a mention.',
-                            'matched_answer_obj': str(matched_answer_obj),
-                            'mention': str(mention),
-                            'found_answer': found_answer,
-                            'response': str(resp)
+                            'action': 'Reacted to a mention',
+                            'found_action': str(found_action),
+                            'mention': str(mention)
                         })
                         answered_mentions.append(mention.id)
-                        found_answer = ''
                     else:
-                        print('Could not find an answer for the mention:', mention)
+                        self.__log({
+                            'action': 'Could not find a action for a mention.',
+                            'mention': str(mention)
+                        })
+
+    def __react_to_my_timeline(self, f_actions):
+        """
+        Gets all tweets in the authenticated users timeline and reacts to tweets that were created after the start of
+        the method. Checks with the ActionsHandler class which object of the actions list matches.
+        :param f_actions:
+        :return:
+        """
+
+        started_at = Helper.get_utc_timestamp_now()
+        answered_mentions = []
+
+        while True:
+            time.sleep(self.refresh_timeline_time)
+            new_tweets = self.get_my_timeline()
+
+            for tweet in new_tweets:
+                tweet.text = tweet.text.replace('@' + self.__user.screen_name + ' ', '')
+                tweet_time = Helper.get_time_stamp_from_twitter_date(tweet.created_at)
+
+                if tweet_time > started_at and tweet.id not in answered_mentions:
+                    found_action = ActionsHandler.find_action(f_actions, text=tweet.text)
+
+                    if found_action:
+                        self.__react_to_status(action=found_action, status=tweet)
+                        self.__log({
+                            'action': 'Reacted to a tweet',
+                            'found_action': str(found_action),
+                            'tweet': str(tweet)
+                        })
+                        answered_mentions.append(tweet.id)
+                    else:
+                        self.__log({
+                            'action': 'Could not find a action for a tweet.',
+                            'tweet': str(tweet)
+                        })
 
     """
     FOLLOW THREAD FUNCTIONS:

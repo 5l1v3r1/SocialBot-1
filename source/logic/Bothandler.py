@@ -1,6 +1,5 @@
 from logic.Bot import Bot
 
-
 class Bothandler:
     def __init__(self):
         self.__bot_list = []

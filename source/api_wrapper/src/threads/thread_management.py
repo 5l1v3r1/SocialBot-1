@@ -1,4 +1,5 @@
 from src.threads.stoppable_thread import StoppableThread
+from time import sleep
 
 
 class ThreadManagement:
@@ -13,6 +14,7 @@ class ThreadManagement:
                         here. Basic information are the function name and the arguments for the function.
                         Example element: {'function': 'tweet', 'args': ('Hello World!')}
         """
+
         self.__THREAD_POOL = []
         self.__THREAD_INFO = []
 
@@ -24,6 +26,7 @@ class ThreadManagement:
         :param args:
         :return:
         """
+
         if not f:
             raise ValueError('Missing a function.')
         elif not args:
@@ -46,6 +49,7 @@ class ThreadManagement:
         Returns the number of threads in the thread pool.
         :return:
         """
+
         return len(self.__THREAD_POOL)
 
     def stop_all_threads(self):
@@ -53,6 +57,7 @@ class ThreadManagement:
         Stops every threads that's currently in the threads pool.
         :return:
         """
+
         size = len(self.__THREAD_POOL)
 
         for i in range(size):
@@ -67,6 +72,7 @@ class ThreadManagement:
         Simultaneously the elements are cleared from threads info.
         :return:
         """
+
         threads_to_clear = []
         size = len(self.__THREAD_POOL)
 
@@ -98,6 +104,7 @@ class ThreadManagement:
         Print the status from every threads in the threads pool.
         :return:
         """
+
         if len(self.__THREAD_POOL) > 0:
             size = len(self.__THREAD_POOL)
             for i in range(size):
@@ -108,3 +115,13 @@ class ThreadManagement:
                 print('Thread %s, Stopped: %s, Alive: %s, Daemon: %s' % (i, stopped, alive, daemon))
         else:
             print('No threads in the thread pool.')
+
+    def self_manage_thread(self):
+        """
+        Managing thread that regularly clears the thread pool.
+        :return:
+        """
+
+        while True:
+            sleep(300)
+            self.clear_thread_pool()
