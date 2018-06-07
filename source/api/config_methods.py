@@ -11,6 +11,12 @@ class ConfigMethods:
 
     @staticmethod
     def add_app(req):
+        """
+        Add an app to the json data folder.
+        :param req:
+        :return:
+        """
+
         keys = req.keys()
 
         if 'app_name' not in keys:
@@ -54,6 +60,11 @@ class ConfigMethods:
 
     @staticmethod
     def add_bot(req):
+        """
+        Add a bot to the json data folder.
+        :param req:
+        :return:
+        """
         keys = req.keys()
 
         if 'app_name' not in keys:
@@ -81,6 +92,12 @@ class ConfigMethods:
 
     @staticmethod
     def add_bot_pin(req):
+        """
+        Method that ends a running OAuth request.
+        :param req:
+        :return:
+        """
+
         keys = req.keys()
 
         if 'consumer_key' not in keys:
@@ -151,21 +168,13 @@ class ConfigMethods:
         else:
             return APIError.create(message='Something went wrong.', code=400)
 
-
-    @staticmethod
-    def get_users():
-        users = JSONConnector.get_json_file_content(
-            directory=APIConfig.json_save_path,
-            name=APIConfig.json_users_file_name
-        )
-
-        if users:
-            return json.dumps(users)
-        else:
-            return APIError.create(message='No users configured.', code=400)
-
     @staticmethod
     def get_bots():
+        """
+        Gets all contents of the bots.json file.
+        :return:
+        """
+
         bots = JSONConnector.get_json_file_content(
             directory=APIConfig.json_save_path,
             name=APIConfig.json_bots_file_name
@@ -178,6 +187,10 @@ class ConfigMethods:
 
     @staticmethod
     def get_apps():
+        """
+        Gets all contents of the apps.json file.
+        :return:
+        """
         apps = JSONConnector.get_json_file_content(
             directory=APIConfig.json_save_path,
             name=APIConfig.json_apps_file_name
@@ -189,7 +202,30 @@ class ConfigMethods:
             return APIError.create(message='No apps configured.', code=400)
 
     @staticmethod
+    def get_bot_actions():
+        """
+        Gets all contents of the bot_actions.json file.
+        :return:
+        """
+
+        bot_actions = JSONConnector.get_json_file_content(
+            directory=APIConfig.json_save_path,
+            name=APIConfig.json_bot_actions_file_name
+        )
+
+        if bot_actions:
+            return json.dumps(bot_actions)
+        else:
+            return APIError.create(message='No bot actions configured.', code=400)
+
+    @staticmethod
     def configure_bot(req):
+        """
+        Adds a new action to the bot_actions.json file.
+        :param req:
+        :return:
+        """
+
         keys = req.keys()
 
         if 'bot_name' not in keys:

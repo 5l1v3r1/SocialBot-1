@@ -2,10 +2,10 @@ import twitter
 import random
 import time
 from fuzzywuzzy import process
-from source.gui.ptp.src.threads.thread_management import ThreadManagement
-from source.gui.ptp.src.logger import Logger
-from source.gui.ptp.src.helper import Helper
-from source.gui.ptp.src.actions_handler import ActionsHandler
+from lib.ptp.src.threads.thread_management import ThreadManagement
+from lib.ptp.src.logger import Logger
+from lib.ptp.src.helper import Helper
+from lib.ptp.src.actions_handler import ActionsHandler
 
 
 class Twitter:
@@ -55,8 +55,11 @@ class Twitter:
         self.min_response_time = 10
         self.max_response_time = 600
 
-        # Time interval in which the mentions refresh when using answer_my_mentions
+        # Time interval in which the mentions refresh when using react_to_my_mentions
         self.refresh_mentions_time = 300
+
+        # Time interval in which the timeline refreshes when using react_to_my_timeline
+        self.refresh_timeline_time = 300
 
         # min and max delay to follow a user when using follow_by_category
         self.min_follow_time = 120
@@ -672,6 +675,28 @@ class Twitter:
             'answers': str(actions)
         })
 
+    def react_to_my_timeline(self, actions):
+        """
+        Starts the __reply_to_my_timeline thread.
+        Prepares it's arguments and splits them into different lists.
+        :param actions:
+        :return:
+        """
+
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('The argument actions has to be of type list.')
+
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
+
+        self.__thread_management.add_new_thread(f=self.__react_to_my_timeline,
+                                                args=(f_actions,))
+        self.__log({
+            'action': 'Started a timeline listener.',
+            'answers': str(actions)
+        })
+
     def react_to_stream(self, actions, terms=None, users=None, limit=None, include_retweets=False):
         """
         Uses a actions object to specify which action to do if a certain status is found.
@@ -905,6 +930,42 @@ class Twitter:
                         self.__log({
                             'action': 'Could not find a action for a mention.',
                             'mention': str(mention)
+                        })
+
+    def __react_to_my_timeline(self, f_actions):
+        """
+        Gets all tweets in the authenticated users timeline and reacts to tweets that were created after the start of
+        the method. Checks with the ActionsHandler class which object of the actions list matches.
+        :param f_actions:
+        :return:
+        """
+
+        started_at = Helper.get_utc_timestamp_now()
+        answered_mentions = []
+
+        while True:
+            time.sleep(self.refresh_timeline_time)
+            new_tweets = self.get_my_timeline()
+
+            for tweet in new_tweets:
+                tweet.text = tweet.text.replace('@' + self.__user.screen_name + ' ', '')
+                tweet_time = Helper.get_time_stamp_from_twitter_date(tweet.created_at)
+
+                if tweet_time > started_at and tweet.id not in answered_mentions:
+                    found_action = ActionsHandler.find_action(f_actions, text=tweet.text)
+
+                    if found_action:
+                        self.__react_to_status(action=found_action, status=tweet)
+                        self.__log({
+                            'action': 'Reacted to a tweet',
+                            'found_action': str(found_action),
+                            'tweet': str(tweet)
+                        })
+                        answered_mentions.append(tweet.id)
+                    else:
+                        self.__log({
+                            'action': 'Could not find a action for a tweet.',
+                            'tweet': str(tweet)
                         })
 
     """

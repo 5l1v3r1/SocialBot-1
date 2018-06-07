@@ -1,4 +1,4 @@
-from src.threads.stoppable_thread import StoppableThread
+from lib.ptp.src.threads.stoppable_thread import StoppableThread
 from time import sleep
 
 
