@@ -111,7 +111,7 @@ $(document).ready(function () {
                 request.setRequestHeader('Content-Type', 'application/json');
             },
             url: "/api/config",
-            data: JSON.stringify(req),
+            data: JSON.stringify(action),
             processData: false,
             success: function (data) {
                 console.log(data);
