@@ -13,6 +13,12 @@ class OAuthProcess:
 
     @staticmethod
     def start_oauth(consumer_key, consumer_secret):
+        """
+        Start OAuth process.
+        :param consumer_key:
+        :param consumer_secret:
+        :return:
+        """
         oauth_client = OAuth1Session(consumer_key, client_secret=consumer_secret, callback_uri='oob')
 
         try:
@@ -36,6 +42,15 @@ class OAuthProcess:
 
     @staticmethod
     async def confirm_with_pin(consumer_key, consumer_secret, oauth_token, oauth_token_secret, pin_code):
+        """
+        Finish OAuth process with a pin code.
+        :param consumer_key:
+        :param consumer_secret:
+        :param oauth_token:
+        :param oauth_token_secret:
+        :param pin_code:
+        :return:
+        """
         oauth_client = OAuth1Session(consumer_key, client_secret=consumer_secret,
                                      resource_owner_key=oauth_token,
                                      resource_owner_secret=oauth_token_secret,

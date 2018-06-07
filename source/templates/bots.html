@@ -10,6 +10,9 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.png') }}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.png') }}" sizes="96x96">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{{ url_for('static', filename='js/BotsAction.js')}}"></script>
     </head>
@@ -72,7 +75,6 @@
                         <div class="hero-body">
                             <div class="container">
                                 <h1 class="title">
-                                    <button class="btn_conf">Test1</button>
                                     Bots
                                 </h1>
                             </div>
@@ -133,12 +135,19 @@
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Bot Configuration</p>
-                    <button class="delete" aria-label="close"></button>
+                    <button class="delete close-modal" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-
+                    <div class="field">
+                      <label class="label">Action Name</label>
+                        <p>Name your Action.</p>
+                      <div class="control">
+                        <input class="input" id="action-name" type="text" placeholder="Text input">
+                      </div>
+                    </div>
+                    <p>Here you can specify an action you want to take if a certain tweet pattern occurs.</p>
                   <div class="field">
-                    <label class="label">Source-Type:</label>
+                    <label class="label">Source-Type</label>
                     <div class="control">
                       <div class="select">
                         <select id="source">
@@ -149,8 +158,24 @@
                       </div>
                     </div>
                   </div>
+                <footer class="modal-card-foot">
+                  <button class="button is-success" id="configuration1-next">Next</button>
+                  <button class="button close-modal">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="configuration2-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete close-modal" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <p>Exactly: A tweet should contain exactly the text you specify.</p>
+                    <p>Tags: A tweet contains certain words that you can specify.</p>
                   <div class="field">
-                    <label class="label">Text/Tags:</label>
+                    <label class="label">Exactly/Tags</label>
                     <div class="control">
                       <div class="select">
                         <select id="text-tags">
@@ -161,55 +186,53 @@
                     </div>
                   </div>
                   <div class="field">
-                    <label class="label">Filter:</label>
+                    <label class="label">Filter</label>
                     <div class="control">
                       <textarea class="textarea filter" placeholder="Enter the words you want to match. The words have to be seperated be a whitespace" id="filtertext"></textarea>
                     </div>
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                  <button class="button is-success" id="configuration1-next">Next</button>
-                  <button class="button configuration-modal-close">Cancel</button>
+                  <button class="button is-success" id="configuration2-next">Next</button>
+                  <button class="button close-modal">Cancel</button>
                 </footer>
             </div>
         </div>
 
-        <div class="modal" id="configuration2-modal">
+        <div class="modal" id="configuration3-modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Bot Configuration</p>
-                    <button class="delete" aria-label="close"></button>
+                    <button class="delete close-modal" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    <div>
-                        <input type="checkbox" name="action1" value="reply" id="checkbox-reply" checked>Reply
-                        <input type="checkbox" name="action2" value="favor" id="checkbox-favor">Favor
-                        <input type="checkbox" name="action3" value="follow" id="checkbox-follow">Follow<br>
+                    <label class="label">Action</label>
+                    <div class="field">
+                        <div class="control">
+                            <label for="checkbox-reply" class="checkbox">
+                                <input type="checkbox" name="action1" value="reply" id="checkbox-reply" checked>
+                                Reply
+                            </label>
+                            <label for="checkbox-favor" class="checkbox">
+                                <input type="checkbox" name="action2" value="favor" id="checkbox-favor">
+                                Favor
+                            </label>
+                            <label for="checkbox-follow" class="checkbox">
+                                <input type="checkbox" name="action3" value="follow" id="checkbox-follow">
+                                Follow
+                            </label>
+                        </div>
                     </div>
-                    <label class="label replybox">Message:</label>
+                    <label class="label replybox">Message</label>
                   <div class="control replybox">
                     <textarea class="textarea" placeholder="Enter the Reply Message." id="replytext"></textarea>
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" id="configuration2-next">Finish</button>
-                    <button class="button">Cancel</button>
-                </footer>
-            </div>
-        </div>
-        <div class="modal" id="configurationFinish-modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Success</p>
-                    <button class="delete" aria-label="close"></button>
-                </header>
-                <section class="modal-card-body">
-                    <p>The bot was configured successfully</p>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button">OK</button>
+                    <button class="button is-success" id="configuration3-next">Finish</button>
+                    <button class="button" id="configuration3-continue">New pattern</button>
+                    <button class="button close-modal">Cancel</button>
                 </footer>
             </div>
         </div>

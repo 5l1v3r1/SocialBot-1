@@ -9,4 +9,4 @@ class APIConfig:
     json_bot_actions_file_name = 'bot_actions'
 
     log_save_path = '../data/log/'
-    
+
