@@ -1,8 +1,8 @@
 ##### FOR TESTING #####
 import json
 ##### FOR TESTING #####
-from logic.Bot import Bot
-from logic.Bothandler import Bothandler
+from source.logic.Bot import Bot
+from source.logic.Bothandler import Bothandler
 
 if __name__ == "__main__":
     ##### FOR TESTING #####
@@ -24,8 +24,10 @@ if __name__ == "__main__":
     bothandler.add_bot(bot)
     #test = bot.post_tweet("sdf Again")
     #print(test)
-    print(bot.get_timeline())
-    #test2 = bot.like_tweet("996761793681854465")
+    #print(bot.get_timeline_from_user("realDonaldTrump"))
+    #print(bot.get_my_retweets())
+    #print(bot.get_my_mention())
+    print(bot.get_my_timeline())
     #print(test2)
     #print(type(test2))
     #bothandler.add_bot(bot)

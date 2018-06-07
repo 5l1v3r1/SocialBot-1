@@ -1,5 +1,4 @@
-from logic.Bot import Bot
-
+from source.logic.Bot import Bot
 
 class Bothandler:
     def __init__(self):

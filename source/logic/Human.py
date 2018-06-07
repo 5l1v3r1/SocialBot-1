@@ -11,22 +11,20 @@ class Human:
     def get_direct_messages(self):
         self.twitterobj.get_my_dms()
 
-    def get_timeline(self):
-        #Lukas fragen wegen timeline
-        return self.twitterobj.get_tweets("misterT1995")
+    def get_my_timeline(self):
+        return self.twitterobj.get_my_timeline()
 
-    def get_retweets(self):
+    def get_timeline_from_user(self, username, user_id=None):
+        self.twitterobj.get_tweets(username, user_id)
+
+    def get_my_retweets(self):
         return self.twitterobj.get_my_retweets()
 
-    def get_mention(self):
+    def get_my_mention(self):
         return self.twitterobj.get_my_mentions()
 
     def get_followers(self, username=None, user_id=None, page=-1):
         return self.twitterobj.get_followers(username, user_id, page)
-
-    def create_Account(self):
-        # vielleicht nicht möglich
-        pass
 
     def post_tweet(self, message):
         return self.twitterobj.tweet(text=message)

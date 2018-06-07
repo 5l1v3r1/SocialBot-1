@@ -1,7 +1,7 @@
-from api_wrapper.src.twitter import Twitter
+from source.api_wrapper.src.twitter import Twitter
 import threading
-from data.Logbook import Logbook
-from logic.Human import Human
+from source.data.Logbook import Logbook
+from source.logic.Human import Human
 
 class Bot(Human, threading.Thread):
     def __init__(self, iname, access_info):
@@ -19,17 +19,14 @@ class Bot(Human, threading.Thread):
     def get_name(self):
         return self.__name
 
-    def react_to_direct_message(self):
-        print("Message")
-
-    def react_to_tweet(self):
-        print("Reacted to Tweet")
-
-    def react_to_retweet(self):
-        pass
+    def react_to_my_mentions(self, input):
+        self.twitterobj.react_to_my_mentions(input)
 
     def react_to_timeline(self):
-        pass
+        self.twitterobj.react_to_my_timeline(input)
+
+    def react_to_stream(self, input, terms, users, limit, include_retweets):
+        self.twitterobj.react_to_stream(self, input, terms=terms, users=users, limit=limit, include_retweets=include_retweets)
 
     def run(self):
         print(self.__name + " is running...")
