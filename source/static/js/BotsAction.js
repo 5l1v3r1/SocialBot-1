@@ -126,7 +126,7 @@ $(document).ready(function () {
         $('.modal').removeClass('is-active');
     });
 
-    $('configuration-modal-close').click(function() {
+    $('.configuration-modal-close').click(function() {
         $('.modal').removeClass('is-active');
     });
 
