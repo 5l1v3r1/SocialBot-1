@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="972" version="1.1" width="1996" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ffffff" height="368" stroke="#ffffff" stroke-width="1" width="576" x="934" y="590"/>
+<rect fill="none" height="368" stroke="#000000" stroke-width="1" width="576" x="934" y="590"/>
+<polygon fill="#ffffff" points="14,14 908,14 908,37 957,37 957,957 14,957 14,14" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="894" x="14" y="14"/>
+<text font-family="Dialog" font-size="12" x="19" y="27">
+lib</text>
+<rect fill="none" height="920" stroke="#000000" stroke-width="1" width="943" x="14" y="37"/>
+<rect fill="#ffffff" height="888" stroke="#ffffff" stroke-width="1" width="862" x="38" y="54"/>
+<rect fill="none" height="888" stroke="#000000" stroke-width="1" width="862" x="38" y="54"/>
+<text font-family="Dialog" font-size="12" x="448" y="67">
+Twitter</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="862" x="38" y="77"/>
+<text font-family="Dialog" font-size="12" x="42" y="91">
+__API : Api</text>
+<text font-family="Dialog" font-size="12" x="42" y="107">
+overwrite_sensitive : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="123">
+print_log : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="139">
+human_like_delays : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="155">
+__development : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="171">
+__LOGGER : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="187">
+__thread_management : ThreadManagement</text>
+<text font-family="Dialog" font-size="12" x="42" y="203">
+min_response_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="219">
+max_response_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="235">
+refresh_mentions_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="251">
+refresh_timeline_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="267">
+min_follow_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="283">
+max_follow_time : Integer</text>
+<text font-family="Dialog" font-size="12" x="42" y="299">
+__categories : List</text>
+<text font-family="Dialog" font-size="12" x="42" y="315">
+__user : twitter.User</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="862" x="38" y="325"/>
+<text font-family="Dialog" font-size="12" x="42" y="339">
+__init__(accessInfo : associativeArray) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="355">
+development_mode() : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="371">
+acitivate_log(path : String,name : String) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="387">
+__log(message : String) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="403">
+get_api_obj() : Api</text>
+<text font-family="Dialog" font-size="12" x="42" y="419">
+tweet(text : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="435">
+retweet(tweet_id : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="451">
+reply(status_id : String,text : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="467">
+favor(status : String,status_id : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="483">
+send_dm(username : String,user_id : String,message : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="499">
+follow(username : String,user_id : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="515">
+search_tweet(term : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="531">
+search_user(term : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="547">
+get_subscriptions(self,username : String,user_id : String,count : String,page : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="563">
+get_tweets(username : String,user_id : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="579">
+get_followers(username : String,user_id : String,page : String)</text>
+<text font-family="Dialog" font-size="12" x="42" y="595">
+get_my_geplies() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="611">
+get_my_retweets() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="627">
+get_my_mentions() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="643">
+get_my_dms() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="659">
+get_my_timeline() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="675">
+stream(users : List,terms : List)</text>
+<text font-family="Dialog" font-size="12" x="42" y="691">
+limit_stream(users : String,terms : String,limit : String) : List</text>
+<text font-family="Dialog" font-size="12" x="42" y="707">
+tweet_at_stream(message : String,nth_tweet : String,users : String,terms : String,limit : String) : Thread</text>
+<text font-family="Dialog" font-size="12" x="42" y="723">
+tweet_list(list_of_tweets : List) : List</text>
+<text font-family="Dialog" font-size="12" x="42" y="739">
+follow_by_category(category : String,delay : String) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="755">
+react_to_my_mentions(actions : List) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="771">
+react_to_my_timeline() : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="787">
+react_to_stream(actions : List,terms : List,users : List,limit : Integer,include_retweets : Bool) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="803">
+__react_to_status(action : list,status : String) : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="819">
+__tweet_at_juncture_thread(text : String,sleep_duration : Integer) : Status</text>
+<text font-family="Dialog" font-size="12" x="42" y="835">
+__tweet_at_stream_thread(message : String,nth_tweet : Integer,users : List,terms : List,limit : Integer)</text>
+<text font-family="Dialog" font-size="12" x="42" y="851">
+__react_to_stream_thread(f_actions,terms,users : List,limit : Integer,include_retweets)</text>
+<text font-family="Dialog" font-size="12" x="42" y="867">
+__react_to_mentions_thread(f_actions : List) : Thread</text>
+<text font-family="Dialog" font-size="12" x="42" y="883">
+__react_to_my_timeline(f_actions : List) : Thread</text>
+<text font-family="Dialog" font-size="12" x="42" y="899">
+__manage_follow_category(category : String,delay : bool) : bool</text>
+<text font-family="Dialog" font-size="12" x="42" y="915">
+stop_all_actions() : void</text>
+<text font-family="Dialog" font-size="12" x="42" y="931">
+print_thread_info() : void</text>
+<polygon fill="#ffffff" points="982,14 1932,14 1932,37 1981,37 1981,557 982,557 982,14" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="950" x="982" y="14"/>
+<text font-family="Dialog" font-size="12" x="987" y="27">
+API</text>
+<rect fill="none" height="520" stroke="#000000" stroke-width="1" width="999" x="982" y="37"/>
+<rect fill="#ffffff" height="88" stroke="#ffffff" stroke-width="1" width="351" x="1038" y="62"/>
+<rect fill="none" height="88" stroke="#000000" stroke-width="1" width="351" x="1038" y="62"/>
+<text font-family="Dialog" font-size="12" x="1176" y="75">
+BotMethods</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="351" x="1038" y="85"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="351" x="1038" y="115"/>
+<text font-family="Dialog" font-size="12" x="1042" y="129">
+start_bot(req : associativeArray) : APIObject</text>
+<rect fill="#ffffff" height="117" stroke="#ffffff" stroke-width="1" width="385" x="1534" y="70"/>
+<rect fill="none" height="117" stroke="#000000" stroke-width="1" width="385" x="1534" y="70"/>
+<text font-family="Dialog" font-size="12" x="1717" y="83">
+API</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="385" x="1534" y="93"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="385" x="1534" y="114"/>
+<text font-family="Dialog" font-size="12" x="1538" y="128">
+test(request : String) : String</text>
+<text font-family="Dialog" font-size="12" x="1538" y="144">
+test_request_return_req(request : String) : assiociativeArray</text>
+<text font-family="Dialog" font-size="12" x="1538" y="160">
+bot(request : String) : Status</text>
+<text font-family="Dialog" font-size="12" x="1538" y="176">
+config(request : String) : APIObject</text>
+<rect fill="#ffffff" height="165" stroke="#ffffff" stroke-width="1" width="310" x="1534" y="198"/>
+<rect fill="none" height="165" stroke="#000000" stroke-width="1" width="310" x="1534" y="198"/>
+<text font-family="Dialog" font-size="12" x="1642" y="211">
+ConfigMethods</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="310" x="1534" y="221"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="310" x="1534" y="242"/>
+<text font-family="Dialog" font-size="12" x="1538" y="256">
+add_app(req : associativeArray) : APIObject</text>
+<text font-family="Dialog" font-size="12" x="1538" y="272">
+add_bot(req) : APIMessage</text>
+<text font-family="Dialog" font-size="12" x="1538" y="288">
+add_bot_pin(req : associativeArray) : APIObject</text>
+<text font-family="Dialog" font-size="12" x="1538" y="304">
+get_users() : APIObject</text>
+<text font-family="Dialog" font-size="12" x="1538" y="320">
+get_bots() : APIObject</text>
+<text font-family="Dialog" font-size="12" x="1538" y="336">
+get_apps() : APIObject</text>
+<text font-family="Dialog" font-size="12" x="1538" y="352">
+configure_bot(req : associativeArray) : APIObject</text>
+<rect fill="#ffffff" height="69" stroke="#ffffff" stroke-width="1" width="396" x="1038" y="190"/>
+<rect fill="none" height="69" stroke="#000000" stroke-width="1" width="396" x="1038" y="190"/>
+<text font-family="Dialog" font-size="12" x="1198" y="203">
+APIMessage</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="396" x="1038" y="213"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="396" x="1038" y="234"/>
+<text font-family="Dialog" font-size="12" x="1042" y="248">
+create(message : String,code : Integer,dump : object) : String</text>
+<rect fill="#ffffff" height="69" stroke="#ffffff" stroke-width="1" width="396" x="1038" y="278"/>
+<rect fill="none" height="69" stroke="#000000" stroke-width="1" width="396" x="1038" y="278"/>
+<text font-family="Dialog" font-size="12" x="1211" y="291">
+APIError</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="396" x="1038" y="301"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="396" x="1038" y="322"/>
+<text font-family="Dialog" font-size="12" x="1042" y="336">
+create(message : String,code : Integer,dump : object) : String</text>
+<rect fill="#ffffff" height="144" stroke="#ffffff" stroke-width="1" width="928" x="1030" y="374"/>
+<rect fill="none" height="144" stroke="#000000" stroke-width="1" width="928" x="1030" y="374"/>
+<text font-family="Dialog" font-size="12" x="1450" y="387">
+OAuthProcess</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="928" x="1030" y="397"/>
+<text font-family="Dialog" font-size="12" x="1034" y="411">
+REQUEST_TOKEN_URL : String</text>
+<text font-family="Dialog" font-size="12" x="1034" y="427">
+ACCESS_TOKEN_URL : String</text>
+<text font-family="Dialog" font-size="12" x="1034" y="443">
+AUTHORIZATION_URL : String</text>
+<text font-family="Dialog" font-size="12" x="1034" y="459">
+SIGNIN_URL : String</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="928" x="1030" y="473"/>
+<text font-family="Dialog" font-size="12" x="1034" y="487">
+start_oauth(consumer_key : String,consumer_secret : String) : String</text>
+<text font-family="Dialog" font-size="12" x="1034" y="503">
+confirm_with_pin(consumer_key : String,consumer_secret : String,oauth_token : String,oauth_token_secret : String,pin_code : Integer) : associativeArray</text>
+<rect fill="#ffffff" height="101" stroke="#ffffff" stroke-width="1" width="456" x="1014" y="830"/>
+<rect fill="none" height="101" stroke="#000000" stroke-width="1" width="456" x="1014" y="830"/>
+<text font-family="Dialog" font-size="12" x="1220" y="843">
+Logger</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="456" x="1014" y="853"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="456" x="1014" y="874"/>
+<text font-family="Dialog" font-size="12" x="1018" y="888">
+__init__() : void</text>
+<text font-family="Dialog" font-size="12" x="1018" y="904">
+activate(path : String,name : String,overwrite_sensitive : bool) : void</text>
+<text font-family="Dialog" font-size="12" x="1018" y="920">
+log(message : String) : void</text>
+<rect fill="#ffffff" height="200" stroke="#ffffff" stroke-width="1" width="386" x="1014" y="614"/>
+<rect fill="none" height="200" stroke="#000000" stroke-width="1" width="386" x="1014" y="614"/>
+<text font-family="Dialog" font-size="12" x="1186" y="627">
+Helper</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="386" x="1014" y="637"/>
+<text font-family="Dialog" font-size="12" x="1018" y="651">
+date_format : String</text>
+<text font-family="Dialog" font-size="12" x="1018" y="667">
+twitter_date_format : String</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="386" x="1014" y="677"/>
+<text font-family="Dialog" font-size="12" x="1018" y="691">
+get_date_now() : String</text>
+<text font-family="Dialog" font-size="12" x="1018" y="707">
+get_timestamp_now() : Integer</text>
+<text font-family="Dialog" font-size="12" x="1018" y="723">
+get_utc_timestamp_now() : Integer</text>
+<text font-family="Dialog" font-size="12" x="1018" y="739">
+get_date_string_now() : String</text>
+<text font-family="Dialog" font-size="12" x="1018" y="755">
+get_timestamp(date : Date) : Integer</text>
+<text font-family="Dialog" font-size="12" x="1018" y="771">
+get_date_string_from_timestamp(timestamp : String) : String</text>
+<text font-family="Dialog" font-size="12" x="1018" y="787">
+get_date_string_from_timestamp(timestamp_String) : String</text>
+<text font-family="Dialog" font-size="12" x="1018" y="803">
+get_time_stamp_from_twitter_date(date) : Integer</text>
+<polyline fill="none" points="899,846 1014,846" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="919" y="861">
+1</text>
+<text font-family="Dialog" font-size="12" x="986" y="861">
+1</text>
+<polyline fill="none" points="899,640 1014,640" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="919" y="655">
+1</text>
+<text font-family="Dialog" font-size="12" x="986" y="655">
+1</text>
+</svg>
