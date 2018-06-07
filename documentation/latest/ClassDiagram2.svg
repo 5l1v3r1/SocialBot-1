@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="972" version="1.1" width="1996" xmlns="http://www.w3.org/2000/svg">
+<svg height="972" version="1.1" width="2380" xmlns="http://www.w3.org/2000/svg">
 <rect fill="#ffffff" height="368" stroke="#ffffff" stroke-width="1" width="576" x="934" y="590"/>
 <rect fill="none" height="368" stroke="#000000" stroke-width="1" width="576" x="934" y="590"/>
 <polygon fill="#ffffff" points="14,14 908,14 908,37 957,37 957,957 14,957 14,14" stroke="#ffffff" stroke-width="1"/>
@@ -120,11 +120,11 @@ __manage_follow_category(category : String,delay : bool) : bool</text>
 stop_all_actions() : void</text>
 <text font-family="Dialog" font-size="12" x="42" y="931">
 print_thread_info() : void</text>
-<polygon fill="#ffffff" points="982,14 1932,14 1932,37 1981,37 1981,557 982,557 982,14" stroke="#ffffff" stroke-width="1"/>
-<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="950" x="982" y="14"/>
+<polygon fill="#ffffff" points="982,14 2316,14 2316,37 2365,37 2365,573 982,573 982,14" stroke="#ffffff" stroke-width="1"/>
+<rect fill="none" height="23" stroke="#000000" stroke-width="1" width="1334" x="982" y="14"/>
 <text font-family="Dialog" font-size="12" x="987" y="27">
 API</text>
-<rect fill="none" height="520" stroke="#000000" stroke-width="1" width="999" x="982" y="37"/>
+<rect fill="none" height="536" stroke="#000000" stroke-width="1" width="1383" x="982" y="37"/>
 <rect fill="#ffffff" height="88" stroke="#ffffff" stroke-width="1" width="351" x="1038" y="62"/>
 <rect fill="none" height="88" stroke="#000000" stroke-width="1" width="351" x="1038" y="62"/>
 <text font-family="Dialog" font-size="12" x="1176" y="75">
@@ -183,23 +183,23 @@ APIError</text>
 <rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="396" x="1038" y="322"/>
 <text font-family="Dialog" font-size="12" x="1042" y="336">
 create(message : String,code : Integer,dump : object) : String</text>
-<rect fill="#ffffff" height="144" stroke="#ffffff" stroke-width="1" width="928" x="1030" y="374"/>
-<rect fill="none" height="144" stroke="#000000" stroke-width="1" width="928" x="1030" y="374"/>
-<text font-family="Dialog" font-size="12" x="1450" y="387">
+<rect fill="#ffffff" height="144" stroke="#ffffff" stroke-width="1" width="960" x="1030" y="382"/>
+<rect fill="none" height="144" stroke="#000000" stroke-width="1" width="960" x="1030" y="382"/>
+<text font-family="Dialog" font-size="12" x="1466" y="395">
 OAuthProcess</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="928" x="1030" y="397"/>
-<text font-family="Dialog" font-size="12" x="1034" y="411">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="960" x="1030" y="405"/>
+<text font-family="Dialog" font-size="12" x="1034" y="419">
 REQUEST_TOKEN_URL : String</text>
-<text font-family="Dialog" font-size="12" x="1034" y="427">
+<text font-family="Dialog" font-size="12" x="1034" y="435">
 ACCESS_TOKEN_URL : String</text>
-<text font-family="Dialog" font-size="12" x="1034" y="443">
+<text font-family="Dialog" font-size="12" x="1034" y="451">
 AUTHORIZATION_URL : String</text>
-<text font-family="Dialog" font-size="12" x="1034" y="459">
+<text font-family="Dialog" font-size="12" x="1034" y="467">
 SIGNIN_URL : String</text>
-<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="928" x="1030" y="473"/>
-<text font-family="Dialog" font-size="12" x="1034" y="487">
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="960" x="1030" y="481"/>
+<text font-family="Dialog" font-size="12" x="1034" y="495">
 start_oauth(consumer_key : String,consumer_secret : String) : String</text>
-<text font-family="Dialog" font-size="12" x="1034" y="503">
+<text font-family="Dialog" font-size="12" x="1034" y="511">
 confirm_with_pin(consumer_key : String,consumer_secret : String,oauth_token : String,oauth_token_secret : String,pin_code : Integer) : associativeArray</text>
 <rect fill="#ffffff" height="101" stroke="#ffffff" stroke-width="1" width="456" x="1014" y="830"/>
 <rect fill="none" height="101" stroke="#000000" stroke-width="1" width="456" x="1014" y="830"/>
@@ -240,13 +240,31 @@ get_date_string_from_timestamp(timestamp_String) : String</text>
 <text font-family="Dialog" font-size="12" x="1018" y="803">
 get_time_stamp_from_twitter_date(date) : Integer</text>
 <polyline fill="none" points="899,846 1014,846" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="919" y="861">
+<text font-family="Dialog" font-size="12" x="918" y="861">
 1</text>
-<text font-family="Dialog" font-size="12" x="986" y="861">
+<text font-family="Dialog" font-size="12" x="985" y="861">
 1</text>
 <polyline fill="none" points="899,640 1014,640" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="919" y="655">
+<text font-family="Dialog" font-size="12" x="918" y="655">
 1</text>
-<text font-family="Dialog" font-size="12" x="986" y="655">
+<text font-family="Dialog" font-size="12" x="985" y="655">
 1</text>
+<rect fill="#ffffff" height="88" stroke="#ffffff" stroke-width="1" width="460" x="1870" y="278"/>
+<rect fill="none" height="88" stroke="#000000" stroke-width="1" width="460" x="1870" y="278"/>
+<text font-family="Dialog" font-size="12" x="2053" y="291">
+JSONConnector</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="460" x="1870" y="301"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="460" x="1870" y="325"/>
+<text font-family="Dialog" font-size="12" x="1874" y="339">
+set_json_file_content(directory : String,name : String,data : String) : void</text>
+<text font-family="Dialog" font-size="12" x="1874" y="355">
+get_json_file_content(directory : String,name : String)</text>
+<rect fill="#ffffff" height="69" stroke="#ffffff" stroke-width="1" width="465" x="1870" y="198"/>
+<rect fill="none" height="69" stroke="#000000" stroke-width="1" width="465" x="1870" y="198"/>
+<text font-family="Dialog" font-size="12" x="2058" y="211">
+PTPConnector</text>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="465" x="1870" y="221"/>
+<rect fill="#000000" height="1" stroke="#000000" stroke-width="1" width="465" x="1870" y="242"/>
+<text font-family="Dialog" font-size="12" x="1874" y="256">
+start_bot(access_info : associativeArray,method : String,args : List) : void</text>
 </svg>
