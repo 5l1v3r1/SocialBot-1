@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var action = { bot_actions:[ { bot_name:"DEFAULT", action_name:"DEFAULT_ACTION", method:"DEFAULT" } ] };
+    var action = { bot_name:"DEFAULT", action_name:"DEFAULT_ACTION", method:"DEFAULT", action:"configure_bot" };
 
     let req = {
         action: 'get_bots'
@@ -41,7 +41,7 @@ $(document).ready(function () {
                 $('#bots-table-body').html(table_html);
 
                 $('.add-bot-btn').click(function(){
-                    action.bot_actions[0].bot_name = $(this).attr('id');
+                    action.bot_name = $(this).attr('id');
                     $('#configuration1-modal').addClass('is-active');
                 });
             }
@@ -62,15 +62,15 @@ $(document).ready(function () {
     }
 
     $("#configuration2-next").click(function(){
-        if(action.bot_actions[0].actions) delete action.bot_actions[0].actions;
-        action.bot_actions[0].method = $('#source option:selected').val();
+        if(action.actions) delete action.actions;
+        action.method = $('#source option:selected').val();
 
-        action.bot_actions[0].actions = new Array();
+        action.actions = new Array();
 
         let cAction = {};
 
-        if(action.bot_actions[0].method=="react_to_my_mentions" ||
-            action.bot_actions[0].method=="react_to_my_timeline"){
+        if(action.method=="react_to_my_mentions" ||
+            action.method=="react_to_my_timeline"){
             if($('#text-tags option:selected').val()=="exactly"){
                 cAction["exactly"] = $("#filtertext").val();
             }else if($('#text-tags option:selected').val()=="tags"){
@@ -90,6 +90,10 @@ $(document).ready(function () {
                 checkbox.push($("#checkbox-follow").val());
             }
 
+            if(checkbox.length==1){
+                checkbox = checkbox[0];
+            }
+
             cAction["action"] = checkbox;
 
             if($("#checkbox-reply").is(':checked')){
@@ -97,22 +101,26 @@ $(document).ready(function () {
             }
         }
 
-        action.bot_actions[0].actions.push(cAction);
+        action.actions.push(cAction);
 
         debugging();
 
-        return;
-
-
-        $.post("SEITE/SO/UND/SO",
-        {
-            data: JSON.stringify(action)
-        },
-        function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        $.ajax({
+            type: "POST",
+            beforeSend: function (request) {
+                request.setRequestHeader('Content-Type', 'application/json');
+            },
+            url: "/api/config",
+            data: JSON.stringify(req),
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                data = JSON.parse(data);
+                alter("Action performed");
+            }
         });
-        $('#configuration2-modal').removeClass('is-active');
-        $('#configurationFinish-modal').addClass('is-active');
+
+
     });
 
     $('.delete').click(function() {
