@@ -1,15 +1,16 @@
 ![Logo](/logo.svg)
 
-# This is a fabulous repo for scientific research...
+# SocialBot management interface
+This Code is build on top of the `Python-Twitter-Plus` python module. It's developed by one of our Team-Members, Lukas Friedel.
 
 ## Instalation Guide
 ### GNU/Linux (maybe MAC-OS – not tested)
 #### Prerequisites
 1. Install Python 3 and PIP3
-2. Get the Source Code from [here]()
+2. Get the Source Code from [here](https://github.com/weberval/SocialBot/archive/master.zip)
 3. Open a Terminal
 4. Go to the downloaded directory
-5. Run `pip install -r requirements.txt`
+5. Run `python -m pip install -r Python-Twitter-Plus/requirements.txt` (as root)
 
 #### Running the Program
 1. Got to  *SourceFiles*/source
