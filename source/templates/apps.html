@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SocialBot</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.png') }}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.png') }}" sizes="96x96">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/AppsAction.js')}}"></script>
+    </head>
+    <body>
+        <nav class="navbar is-white">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item brand-text" href="/">
+                        SocialBot
+                    </a>
+                    <div class="navbar-burger burger" data-target="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="navMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">
+                            Home
+                        </a>
+                        <a class="navbar-item" href="/apps">
+                            Apps
+                        </a>
+                        <a class="navbar-item" href="/bots">
+                            Bots
+                        </a>
+                        <a class="navbar-item" href="/">
+                            Settings
+                        </a>
+                        <a class="navbar-item" href="/">
+                            Exceptions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <aside class="menu">
+                        <p class="menu-label">
+                            General
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="/">Dashboard</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Administration
+                        </p>
+                        <ul class="menu-list">
+                            <li><a class="is-active">Apps</a></li>
+                            <li><a href="/bots">Bots</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column is-9">
+                    <section class="hero is-info welcome is-small">
+                        <div class="hero-body">
+                            <div class="container">
+                                <h1 class="title">
+                                    Apps
+                                </h1>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="info-tiles">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a class="button is-primary" id="new-app-btn">
+                                    New App
+                                </a>
+                            </p>
+                        </div>
+                    </section>
+                    <div class="card events-card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Apps
+                            </p>
+                        </header>
+                        <div class="card-table">
+                            <div class="content" id="apps-content">
+                                <table class="table is-fullwidth is-striped">
+                                    <tbody id="apps-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">View All</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="new-app-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add an Twitter App</p>
+                    <button class="new-app-modal-close delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="content">
+                        <p>To add an app to SocialBot you need to create one via <a href="https://apps.twitter.com" target="_blank">https://apps.twitter.com</a>.</p>
+                        <p><b>You need a twitter account to do that.</b></p>
+                        <p>You need to do the following things:</p>
+                        <ol>
+                            <li>Head to <a href="https://apps.twitter.com" target="_blank">https://apps.twitter.com</a></li>
+                            <li>Press the button 'Create New App'</li>
+                            <li>Fill out all the fields and press 'Create your Twitter application'</li>
+                            <li>You are now in the details view of your app.</li>
+                            <li>Now you need to decide which permissions your app needs. Do that by changing the Access level in the application settings.</li>
+                            <li>Now we need your Consumer Key and your Consumer Secret. You find them under 'Keys and Access Tokens'.</li>
+                            <li>Press 'I've done that' and fill out the form!</li>
+                        </ol>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="new-app-next-modal">I've done that</button>
+                    <button class="button new-app-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="new-app-form-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add an Twitter App</p>
+                    <button class="new-app-modal-close delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" id="new-app-name-input" placeholder="e.g. MyNewApp">
+                        </div>
+                        <p class="help" id="new-app-name-help"></p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Consumer Key</label>
+                        <div class="control">
+                            <input class="input" type="text" id="new-app-key-input" placeholder="ABCXYZ">
+                        </div>
+                        <p class="help" id="new-app-key-help"></p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Consumer Secret</label>
+                        <div class="control">
+                            <input class="input" type="text" id="new-app-secret-input" placeholder="123-ABCXYZ">
+                        </div>
+                        <p class="help" id="new-app-secret-help"></p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="new-app-save-modal">Save changes</button>
+                    <button class="button new-app-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="add-bot-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add a Bot to SocialBot</p>
+                    <button class="add-bot-modal-close delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="content">
+                        <p>To create a bot you need to add an user to your app.</p>
+                        <p>To add a user to your twitter app be sure to be logged in as the user you want to add.</p>
+                        <p>By clicking the 'Next' Button you will be taken to twitter to authenticate your user for the app.</p>
+                        <p>You then need to press 'Authorize' and put displayed PIN into the field.</p>
+                        <p>As soon as the process is successfully finished the bot will be added.</p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="add-bot-next-modal">Next</button>
+                    <button class="button add-bot-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="add-bot-form-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add a User to your Twitter App</p>
+                    <button class="add-bot-form-modal-close delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="content">
+                        <p>To add the user to your app you need to type the pin you got from twitter into the form.</p>
+                        <p>Please also provide a name for your bot.</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Botname</label>
+                        <div class="control">
+                            <input class="input" type="text" id="add-bot-name-input" placeholder="e.g. NewUser">
+                        </div>
+                        <p class="help" id="add-bot-name-help"></p>
+                    </div>
+                    <div class="field">
+                        <label class="label">PIN</label>
+                        <div class="control">
+                            <input class="input" type="text" id="add-bot-pin-input" placeholder="e.g. 123456">
+                        </div>
+                        <p class="help" id="add-bot-pin-help"></p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="add-bot-save-modal">Save changes</button>
+                    <button class="button add-bot-form-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

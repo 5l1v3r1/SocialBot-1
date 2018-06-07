@@ -1,0 +1,1 @@
+{"bot_actions": [{"bot_name": "MeinBot", "action_name": "DEFAULT_ACTION", "method": "react_to_my_timeline", "actions": [{"exactly": "BLA BLA", "action": "reply", "text": "Sdfjsdafjk"}]}]}
