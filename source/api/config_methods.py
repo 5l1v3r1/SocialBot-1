@@ -286,12 +286,17 @@ class ConfigMethods:
         }
 
         if bot_actions:
-            for u in bot_actions['bots']:
-                if u['bot_name'] == bot_actions['bot_name']:
-                    return APIError.create(message='Bot with that botname already exists.', code=400)
-                elif u['action_name'] == bot_actions['action_name']:
+            b = bot_actions['bot_actions']
+            sz = len(b)
+            to_delete = None
+            for u in range(sz):
+                if b[u]['bot_name'] == bot_action['bot_name']:
+                    to_delete = u
+                    break
+                if b[u]['action_name'] == bot_action['action_name']:
                     return APIError.create(message='Bot with that action name already exists.', code=400)
 
+            del bot_actions['bot_actions'][to_delete]
             bot_actions['bot_actions'].append(bot_action)
         else:
             bot_actions = {'bot_actions': [bot_action]}

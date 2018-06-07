@@ -140,10 +140,12 @@
                 <section class="modal-card-body">
                     <div class="field">
                       <label class="label">Action Name</label>
+                        <p>Name your Action.</p>
                       <div class="control">
                         <input class="input" id="action-name" type="text" placeholder="Text input">
                       </div>
                     </div>
+                    <p>Here you can specify an action you want to take if a certain tweet pattern occurs.</p>
                   <div class="field">
                     <label class="label">Source-Type</label>
                     <div class="control">
@@ -156,6 +158,22 @@
                       </div>
                     </div>
                   </div>
+                <footer class="modal-card-foot">
+                  <button class="button is-success" id="configuration1-next">Next</button>
+                  <button class="button close-modal">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="configuration2-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete close-modal" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <p>Exactly: A tweet should contain exactly the text you specify.</p>
+                    <p>Tags: A tweet contains certain words that you can specify.</p>
                   <div class="field">
                     <label class="label">Exactly/Tags</label>
                     <div class="control">
@@ -175,13 +193,13 @@
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                  <button class="button is-success" id="configuration1-next">Next</button>
+                  <button class="button is-success" id="configuration2-next">Next</button>
                   <button class="button close-modal">Cancel</button>
                 </footer>
             </div>
         </div>
 
-        <div class="modal" id="configuration2-modal">
+        <div class="modal" id="configuration3-modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
@@ -212,7 +230,8 @@
                   </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" id="configuration2-next">Finish</button>
+                    <button class="button is-success" id="configuration3-next">Finish</button>
+                    <button class="button" id="configuration3-continue">New pattern</button>
                     <button class="button close-modal">Cancel</button>
                 </footer>
             </div>

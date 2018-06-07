@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let action = { bot_name:"DEFAULT", method:"DEFAULT", action:"configure_bot" };
+    let action = { bot_name:"DEFAULT", method:"DEFAULT", action:"configure_bot", actions: []};
 
     let req = {
         action: 'get_bots'
@@ -118,11 +118,71 @@ $(document).ready(function () {
         $('#configuration1-modal').removeClass('is-active');
     });
 
-    $("#configuration2-next").click(function(){
-        if (action.actions) delete action.actions;
+    $('#configuration2-next').click(function () {
+        $('#configuration2-modal').removeClass('is-active');
+        $('#configuration3-modal').addClass('is-active');
+    });
+
+    $('#configuration3-continue').click(function () {
         action.method = $('#source option:selected').val();
 
-        action.actions = [];
+        let cAction = {};
+
+        if (action.method === "react_to_my_mentions" ||
+            action.method === "react_to_my_timeline") {
+            let text_tags = $('#text-tags option:selected');
+            let filterText = $("#filtertext");
+            let actionName = $('#action-name');
+            let replyText = $('#replytext');
+
+            action.action_name = actionName.val();
+
+            if (text_tags.val() === "exactly") {
+                cAction["exactly"] = filterText.val();
+            } else if (text_tags.val() === "tags") {
+                cAction["tags"] = filterText.val().split(" ");
+            }
+
+            let checkbox = [];
+            let reply = $("#checkbox-reply");
+            let follow = $("#checkbox-follow");
+            let favor = $("#checkbox-favor");
+
+
+            if (reply.is(':checked')){
+                checkbox.push(reply.val());
+            }
+            if (favor.is(':checked')){
+                checkbox.push(favor.val());
+            }
+
+            if (follow.is(':checked')){
+                checkbox.push(follow.val());
+            }
+
+            if (checkbox.length === 1){
+                checkbox = checkbox[0];
+            }
+
+            cAction["action"] = checkbox;
+
+            if (reply.is(':checked')){
+                cAction["text"] = replyText.val();
+            }
+            filterText.val('');
+            replyText.val('');
+
+        }
+
+        action.actions.push(cAction);
+
+
+        $('#configuration3-modal').removeClass('is-active');
+        $('#configuration2-modal').addClass('is-active');
+    });
+
+    $("#configuration3-next").click(function(){
+        action.method = $('#source option:selected').val();
 
         let cAction = {};
 
