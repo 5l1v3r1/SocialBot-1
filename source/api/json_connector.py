@@ -6,6 +6,13 @@ class JSONConnector:
 
     @staticmethod
     def set_json_file_content(directory, name, data):
+        """
+        Set the content of a json file.
+        :param directory:
+        :param name:
+        :param data:
+        :return:
+        """
         if directory[-1:] != '/':
             directory += '/'
         elif '.' in name:
@@ -24,6 +31,12 @@ class JSONConnector:
 
     @staticmethod
     def get_json_file_content(directory, name):
+        """
+        Get the contents of a json file.
+        :param directory:
+        :param name:
+        :return:
+        """
         if directory[:-1] != '/':
             directory += '/'
         elif '.' in name:
