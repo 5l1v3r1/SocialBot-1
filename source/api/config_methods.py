@@ -262,7 +262,7 @@ class ConfigMethods:
 
         JSONConnector.set_json_file_content(
             directory=APIConfig.json_save_path,
-            name=APIConfig.json_bots_file_name,
+            name=APIConfig.json_bot_actions_file_name,
             data=bot_actions
         )
 
