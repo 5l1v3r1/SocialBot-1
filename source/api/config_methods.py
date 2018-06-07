@@ -239,7 +239,7 @@ class ConfigMethods:
 
         bot_actions = JSONConnector.get_json_file_content(
             directory=APIConfig.json_save_path,
-            name=APIConfig.json_bots_actions_file_name
+            name=APIConfig.json_bot_actions_file_name
         )
 
         bot_action = {

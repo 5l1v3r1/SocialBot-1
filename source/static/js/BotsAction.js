@@ -116,7 +116,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 data = JSON.parse(data);
-                alter("Action performed");
+                alert("Action performed");
             }
         });
 
