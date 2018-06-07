@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SocialBot</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin.css') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/BotsAction.js')}}"></script>
+    </head>
+    <body>
+        <nav class="navbar is-white">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item brand-text" href="../gui">
+                    SocialBot
+                    </a>
+                    <div class="navbar-burger burger" data-target="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="navMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">
+                            Home
+                        </a>
+                        <a class="navbar-item" href="/apps">
+                            Apps
+                        </a>
+                        <a class="navbar-item" href="/bot">
+                            Bots
+                        </a>
+                        <a class="navbar-item" href="/">
+                            Settings
+                        </a>
+                        <a class="navbar-item" href="/">
+                            Exceptions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <aside class="menu">
+                        <p class="menu-label">
+                            General
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="/">Dashboard</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Administration
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="/apps">Apps</a></li>
+                            <li><a class="is-active">Bots</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column is-9">
+                    <section class="hero is-info welcome is-small">
+
+                        <div class="hero-body">
+                            <div class="container">
+                                <h1 class="title">
+                                    <button class="btn_conf">Test1</button>
+                                    Bots
+                                </h1>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="info-tiles">
+                    </section>
+                    <div class="card events-card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Bots
+                            </p>
+                        </header>
+                        <div class="card-table">
+                            <div class="content" id="bots-content">
+                                <table class="table is-fullwidth is-striped">
+                                    <tbody id="bots-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">View All</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="new-bot-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add Bot</p>
+                    <button class="new-bot-model-close delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="e.g Alex Smith">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button new-bot-model-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="configuration1-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+
+                  <div class="field">
+                    <label class="label">Source-Type:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select id="source">
+                          <option value="react_to_my_timeline" selected="selected">Timeline</option>
+                          <option value="react_to_my_mentions">Mention</option>
+                          <option value="react_to_stream">Stream</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Text/Tags:</label>
+                    <div class="control">
+                      <div class="select">
+                        <select id="text-tags">
+                          <option value="exactly" selected="selected">Exactly</option>
+                          <option value="tags">Tags</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Filter:</label>
+                    <div class="control">
+                      <textarea class="textarea filter" placeholder="Enter the words you want to match. The words have to be seperated be a whitespace" id="filtertext"></textarea>
+                    </div>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success" id="configuration1-next">Next</button>
+                  <button class="button configuration-modal-close">Cancel</button>
+                </footer>
+            </div>
+        </div>
+
+        <div class="modal" id="configuration2-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Bot Configuration</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div>
+                        <input type="checkbox" name="action1" value="reply" id="checkbox-reply" checked>Reply
+                        <input type="checkbox" name="action2" value="favor" id="checkbox-favor">Favor
+                        <input type="checkbox" name="action3" value="follow" id="checkbox-follow">Follow<br>
+                    </div>
+                    <label class="label replybox">Message:</label>
+                  <div class="control replybox">
+                    <textarea class="textarea" placeholder="Enter the Reply Message." id="replytext"></textarea>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="configuration2-next">Finish</button>
+                    <button class="button">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal" id="configurationFinish-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Success</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <p>The bot was configured successfully</p>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button">OK</button>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
