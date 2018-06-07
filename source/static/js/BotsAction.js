@@ -116,11 +116,10 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 data = JSON.parse(data);
-                alert("Action performed");
             }
         });
 
-
+        $('#configuration2-modal').removeClass('is-active');
     });
 
     $('.delete').click(function() {
