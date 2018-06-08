@@ -1,4 +1,8 @@
+<<<<<<< HEAD:source/api_wrapper/src/threads/thread_management.py
+from src.threads.stoppable_thread import StoppableThread
+=======
 from lib.ptp.src.threads.stoppable_thread import StoppableThread
+>>>>>>> 11e35e95e78125364a542819f0c8a1c8167747b9:source/lib/ptp/src/threads/thread_management.py
 from time import sleep
 
 

@@ -2,10 +2,17 @@ import twitter
 import random
 import time
 from fuzzywuzzy import process
+<<<<<<< HEAD:source/api_wrapper/src/twitter.py
+from source.api_wrapper.src.threads.thread_management import ThreadManagement
+from source.api_wrapper.src.logger import Logger
+from source.api_wrapper.src.helper import Helper
+from source.api_wrapper.src.actions_handler import ActionsHandler
+=======
 from lib.ptp.src.threads.thread_management import ThreadManagement
 from lib.ptp.src.logger import Logger
 from lib.ptp.src.helper import Helper
 from lib.ptp.src.actions_handler import ActionsHandler
+>>>>>>> 11e35e95e78125364a542819f0c8a1c8167747b9:source/lib/ptp/src/twitter.py
 
 
 class Twitter:
@@ -453,7 +460,6 @@ class Twitter:
         Gets the most recent direct messages send to the authenticated user.
         :return:
         """
-
         resp = self.__API.GetDirectMessages()
 
         self.__log({
@@ -643,8 +649,10 @@ class Twitter:
             raise ValueError('Category has to be of type str. Given: ', type(category))
 
         self.__categories = self.__API.GetUserSuggestionCategories()
+
         self.__thread_management.add_new_thread(f=self.__manage_follow_category,
                                                 args=(category, delay))
+
         self.__log({
             'action': 'Followed people in a category',
             'category': str(category),
@@ -671,6 +679,69 @@ class Twitter:
         self.__log({
             'action': 'Started a mention listener.',
             'answers': str(actions)
+<<<<<<< HEAD:source/api_wrapper/src/twitter.py
+=======
+        })
+
+    def react_to_my_timeline(self, actions):
+        """
+        Starts the __reply_to_my_timeline thread.
+        Prepares it's arguments and splits them into different lists.
+        :param actions:
+        :return:
+        """
+
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('The argument actions has to be of type list.')
+
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
+
+        self.__thread_management.add_new_thread(f=self.__react_to_my_timeline,
+                                                args=(f_actions,))
+        self.__log({
+            'action': 'Started a timeline listener.',
+            'answers': str(actions)
+        })
+
+    def react_to_stream(self, actions, terms=None, users=None, limit=None, include_retweets=False):
+        """
+        Uses a actions object to specify which action to do if a certain status is found.
+        Checks statuses it gets from a limit_stream that can be specified with terms and users lists.
+        :param include_retweets:
+        :param actions:
+        :param terms:
+        :param users:
+        :param limit:
+        :return:
+        """
+
+        if not actions:
+            raise ValueError('Missing actions.')
+        elif actions and type(actions) != list:
+            raise ValueError('Actions has to be a list. Given:', type(actions))
+        elif not terms:
+            raise ValueError('Missing terms to stream.')
+        elif terms and type(terms) != list:
+            raise ValueError('Terms has to be a list. Given:', type(terms))
+        elif users and type(users) != list:
+            raise ValueError('Users has to be a list. Given:', type(users))
+        elif limit and type(limit) != int:
+            raise ValueError('Limit has to be of type int. Given:', type(limit))
+
+        f_actions = ActionsHandler.check_and_sort_actions(actions)
+
+        self.__thread_management.add_new_thread(f=self.__react_to_stream_thread,
+                                                args=(f_actions, terms, users, limit, include_retweets))
+        self.__log({
+            'action': 'Started React to Stream Thread.',
+            'actions': str(actions),
+            'terms': str(terms),
+            'users': str(users),
+            'limit': str(limit),
+            'include_retweets': str(include_retweets)
+>>>>>>> 11e35e95e78125364a542819f0c8a1c8167747b9:source/lib/ptp/src/twitter.py
         })
 
     def react_to_my_timeline(self, actions):
@@ -732,6 +803,47 @@ class Twitter:
             'limit': str(limit),
             'include_retweets': str(include_retweets)
         })
+
+    """
+    EXTENDING HELPER FUNCTIONS:
+    """
+
+    def __react_to_status(self, action, status):
+        """
+        React to a status using a action object.
+        :param action:
+        :param status:
+        :return:
+        """
+
+        actions = []
+        waiting_time = 0
+
+        if self.human_like_delays:
+            waiting_time = random.uniform(self.min_response_time, self.max_response_time)
+
+        if type(action['action']) == str:
+            actions.append(action['action'])
+        elif type(action['action']) == list:
+            actions = action['action']
+
+        for item in actions:
+            if item == 'reply':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.reply,
+                                                        args=(status['id'], action['text']))
+            elif item == 'retweet':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.retweet,
+                                                        args=(status['id'],))
+            elif item == 'favor':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.favor,
+                                                        args=(None, status['id']))
+            elif item == 'follow':
+                self.__thread_management.add_new_thread(sleep_time=waiting_time,
+                                                        f=self.follow,
+                                                        args=(None, status['user']['id']))
 
     """
     EXTENDING HELPER FUNCTIONS:
