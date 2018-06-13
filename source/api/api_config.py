@@ -8,5 +8,5 @@ class APIConfig:
     json_oauth_file_name = 'oauth'
     json_bot_actions_file_name = 'bot_actions'
 
-    log_save_path = '../data/log/'
+    log_save_path = '../data/log'
 
